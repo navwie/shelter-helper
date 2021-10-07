@@ -20,6 +20,8 @@ window.Vue = require('vue').default;
 
 Vue.component('navbar', require('./components/Navbar.vue').default);
 Vue.component('documents', require('./components/Documents.vue').default);
+Vue.component('projects', require('./components/Projects.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -33,4 +35,8 @@ const navbar = new Vue({
 
 const documents = new Vue({
     el: '#documents',
+})
+
+const projects = new Vue({
+    el: '#projects',
 })
