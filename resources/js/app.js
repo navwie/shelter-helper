@@ -24,6 +24,8 @@ Vue.component('projects', require('./components/Projects.vue').default);
 Vue.component('board', require('./components/Board.vue').default);
 Vue.component('reports', require('./components/Reports.vue').default);
 Vue.component('sign-up', require('./components/SignUp.vue').default);
+Vue.component('sign-in', require('./components/SignIn.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -53,4 +55,8 @@ const reports = new Vue({
 
 const signUp = new Vue({
     el: '#signUp',
+})
+
+const signIn = new Vue({
+    el: '#signIn',
 })
