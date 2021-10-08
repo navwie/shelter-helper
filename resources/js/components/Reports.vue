@@ -18,9 +18,9 @@
             <h6 class="project-description">Example of user report that can be displayed here</h6>
         </div>
         <div>
-            <button class="btn btn-outline-dark">
+            <a class="btn btn-outline-dark" href="/createReport">
                 Create report
-            </button>
+            </a>
         </div>
     </div>
 </template>
@@ -54,6 +54,7 @@ export default {
 
     .btn-outline-dark {
         position: fixed;
+        padding-top: 10px;
         bottom: 15%;
         right: 20%;
         height: 3em;
