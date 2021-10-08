@@ -27,6 +27,7 @@ Vue.component('sign-up', require('./components/SignUp.vue').default);
 Vue.component('sign-in', require('./components/SignIn.vue').default);
 Vue.component('create-document', require('./components/CreateDocument.vue').default);
 Vue.component('create-project', require('./components/CreateProject.vue').default);
+Vue.component('create-report', require('./components/CreateReport.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
