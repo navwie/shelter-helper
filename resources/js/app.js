@@ -21,6 +21,7 @@ window.Vue = require('vue').default;
 Vue.component('navbar', require('./components/Navbar.vue').default);
 Vue.component('documents', require('./components/Documents.vue').default);
 Vue.component('projects', require('./components/Projects.vue').default);
+Vue.component('board', require('./components/Board.vue').default);
 
 
 /**
@@ -39,4 +40,8 @@ const documents = new Vue({
 
 const projects = new Vue({
     el: '#projects',
+})
+
+const board = new Vue({
+    el: '#board',
 })
