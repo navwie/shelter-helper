@@ -48,3 +48,7 @@ Route::get('/createDocument', function () {
 Route::get('/createProject', function () {
     return view('createProject');
 });
+
+Route::get('/createReport', function () {
+    return view('createReport');
+});
