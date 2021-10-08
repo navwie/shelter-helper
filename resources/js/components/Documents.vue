@@ -62,6 +62,7 @@ export default {
 
     .btn-outline-dark {
         position: fixed;
+        padding-top: 10px;
         bottom: 15%;
         right: 20%;
         height: 3em;
