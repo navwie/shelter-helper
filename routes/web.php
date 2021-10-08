@@ -44,3 +44,7 @@ Route::get('/signIn', function () {
 Route::get('/createDocument', function () {
     return view('createDocument');
 });
+
+Route::get('/createProject', function () {
+    return view('createProject');
+});
