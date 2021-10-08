@@ -1,8 +1,8 @@
 <template>
     <header>
         <nav class="py-2 bg-light border-bottom">
-            <div class="container d-flex flex-wrap">
-                <ul class="nav col-12 col-md-12 mb-2 text-center justify-content-center mb-md-0">
+            <div class="container">
+                <ul class="nav col-12 mb-2 text-center justify-content-center mb-md-0">
                     <li class="nav-item"><a href="/documents" class="nav-link link-dark px-2 active" aria-current="page">Documents</a></li>
                     <li class="nav-item"><a href="/board" class="nav-link link-dark px-2">Board</a></li>
                     <li class="nav-item"><a href="/projects" class="nav-link link-dark px-2">Projects</a></li>
@@ -16,6 +16,8 @@
                             </div>
                         </div>
                     </li>
+                    <li><a type="button" href="/signIn" class="nav-link active">Sign in</a></li>
+                    <li><a type="button" href="/signUp" class="btn btn-primary me-2">Sign up</a></li>
                 </ul>
             </div>
         </nav>
@@ -31,5 +33,9 @@ export default {
 <style scoped>
     .nav-item {
         margin: 0 10px 0 10px;
+    }
+
+    .button {
+        margin-left: 50px;
     }
 </style>

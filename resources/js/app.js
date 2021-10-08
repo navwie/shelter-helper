@@ -23,7 +23,7 @@ Vue.component('documents', require('./components/Documents.vue').default);
 Vue.component('projects', require('./components/Projects.vue').default);
 Vue.component('board', require('./components/Board.vue').default);
 Vue.component('reports', require('./components/Reports.vue').default);
-
+Vue.component('sign-up', require('./components/SignUp.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -49,4 +49,8 @@ const board = new Vue({
 
 const reports = new Vue({
     el: '#reports',
+})
+
+const signUp = new Vue({
+    el: '#signUp',
 })
