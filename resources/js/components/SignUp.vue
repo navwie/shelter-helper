@@ -3,14 +3,13 @@
         <form>
             <h1 class="h3 mb-3 fw-normal text-center">Sign up</h1>
             <div class="form-group mt-4">
-                <label for="floatingInput">Email address</label>
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="name@example.com">
             </div>
             <div class="form-group mt-4">
-                <label for="floatingPassword">Password</label>
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password">
             </div>
-
             <div class="checkbox mt-2 mb-3">
                 <label>
                     <input type="checkbox" value="remember-me"> Remember me

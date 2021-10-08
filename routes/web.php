@@ -40,3 +40,7 @@ Route::get('/signUp', function () {
 Route::get('/signIn', function () {
     return view('signIn');
 });
+
+Route::get('/createDocument', function () {
+    return view('createDocument');
+});

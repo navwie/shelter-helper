@@ -1,7 +1,7 @@
 <template>
-    <div class="container">
+    <div class="container d-flex list-group col-md-12 align-items-md-center">
         <div class="row mt-5">
-            <div class="d-flex flex-column col-md bg-secondary text-white p-3 justify-content-between">
+            <div class="d-flex flex-column col document p-3 justify-content-between">
                 <div>
                     <h3>Product backlog</h3>
                     <p>Description</p>
@@ -10,7 +10,7 @@
                     <p>Last updated 3 mins ago by Artem</p>
                 </div>
             </div>
-            <div class="d-flex flex-column col-md bg-sprint mx-5 p-3 justify-content-between">
+            <div class="d-flex flex-column col document mx-5 p-3 justify-content-between">
                 <div>
                     <h3>Sprint #1</h3>
                     <p>Description</p>
@@ -19,7 +19,7 @@
                     <p>Last updated 3 mins ago by Artem</p>
                 </div>
             </div>
-            <div class="d-flex flex-column col-md bg-sprint p-3 justify-content-between">
+            <div class="d-flex flex-column col document p-3 justify-content-between">
                 <div>
                     <h3>Sprint #2</h3>
                     <p>Description</p>
@@ -28,6 +28,11 @@
                     <p>Last updated 3 mins ago by Artem</p>
                 </div>
             </div>
+        </div>
+        <div>
+            <a class="btn btn-outline-dark" href="/createDocument">
+                Create document
+            </a>
         </div>
     </div>
 </template>
@@ -39,14 +44,28 @@ export default {
 </script>
 
 <style scoped>
-    .col-md {
+    .col {
         height: 12em;
         border-radius: 15px;
     }
-    .bg-sprint {
-        background-color: #adacac;
+
+    .document {
+        border-radius: 7px;
+        border: 2px solid #74787e;
+        box-shadow: 5px 5px 0 0 #adacac;
+
     }
+
     p {
         margin-top: 1em;
+    }
+
+    .btn-outline-dark {
+        position: fixed;
+        bottom: 15%;
+        right: 20%;
+        height: 3em;
+        border-radius: 25px;
+        font-weight: 500;
     }
 </style>
