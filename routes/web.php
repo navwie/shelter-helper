@@ -21,6 +21,11 @@ Route::get('/documents', function () {
     return view('documents');
 });
 
+Route::get('/board', function () {
+    return view('board');
+});
+
 Route::get('/projects', function () {
     return view('projects');
 });
+
