@@ -25,6 +25,7 @@ Vue.component('board', require('./components/Board.vue').default);
 Vue.component('reports', require('./components/Reports.vue').default);
 Vue.component('sign-up', require('./components/SignUp.vue').default);
 Vue.component('sign-in', require('./components/SignIn.vue').default);
+Vue.component('create-document', require('./components/CreateDocument.vue').default);
 
 
 /**
@@ -33,30 +34,10 @@ Vue.component('sign-in', require('./components/SignIn.vue').default);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+const app = new Vue({
+    el: '#app',
+})
+
 const navbar = new Vue({
     el: '#navbar',
-})
-
-const documents = new Vue({
-    el: '#documents',
-})
-
-const projects = new Vue({
-    el: '#projects',
-})
-
-const board = new Vue({
-    el: '#board',
-})
-
-const reports = new Vue({
-    el: '#reports',
-})
-
-const signUp = new Vue({
-    el: '#signUp',
-})
-
-const signIn = new Vue({
-    el: '#signIn',
 })

@@ -1,7 +1,7 @@
 @extends('layouts.mainLayout')
 
 @section('content')
-    <div id="board">
+    <div id="app">
         <board></board>
     </div>
 @endsection

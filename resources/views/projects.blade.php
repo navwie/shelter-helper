@@ -1,7 +1,7 @@
 @extends('layouts.mainLayout')
 
 @section('content')
-    <div id="projects">
+    <div id="app">
         <projects></projects>
     </div>
 @endsection
