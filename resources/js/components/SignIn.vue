@@ -1,7 +1,7 @@
 <template>
     <div class="d-flex col-12 form-signin container justify-content-center align-content-center mt-5">
         <form>
-            <h1 class="h3 mb-3 fw-normal text-center">Sign up</h1>
+            <h1 class="h3 mb-3 fw-normal text-center">Sign in</h1>
             <div class="form-group mt-4">
                 <label for="floatingInput">Email address</label>
                 <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
@@ -10,14 +10,8 @@
                 <label for="floatingPassword">Password</label>
                 <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
             </div>
-
-            <div class="checkbox mt-2 mb-3">
-                <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                </label>
-            </div>
-            <div class="form-group text-center">
-                <button class="btn btn-primary" type="submit">Sign up</button>
+            <div class="form-group text-center mt-4">
+                <button class="btn btn-primary" type="submit">Sign in</button>
             </div>
             <div class="form-group text-center mt-3">
                 <p>
@@ -43,7 +37,7 @@
 
 <script>
 export default {
-    name: "SignUp"
+    name: "SignIn"
 }
 </script>
 
