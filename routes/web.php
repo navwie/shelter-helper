@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,12 @@ Route::get('/signUp', function () {
 Route::get('/signIn', function () {
     return view('signIn');
 });
+
+Route::match(
+    ['get', 'post'],
+    '/signInService',
+    [UserController::class, 'signIn']
+)->name('signIn');
 
 Route::get('/createDocument', function () {
     return view('createDocument');
