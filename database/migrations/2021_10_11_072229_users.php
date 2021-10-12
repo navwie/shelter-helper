@@ -18,7 +18,9 @@ class Users extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('email');
-            $table->string('password');
+            $table->string('password')->nullable();
+            $table->string('google_id')->nullable();
+            $table->string('facebook_id')->nullable();
             $table->dateTime('created_at')->useCurrent();
             $table->dateTime('updated_at')->nullable()->useCurrentOnUpdate();
         });

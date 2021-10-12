@@ -5,8 +5,9 @@ namespace App\Services;
 use App\Http\Requests\SignUpRequest;
 use App\Models\User;
 use App\Http\Requests\SignInRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use phpDocumentor\Reflection\Types\Boolean;
+use Laravel\Socialite\Facades\Socialite;
 
 class UserService
 {
@@ -50,4 +51,23 @@ class UserService
         header("Location: /");
     }
 
+    public static function googleSignUp(): void
+    {
+        $user = Socialite::driver('google')->user();
+
+        if(DB::table('users')
+            ->where("google_id", "=", $user->getId()) === null
+        ) {
+            DB::table('users')->insert([
+                'name' => $user['given_name'],
+                'surname' => $user["family_name"],
+                'email' => $user['email'],
+                'google_id' => $user->getId()
+            ]);
+        }
+
+        session()->put('name', $user['given_name']);
+        session()->put('surname', $user['family_name']);
+        header("Location: /");
+    }
 }
