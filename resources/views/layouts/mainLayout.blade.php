@@ -19,7 +19,7 @@
 </head>
 <body>
     <div id="navbar">
-        <navbar></navbar>
+        <navbar name="{{$name ?? ''}}" surname="{{$surname ?? ''}}"></navbar>
     </div>
     @yield('content')
     <script src="{{ mix('/js/app.js') }}"></script>
