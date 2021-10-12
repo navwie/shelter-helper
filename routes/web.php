@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\GoogleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -101,3 +102,7 @@ Route::get('/createReport', function () {
         'surname' => session()->get('surname')
     ]);
 });
+
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
+
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
