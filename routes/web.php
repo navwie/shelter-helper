@@ -15,31 +15,58 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('documents');
+    return view('documents', [
+        'name' => session()->get('name'),
+        'surname' => session()->get('surname')
+    ]);
 });
 
 Route::get('/documents', function () {
-    return view('documents');
+    return view('documents', [
+        'name' => session()->get('name'),
+        'surname' => session()->get('surname')
+    ]);
 });
 
 Route::get('/board', function () {
-    return view('board');
+    return view('board', [
+        'name' => session()->get('name'),
+        'surname' => session()->get('surname')
+    ]);
 });
 
 Route::get('/projects', function () {
-    return view('projects');
+    return view('projects', [
+        'name' => session()->get('name'),
+        'surname' => session()->get('surname')
+    ]);
 });
 
 Route::get('/reports', function () {
-    return view('reports');
+    return view('reports', [
+        'name' => session()->get('name'),
+        'surname' => session()->get('surname')
+    ]);
 });
 
 Route::get('/signUp', function () {
-    return view('signUp');
+    return view('signUp', [
+        'name' => session()->get('name'),
+        'surname' => session()->get('surname')
+    ]);
 });
 
+Route::match(
+    ['get', 'post'],
+    '/signUpService',
+    [UserController::class, 'signUp']
+)->name('signUp');
+
 Route::get('/signIn', function () {
-    return view('signIn');
+    return view('signIn', [
+        'name' => session()->get('name'),
+        'surname' => session()->get('surname')
+    ]);
 });
 
 Route::match(
@@ -48,14 +75,29 @@ Route::match(
     [UserController::class, 'signIn']
 )->name('signIn');
 
+Route::match(
+    ['get', 'post'],
+    '/logOut',
+    [UserController::class, 'logOut']
+)->name('logOut');
+
 Route::get('/createDocument', function () {
-    return view('createDocument');
+    return view('createDocument', [
+        'name' => session()->get('name'),
+        'surname' => session()->get('surname')
+    ]);
 });
 
 Route::get('/createProject', function () {
-    return view('createProject');
+    return view('createProject', [
+        'name' => session()->get('name'),
+        'surname' => session()->get('surname')
+    ]);
 });
 
 Route::get('/createReport', function () {
-    return view('createReport');
+    return view('createReport', [
+        'name' => session()->get('name'),
+        'surname' => session()->get('surname')
+    ]);
 });

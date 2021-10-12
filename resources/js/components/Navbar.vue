@@ -16,8 +16,14 @@
                             </div>
                         </div>
                     </li>
-                    <li><a type="button" href="/signIn" class="nav-link active">Sign in</a></li>
-                    <li><a type="button" href="/signUp" class="btn btn-primary me-2">Sign up</a></li>
+                    <li><a type="button" href="/signIn" v-if="name.length === 0" class="nav-link active">Sign in</a></li>
+                    <li><a type="button" href="/signUp" v-if="name.length === 0" class="btn btn-primary me-2">Sign up</a></li>
+                    <li class="nav-item">
+                        <div>
+                            <a href="#" class="nav-link link-dark px-2">{{name}} {{surname}}</a>
+                        </div>
+                    </li>
+                    <li><a type="button" href="/logOut" v-if="name.length !== 0" class="btn btn-primary me-2">Log Out</a></li>
                 </ul>
             </div>
         </nav>
@@ -26,7 +32,11 @@
 
 <script>
 export default {
-    name: "Navbar"
+    name: "Navbar",
+    props: {
+        name: "",
+        surname: ""
+    },
 }
 </script>
 
@@ -38,4 +48,5 @@ export default {
     .button {
         margin-left: 50px;
     }
+
 </style>
