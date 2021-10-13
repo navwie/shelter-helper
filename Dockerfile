@@ -1,6 +1,6 @@
 FROM php:8.0.10-fpm
 
-RUN pecl install xdebug && docker-php-ext-enable xdebug
+#RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 # Copy composer.lock and composer.json
 COPY composer.lock composer.json /var/www/
