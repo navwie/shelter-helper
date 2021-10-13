@@ -56,7 +56,8 @@ class UserService
         $user = Socialite::driver('google')->user();
 
         if(DB::table('users')
-            ->where("google_id", "=", $user->getId()) === null
+            ->where("google_id", "=", $user->getId())
+            ->first() === null
         ) {
             DB::table('users')->insert([
                 'name' => $user['given_name'],
@@ -66,8 +67,32 @@ class UserService
             ]);
         }
 
+
         session()->put('name', $user['given_name']);
         session()->put('surname', $user['family_name']);
+        header("Location: /");
+    }
+
+    public static function facebookSignUp(): void
+    {
+        $user = Socialite::driver('facebook')->user();
+
+        $fullName = explode(" ", $user['name']);
+        if(DB::table('users')
+                ->where("facebook_id", "=", $user->getId())
+                ->first() === null
+        ) {
+            DB::table('users')->insert([
+                'name' => $fullName[0],
+                'surname' => $fullName[1],
+                'email' => $user['email'],
+                'facebook_id' => $user->getId()
+            ]);
+        }
+
+
+        session()->put('name', $fullName[0]);
+        session()->put('surname', $fullName[1]);
         header("Location: /");
     }
 }
