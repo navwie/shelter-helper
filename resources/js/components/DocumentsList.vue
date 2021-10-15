@@ -1,7 +1,7 @@
 <template>
     <div class="row col-12 justify-content-center">
         <document
-            v-for="document in this.documents"
+            v-for="document in this.userDocuments"
             :key="document.index"
             :name="document.name"
             :description="document.description"
@@ -24,7 +24,13 @@
 export default {
     name: "Documents",
     props: {
-        documents: []
+        documents: [],
+        user: ""
+    },
+    computed: {
+        userDocuments: function () {
+            return this.documents.filter(document => document.author_id === this.user);
+        }
     }
 }
 </script>
