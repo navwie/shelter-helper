@@ -1,22 +1,21 @@
 <template>
     <div class="d-flex flex-column align-items-center">
-        <form class="col-4 col-lg-auto mb-3 mb-lg-0 me-lg-3 mt-4">
+        <form class="col-4 col-lg-auto mb-3 mb-lg-0 me-lg-3 mt-4" action="/searchProjectService">
             <div class="d-flex flex-row">
-                <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+                <input type="search" class="form-control" placeholder="Search..." name="search" aria-label="Search">
                 <button class="btn btn-primary" type="submit">Search</button>
             </div>
         </form>
         <div class="col-8 mt-5">
-            <h5 class="projects-header">Projects 2</h5>
+            <h5 class="projects-header">Projects {{ this.projects.length }}</h5>
         </div>
-        <div class="col-8 mt-3 project">
-            <h5 class="project-title">Project №1</h5>
-            <h6 class="project-description">Example of user project that can be displayed here</h6>
-        </div>
-        <div class="col-8 mt-3 project">
-            <h5 class="project-title">Project №2</h5>
-            <h6 class="project-description">Example of user project that can be displayed here</h6>
-        </div>
+        <project
+            v-for="project in this.projects"
+            :key="project.index"
+            :id="project.id"
+            :name="project.name"
+            :description="project.description"
+        />
         <div>
             <a class="btn btn-outline-dark" href="/createProject">
                 Create project
@@ -27,7 +26,10 @@
 
 <script>
 export default {
-    name: "Projects"
+    name: "Projects",
+    props: {
+        projects: []
+    }
 }
 </script>
 
