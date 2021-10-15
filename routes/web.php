@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\FacebookController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\ProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,12 @@ use App\Http\Controllers\DocumentController;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
+*/
+
+/*
+|--------------------------------------------------------------------------
+| Documents Routes
+|--------------------------------------------------------------------------
 */
 
 Route::get('/', function () {
@@ -36,26 +43,58 @@ Route::get('/documents', function () {
     ]);
 });
 
-Route::get('/board', function () {
-    return view('board', [
+Route::get('/createDocument', function () {
+    return view('createDocument', [
         'name' => session()->get('name'),
         'surname' => session()->get('surname')
     ]);
 });
+
+Route::match(
+    ['get', 'post'],
+    '/createDocumentService',
+    [DocumentController::class, 'createDocument']
+)->name('createDocumentService');
+
+/*
+|--------------------------------------------------------------------------
+| Projects Routes
+|--------------------------------------------------------------------------
+*/
 
 Route::get('/projects', function () {
-    return view('projects', [
+        return view('projects', [
+        'name' => session()->get('name'),
+        'surname' => session()->get('surname'),
+        'projects' => json_encode(DB::table('projects')
+            ->get())
+        ]);
+});
+
+Route::get('/createProject', function () {
+    return view('createProject', [
         'name' => session()->get('name'),
         'surname' => session()->get('surname')
     ]);
 });
 
-Route::get('/reports', function () {
-    return view('reports', [
-        'name' => session()->get('name'),
-        'surname' => session()->get('surname')
-    ]);
-});
+Route::match(
+    ['get', 'post'],
+    '/createProjectService',
+    [ProjectController::class, 'createProject']
+)->name('createProjectService');
+
+Route::match(
+    ['get', 'post'],
+    '/deleteProjectService/{id}',
+    [ProjectController::class, 'deleteProject']
+)->name('deleteProjectService');
+
+/*
+|--------------------------------------------------------------------------
+| Users Routes
+|--------------------------------------------------------------------------
+*/
 
 Route::get('/signUp', function () {
     return view('signUp', [
@@ -89,21 +128,27 @@ Route::match(
     [UserController::class, 'logOut']
 )->name('logOut');
 
-Route::get('/createDocument', function () {
-    return view('createDocument', [
+/*
+|--------------------------------------------------------------------------
+| Boards Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/board', function () {
+    return view('board', [
         'name' => session()->get('name'),
         'surname' => session()->get('surname')
     ]);
 });
 
-Route::match(
-    ['get', 'post'],
-    '/createDocumentService',
-    [DocumentController::class, 'createDocument']
-)->name('logOut');
+/*
+|--------------------------------------------------------------------------
+| Reports Routes
+|--------------------------------------------------------------------------
+*/
 
-Route::get('/createProject', function () {
-    return view('createProject', [
+Route::get('/reports', function () {
+    return view('reports', [
         'name' => session()->get('name'),
         'surname' => session()->get('surname')
     ]);
@@ -115,6 +160,12 @@ Route::get('/createReport', function () {
         'surname' => session()->get('surname')
     ]);
 });
+
+/*
+|--------------------------------------------------------------------------
+| Socials Routes
+|--------------------------------------------------------------------------
+*/
 
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
 
