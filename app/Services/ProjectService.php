@@ -12,10 +12,14 @@ class ProjectService
 {
     public static function createProject(CreateProjectRequest $request): void
     {
+
         DB::table('projects')->insert([
             'name' => $request['name'],
             'description' => $request['description'],
+            'author_id' => session()->get('userId')
         ]);
+
+
 
         header("Location: /projects");
     }

@@ -7,6 +7,7 @@ use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\FacebookController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ProjectController;
+use App\Services\UserService;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,11 @@ use App\Http\Controllers\ProjectController;
 */
 
 Route::get('/', function () {
+    if(!UserService::isAuth()) {
+        return view('notAuth');
+    }
     return view('documents', [
+        'userId' => session()->get('userId'),
         'name' => session()->get('name'),
         'surname' => session()->get('surname'),
         'documents' => json_encode(DB::table('documents')
@@ -35,7 +40,11 @@ Route::get('/', function () {
 });
 
 Route::get('/documents', function () {
+    if(!UserService::isAuth()) {
+        return view('notAuth');
+    }
     return view('documents', [
+        'userId' => session()->get('userId'),
         'name' => session()->get('name'),
         'surname' => session()->get('surname'),
         'documents' => json_encode(DB::table('documents')
@@ -63,12 +72,16 @@ Route::match(
 */
 
 Route::get('/projects', function () {
-        return view('projects', [
+    if(!UserService::isAuth()) {
+        return view('notAuth');
+    }
+    return view('projects', [
+        'userId' => session()->get('userId'),
         'name' => session()->get('name'),
         'surname' => session()->get('surname'),
         'projects' => json_encode(DB::table('projects')
             ->get())
-        ]);
+    ]);
 });
 
 Route::get('/createProject', function () {
@@ -135,6 +148,9 @@ Route::match(
 */
 
 Route::get('/board', function () {
+    if(!UserService::isAuth()) {
+        return view('notAuth');
+    }
     return view('board', [
         'name' => session()->get('name'),
         'surname' => session()->get('surname')
@@ -148,6 +164,9 @@ Route::get('/board', function () {
 */
 
 Route::get('/reports', function () {
+    if(!UserService::isAuth()) {
+        return view('notAuth');
+    }
     return view('reports', [
         'name' => session()->get('name'),
         'surname' => session()->get('surname')

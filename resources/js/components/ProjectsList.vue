@@ -1,16 +1,16 @@
 <template>
     <div class="d-flex flex-column align-items-center">
-        <form class="col-4 col-lg-auto mb-3 mb-lg-0 me-lg-3 mt-4" action="/searchProjectService">
+<!--<form class="col-4 col-lg-auto mb-3 mb-lg-0 me-lg-3 mt-4" action="/searchProjectService">
             <div class="d-flex flex-row">
                 <input type="search" class="form-control" placeholder="Search..." name="search" aria-label="Search">
                 <button class="btn btn-primary" type="submit">Search</button>
             </div>
-        </form>
+        </form>-->
         <div class="col-8 mt-5">
-            <h5 class="projects-header">Projects {{ this.projects.length }}</h5>
+            <h5 class="projects-header">Projects {{ this.userProjects.length }}</h5>
         </div>
         <project
-            v-for="project in this.projects"
+            v-for="project in this.userProjects"
             :key="project.index"
             :id="project.id"
             :name="project.name"
@@ -28,7 +28,13 @@
 export default {
     name: "Projects",
     props: {
-        projects: []
+        projects: [],
+        user: ""
+    },
+    computed: {
+        userProjects: function () {
+            return this.projects.filter(project => project.author_id === this.user);
+        }
     }
 }
 </script>

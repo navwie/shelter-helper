@@ -12,7 +12,8 @@ class DocumentService
         DB::table('documents')->insert([
             'name' => $request['name'],
             'description' => $request['description'],
-            'url' => $request['url']
+            'url' => $request['url'],
+            'author_id' => session()->get('userId')
         ]);
         header("Location: /documents");
     }
