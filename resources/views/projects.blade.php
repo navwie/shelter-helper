@@ -2,6 +2,6 @@
 
 @section('content')
     <div id="app">
-        <projects></projects>
+        <projects-list :projects="{{$projects}}" />
     </div>
 @endsection
