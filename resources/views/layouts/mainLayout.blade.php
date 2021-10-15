@@ -43,10 +43,12 @@
 
 </head>
 <body>
-    <div id="navbar">
-        <navbar name="{{$name ?? ''}}" surname="{{$surname ?? ''}}"></navbar>
+    <div>
+        <div id="navbar">
+            <navbar name="{{$name ?? ''}}" surname="{{$surname ?? ''}}"></navbar>
+        </div>
+        @yield('content')
     </div>
-    @yield('content')
     <script src="{{ mix('/js/app.js') }}"></script>
     <!-- Load the JS SDK asynchronously -->
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
