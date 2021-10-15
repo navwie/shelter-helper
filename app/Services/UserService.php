@@ -29,6 +29,7 @@ class UserService
             ->where('password', '=', $request['password'])
             ->first();
         if (is_object($userData)) {
+            session()->put('userId', $userData->id);
             session()->put('name', $userData->name);
             session()->put('surname', $userData->surname);
         }
@@ -46,6 +47,7 @@ class UserService
 
     public static function logOut(): void
     {
+        session()->pull('id');
         session()->pull('name');
         session()->pull('surname');
         header("Location: /");
@@ -67,7 +69,7 @@ class UserService
             ]);
         }
 
-
+        session()->put('userId', $user['id']);
         session()->put('name', $user['given_name']);
         session()->put('surname', $user['family_name']);
         header("Location: /");
@@ -90,7 +92,7 @@ class UserService
             ]);
         }
 
-
+        session()->put('userId', $user['id']);
         session()->put('name', $fullName[0]);
         session()->put('surname', $fullName[1]);
         header("Location: /");
