@@ -14,6 +14,6 @@ class DocumentService
             'description' => $request['description'],
             'url' => $request['url']
         ]);
-        header("Location: /");
+        header("Location: /documents");
     }
 }
