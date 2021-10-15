@@ -19,9 +19,10 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('navbar', require('./components/Navbar.vue').default);
-Vue.component('documents', require('./components/Documents.vue').default);
+Vue.component('documents-list', require('./components/DocumentsList.vue').default);
 Vue.component('document', require('./components/Document.vue').default);
-Vue.component('projects', require('./components/Projects.vue').default);
+Vue.component('projects-list', require('./components/ProjectsList.vue').default);
+Vue.component('project', require('./components/Project.vue').default);
 Vue.component('board', require('./components/Board.vue').default);
 Vue.component('reports', require('./components/Reports.vue').default);
 Vue.component('sign-up', require('./components/SignUp.vue').default);
