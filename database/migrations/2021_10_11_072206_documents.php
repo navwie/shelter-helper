@@ -16,8 +16,11 @@ class Documents extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->string('url');
+            $table->string("created_by")->nullable();
+            $table->string("last_user_opened")->nullable();
+            $table->dateTime('last_opened_time')->nullable();
             $table->dateTime('created_at')->useCurrent();
             $table->dateTime('updated_at')->nullable()->useCurrentOnUpdate();
         });
