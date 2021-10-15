@@ -1,9 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\FacebookController;
+use App\Http\Controllers\DocumentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,14 +21,18 @@ use App\Http\Controllers\FacebookController;
 Route::get('/', function () {
     return view('documents', [
         'name' => session()->get('name'),
-        'surname' => session()->get('surname')
+        'surname' => session()->get('surname'),
+        'documents' => json_encode(DB::table('documents')
+            ->get())
     ]);
 });
 
 Route::get('/documents', function () {
     return view('documents', [
         'name' => session()->get('name'),
-        'surname' => session()->get('surname')
+        'surname' => session()->get('surname'),
+        'documents' => json_encode(DB::table('documents')
+            ->get())
     ]);
 });
 
@@ -89,6 +95,12 @@ Route::get('/createDocument', function () {
         'surname' => session()->get('surname')
     ]);
 });
+
+Route::match(
+    ['get', 'post'],
+    '/createDocumentService',
+    [DocumentController::class, 'createDocument']
+)->name('logOut');
 
 Route::get('/createProject', function () {
     return view('createProject', [
