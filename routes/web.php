@@ -2,12 +2,16 @@
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\FacebookController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ProjectController;
+
 use App\Services\UserService;
+use App\Services\DocumentService;
+use App\Services\ProjectService;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,8 +38,8 @@ Route::get('/', function () {
         'userId' => session()->get('userId'),
         'name' => session()->get('name'),
         'surname' => session()->get('surname'),
-        'documents' => json_encode(DB::table('documents')
-            ->get())
+        'documents' => DocumentService::getDocumentsByProject(),
+        'project' => ProjectService::getProjectBySession()
     ]);
 });
 
@@ -47,15 +51,16 @@ Route::get('/documents', function () {
         'userId' => session()->get('userId'),
         'name' => session()->get('name'),
         'surname' => session()->get('surname'),
-        'documents' => json_encode(DB::table('documents')
-            ->get())
+        'documents' => DocumentService::getDocumentsByProject(),
+        'project' => ProjectService::getProjectBySession()
     ]);
 });
 
 Route::get('/createDocument', function () {
     return view('createDocument', [
         'name' => session()->get('name'),
-        'surname' => session()->get('surname')
+        'surname' => session()->get('surname'),
+        'project' => ProjectService::getProjectBySession()
     ]);
 });
 
@@ -79,15 +84,17 @@ Route::get('/projects', function () {
         'userId' => session()->get('userId'),
         'name' => session()->get('name'),
         'surname' => session()->get('surname'),
-        'projects' => json_encode(DB::table('projects')
-            ->get())
+        'projects' => ProjectService::getAllProjects(),
+        'select' => session()->get('project'),
+        'project' => ProjectService::getProjectBySession()
     ]);
 });
 
 Route::get('/createProject', function () {
     return view('createProject', [
         'name' => session()->get('name'),
-        'surname' => session()->get('surname')
+        'surname' => session()->get('surname'),
+        'project' => ProjectService::getProjectBySession()
     ]);
 });
 
@@ -103,6 +110,18 @@ Route::match(
     [ProjectController::class, 'deleteProject']
 )->name('deleteProjectService');
 
+Route::match(
+    ['get', 'post'],
+    '/selectProject/{id}',
+    [ProjectController::class, 'selectProject']
+)->name('selectProject');
+
+Route::match(
+    ['get', 'post'],
+    '/unselectProject',
+    [ProjectController::class, 'unselectProject']
+)->name('unselectProject');
+
 /*
 |--------------------------------------------------------------------------
 | Users Routes
@@ -112,7 +131,8 @@ Route::match(
 Route::get('/signUp', function () {
     return view('signUp', [
         'name' => session()->get('name'),
-        'surname' => session()->get('surname')
+        'surname' => session()->get('surname'),
+        'project' => ProjectService::getProjectBySession()
     ]);
 });
 
@@ -125,7 +145,8 @@ Route::match(
 Route::get('/signIn', function () {
     return view('signIn', [
         'name' => session()->get('name'),
-        'surname' => session()->get('surname')
+        'surname' => session()->get('surname'),
+        'project' => ProjectService::getProjectBySession()
     ]);
 });
 
@@ -153,7 +174,8 @@ Route::get('/board', function () {
     }
     return view('board', [
         'name' => session()->get('name'),
-        'surname' => session()->get('surname')
+        'surname' => session()->get('surname'),
+        'project' => ProjectService::getProjectBySession()
     ]);
 });
 
@@ -169,14 +191,16 @@ Route::get('/reports', function () {
     }
     return view('reports', [
         'name' => session()->get('name'),
-        'surname' => session()->get('surname')
+        'surname' => session()->get('surname'),
+        'project' => ProjectService::getProjectBySession()
     ]);
 });
 
 Route::get('/createReport', function () {
     return view('createReport', [
         'name' => session()->get('name'),
-        'surname' => session()->get('surname')
+        'surname' => session()->get('surname'),
+        'project' => ProjectService::getProjectBySession()
     ]);
 });
 

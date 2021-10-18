@@ -45,7 +45,7 @@
 <body>
     <div>
         <div id="navbar">
-            <navbar name="{{$name ?? ''}}" surname="{{$surname ?? ''}}"></navbar>
+            <navbar name="{{$name ?? ''}}" surname="{{$surname ?? ''}}" project="{{$project->name ?? ''}}"></navbar>
         </div>
         @yield('content')
     </div>

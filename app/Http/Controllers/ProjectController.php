@@ -17,4 +17,14 @@ class ProjectController extends Controller
     {
         ProjectService::deleteProject($id);
     }
+
+    public function selectProject($id): void
+    {
+        ProjectService::selectProject($id);
+    }
+
+    public function unselectProject(): void
+    {
+        ProjectService::unselectProject();
+    }
 }

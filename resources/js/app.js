@@ -31,6 +31,9 @@ Vue.component('create-document', require('./components/CreateDocument.vue').defa
 Vue.component('create-project', require('./components/CreateProject.vue').default);
 Vue.component('create-report', require('./components/CreateReport.vue').default);
 Vue.component('not-auth', require('./components/NotAuth.vue').default);
+Vue.component('not-such-documents', require('./components/NotSuchDocuments.vue').default);
+Vue.component('not-such-projects', require('./components/NotSuchProjects.vue').default);
+Vue.component('not-such-projects-documents', require('./components/NotSuchProjectsDocuments.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

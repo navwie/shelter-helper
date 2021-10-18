@@ -50,49 +50,54 @@ class UserService
         session()->pull('id');
         session()->pull('name');
         session()->pull('surname');
+        session()->pull('project');
         header("Location: /");
     }
 
     public static function googleSignUp(): void
     {
-        $user = Socialite::driver('google')->user();
+        $googleUser = Socialite::driver('google')->user();
 
-        if(DB::table('users')
-            ->where("google_id", "=", $user->getId())
-            ->first() === null
-        ) {
-            DB::table('users')->insert([
-                'name' => $user['given_name'],
-                'surname' => $user["family_name"],
-                'email' => $user['email'],
-                'google_id' => $user->getId()
+        $user = DB::table('users')
+            ->where("google_id", "=", $googleUser->getId())
+            ->first();
+        if($user === null) {
+            $id = DB::table('users')->insertGetId([
+                'name' => $googleUser['given_name'],
+                'surname' => $googleUser["family_name"],
+                'email' => $googleUser['email'],
+                'google_id' => $googleUser->getId()
             ]);
+            session()->put('userId', $id);
+        } else {
+            session()->put('userId', $user->id);
         }
 
-        session()->put('userId', $user['id']);
-        session()->put('name', $user['given_name']);
-        session()->put('surname', $user['family_name']);
+        session()->put('name', $googleUser['given_name']);
+        session()->put('surname', $googleUser['family_name']);
         header("Location: /");
     }
 
     public static function facebookSignUp(): void
     {
-        $user = Socialite::driver('facebook')->user();
+        $facebookUser = Socialite::driver('facebook')->user();
+        $fullName = explode(" ", $facebookUser['name']);
+        $user = DB::table('users')
+            ->where("facebook_id", "=", $facebookUser->getId())
+            ->first();
 
-        $fullName = explode(" ", $user['name']);
-        if(DB::table('users')
-                ->where("facebook_id", "=", $user->getId())
-                ->first() === null
-        ) {
-            DB::table('users')->insert([
+        if($user === null) {
+            $id = DB::table('users')->insertGetId([
                 'name' => $fullName[0],
                 'surname' => $fullName[1],
-                'email' => $user['email'],
-                'facebook_id' => $user->getId()
+                'email' => $facebookUser['email'],
+                'facebook_id' => $facebookUser->getId()
             ]);
+            session()->put('userId', $id);
+        } else {
+            session()->put('userId', $user->id);
         }
 
-        session()->put('userId', $user['id']);
         session()->put('name', $fullName[0]);
         session()->put('surname', $fullName[1]);
         header("Location: /");
