@@ -10,7 +10,11 @@
             :lastOpenedTime="document.last_opened_time"
 
         />
-        <div>
+
+        <not-such-projects-documents v-if="computedProjects === 'null'"/>
+        <not-such-documents v-else-if="userDocuments.length === 0"/>
+
+        <div  v-if="computedProjects !== 'null'">
             <a class="btn btn-outline-dark" href="/createDocument">
                 Create document
             </a>
@@ -25,12 +29,19 @@ export default {
     name: "Documents",
     props: {
         documents: [],
-        user: ""
+        user: "",
+        project: ""
     },
     computed: {
         userDocuments: function () {
             return this.documents.filter(document => document.author_id === this.user);
+        },
+        computedProjects: function () {
+            return this.project;
         }
+    },
+    mounted() {
+        console.log(typeof this.computedProjects);
     }
 }
 </script>

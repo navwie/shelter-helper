@@ -1,5 +1,5 @@
 <template>
-    <a :href="url" class="col-3 document">
+    <a :href="url" target="_blank" class="col-3 document">
         <div>
             <div>
                 <h3>{{ name }}</h3>
