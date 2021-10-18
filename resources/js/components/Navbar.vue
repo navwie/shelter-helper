@@ -24,6 +24,9 @@
                         </div>
                     </li>
                     <li><a type="button" href="/logOut" v-if="name.length !== 0" class="btn btn-primary me-2">Log Out</a></li>
+                    <li v-if="project.length !== 0" class="nav-item">
+                        <a href="/unselectProject" class="nav-link link-dark px-2">Project: {{project}}</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -35,7 +38,8 @@ export default {
     name: "Navbar",
     props: {
         name: "",
-        surname: ""
+        surname: "",
+        project: ""
     },
 }
 </script>
