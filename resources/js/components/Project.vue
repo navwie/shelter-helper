@@ -5,7 +5,9 @@
             <h6 class="project-description">{{ description }}</h6>
         </div>
         <div>
-            <a :href=addId class="btn btn-outline-danger">Remove</a>
+            <a :href=deleteUrlId class="btn btn-outline-danger">Remove</a>
+            <a :href=selectUrlId class="btn btn-outline-secondary">Select</a>
+<!--            <h6 class="project-description text-success" v-if="this.$attrs.selectedProject === id">Selected</h6>-->
         </div>
 
     </div>
@@ -16,17 +18,21 @@ export default {
     name: "Project",
     data() {
         return {
-            deleteUrl: "/deleteProjectService/"
+            deleteUrl: "/deleteProjectService/",
+            selectUrl: "/selectProject/",
         }
     },
     props: {
         id: "",
         name: "",
-        description: ""
+        description: "",
     },
     computed: {
-        addId: function () {
+        deleteUrlId: function () {
             return this.deleteUrl + this.id;
+        },
+        selectUrlId: function () {
+            return this.selectUrl + this.id;
         }
     }
 }
