@@ -2,6 +2,10 @@
 
 @section('content')
     <div id="app" class="container d-flex list-group col-12 align-items-center">
-        <documents-list :documents="{{ $documents }}" :user="{{ $userId }}" />
+        <documents-list
+            :documents="{{ $documents }}"
+            :user="{{ $userId }}"
+            project="{{ json_encode($project) ?? ""}}"
+        />
     </div>
 @endsection
