@@ -3,21 +3,28 @@
 namespace App\Services;
 
 use App\Http\Requests\CreateProjectRequest;
-use Illuminate\Http\Request;
+use App\Models\Project;
+use App\Notifications\CreateProject;
+use App\Notifications\DeleteProject;
+use App\Services\UserService;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Notification;
 use stdClass;
 
 class ProjectService
 {
     public static function createProject(CreateProjectRequest $request): void
     {
-        DB::table('projects')->insert([
+        $id = DB::table('projects')->insertGetId([
             'name' => $request['name'],
             'description' => $request['description'],
             'author_id' => session()->get('userId')
         ]);
+
+        $project = self::getProjectById($id);
+
+        $user = UserService::getUserBySession();
+        Notification::sendNow($user, new CreateProject($user, $project));
 
         header("Location: /projects");
     }
@@ -37,6 +44,11 @@ class ProjectService
 
     public static function deleteProject($id): void
     {
+        $project = self::getProjectById($id);
+
+        $user = UserService::getUserBySession();
+        Notification::sendNow($user, new DeleteProject($user, $project));
+
         DB::table('projects')->delete($id);
 
         header("Location: /projects");
@@ -54,6 +66,20 @@ class ProjectService
         session()->pull("project");
 
         header("Location: /projects");
+    }
+
+    public static function getProjectById($id): Project
+    {
+        $projectDb = DB::table("projects")
+            ->where('id', '=',  $id)
+            ->first();
+
+        return new Project(
+            $projectDb->id,
+            $projectDb->name,
+            $projectDb->description,
+            $projectDb->author_id
+        );
     }
 
 
