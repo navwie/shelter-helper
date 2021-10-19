@@ -102,4 +102,12 @@ class UserService
         session()->put('surname', $fullName[1]);
         header("Location: /");
     }
+
+    public static function getUserBySession(): User
+    {
+        $user = DB::table('users')
+            ->where('id', '=', session()->get("userId"))
+            ->first();
+        return new User($user->id, $user->name, $user->surname, $user->email, $user->password);
+    }
 }

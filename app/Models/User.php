@@ -17,6 +17,8 @@ class User extends Authenticatable
     private $surname;
     private $email;
     private $password;
+    private $google_id;
+    private $facebook_id;
 
     /**
      * @param $id
@@ -113,5 +115,39 @@ class User extends Authenticatable
     {
         $this->password = $password;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getGoogleId()
+    {
+        return $this->google_id;
+    }
+
+    /**
+     * @param mixed $google_id
+     */
+    public function setGoogleId($google_id): void
+    {
+        $this->google_id = $google_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFacebookId()
+    {
+        return $this->facebook_id;
+    }
+
+    /**
+     * @param mixed $facebook_id
+     */
+    public function setFacebookId($facebook_id): void
+    {
+        $this->facebook_id = $facebook_id;
+    }
+
+
 
 }
