@@ -43,6 +43,13 @@ Vue.component('not-such-projects-documents', require('./components/NotSuchProjec
 
 const app = new Vue({
     el: '#app',
+    created() {
+        Echo.channel('notification')
+            .listen('CreateProjectNotification', (e) => {
+                alert('Message without refresh!');
+            });
+    }
+
 })
 
 const navbar = new Vue({
