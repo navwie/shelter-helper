@@ -33,6 +33,12 @@ export default {
         user: "",
         select: ""
     },
+    mounted() {
+        Echo.channel('notification')
+            .listen('CreateProjectNotification', (e) => {
+                alert('Message without refresh!');
+            });
+    },
     computed: {
         userProjects: function () {
             return this.projects.filter(project => project.author_id === this.user);
