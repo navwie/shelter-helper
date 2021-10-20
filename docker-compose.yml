@@ -11,7 +11,8 @@ services:
     restart: unless-stopped
     tty: true
     environment:
-      XDEBUG_CONFIG: "remote_host=192.168.227.1 remote_enable=1"
+      PHP_IDE_CONFIG: "serverName=docker.scrum-dashboard"
+      XDEBUG_SESSION: docker-server
       SERVICE_NAME: app
       SERVICE_TAGS: dev
     working_dir: /var/www
