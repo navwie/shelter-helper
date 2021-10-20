@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf_token" content="{{ csrf_token() }}">
 
     <title>Scrum Dashboard</title>
 
@@ -30,7 +31,7 @@
         };
         FB.login(function(response) {
             // handle the response
-        };
+        });
 
         (function(d, s, id){
             var js, fjs = d.getElementsByTagName(s)[0];
@@ -44,6 +45,9 @@
 </head>
 <body>
     <div>
+        @php
+        //phpinfo();
+        @endphp
         <div id="navbar">
             <navbar name="{{$name ?? ''}}" surname="{{$surname ?? ''}}" project="{{$project->name ?? ''}}"></navbar>
         </div>

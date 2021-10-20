@@ -5,6 +5,7 @@ namespace App\Notifications;
 use App\Models\Project;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use App\Models\User;
@@ -14,7 +15,6 @@ class CreateProject extends Notification
     use Queueable;
 
     private Project $project;
-    private User $user;
 
 
     /**
@@ -22,9 +22,8 @@ class CreateProject extends Notification
      *
      * @return void
      */
-    public function __construct(User $user, Project $project)
+    public function __construct(Project $project)
     {
-        $this->user = $user;
         $this->project = $project;
     }
 
@@ -48,7 +47,7 @@ class CreateProject extends Notification
     {
         return (new MailMessage)
             ->subject('Create project')
-            ->greeting('Dear, ' . $this->user->getName())
+            ->greeting('Dear, user')
             ->line('You create the project ' . $this->project->getName())
             ->line('You can see your projects through the button')
             ->action('View projects', url('/projects'))
@@ -64,8 +63,9 @@ class CreateProject extends Notification
     public function toArray($notifiable)
     {
         return [
-            $this->user->getId(),
-            $this->project->getId()
+            'invoice_id' => "id",
+            'amount' => "id",
         ];
     }
+
 }

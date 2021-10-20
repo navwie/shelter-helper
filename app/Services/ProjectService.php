@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Events\CreateProjectNotification;
 use App\Http\Requests\CreateProjectRequest;
 use App\Models\Project;
 use App\Notifications\CreateProject;
@@ -21,10 +22,7 @@ class ProjectService
             'author_id' => session()->get('userId')
         ]);
 
-        $project = self::getProjectById($id);
-
-        $user = UserService::getUserBySession();
-        Notification::sendNow($user, new CreateProject($user, $project));
+        event(new CreateProjectNotification('You have been created a new project!'));
 
         header("Location: /projects");
     }
@@ -44,10 +42,9 @@ class ProjectService
 
     public static function deleteProject($id): void
     {
-        $project = self::getProjectById($id);
-
+       /* $project = self::getProjectById($id);
         $user = UserService::getUserBySession();
-        Notification::sendNow($user, new DeleteProject($user, $project));
+        Notification::sendNow($user, new DeleteProject($user, $project));*/
 
         DB::table('projects')->delete($id);
 
