@@ -2,7 +2,13 @@
     <div>
         <div class="notification">
             <notify-create-project
-                v-for="notification in this.notifications"
+                v-for="notification in this.create_project_notifications"
+                :key="notification.id"
+                :id="notification.id"
+                :data="notification.data"
+            />
+          <notify-delete-project
+                v-for="notification in this.delete_project_notifications"
                 :key="notification.id"
                 :id="notification.id"
                 :data="notification.data"
@@ -52,7 +58,8 @@ export default {
         projects: [],
         user: "",
         select: "",
-        notifications: [],
+        create_project_notifications: [],
+        delete_project_notifications: [],
     },
     computed: {
         userProjects: function () {

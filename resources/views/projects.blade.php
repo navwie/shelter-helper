@@ -6,7 +6,8 @@
             :projects="{{ $projects }}"
             :user="{{ $userId }}"
             select="{{ $select ?? ""}}"
-            :notifications="{{ $notifications }}"
+            :create_project_notifications="{{ $create_project_notifications }}"
+            :delete_project_notifications="{{ $delete_project_notifications }}"
         >
         </projects-list>
     </div>
