@@ -42,7 +42,8 @@ Vue.component('not-such-projects', require('./components/NotSuchProjects.vue').d
 Vue.component('not-such-projects-documents', require('./components/NotSuchProjectsDocuments.vue').default);
 Vue.component('notify-create-project', require('./components/notifications/CreateProjectNotification.vue').default);
 Vue.component('notify-delete-project', require('./components/notifications/DeleteProjectNotification.vue').default);
-
+Vue.component('notify-create-document', require('./components/notifications/CreateDocumentNotification.vue').default);
+Vue.component('notify-delete-document', require('./components/notifications/DeleteDocumentNotification.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
