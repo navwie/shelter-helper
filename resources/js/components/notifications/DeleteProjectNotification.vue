@@ -21,8 +21,7 @@ export default {
     },
     data() {
         return {
-            show: true,
-            url: '/readNotification/',
+            show: true
         }
     },
     methods: {
@@ -53,9 +52,6 @@ export default {
 
     },
     computed: {
-        readUrl: function () {
-            return this.url + this.id;
-        },
         csrfToken: function () {
             return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
         }
