@@ -2,7 +2,7 @@
     <div>
         <transition name="slide-fade">
             <div v-if="show" @click="this.click" class="content">
-                <div>
+                <div class="text">
                     <span>You have created a new project:  <em><strong>{{ this.data.projectName }}</strong></em></span>
                     <V-MaterialIcon icon="check_circle" color="white"></V-MaterialIcon>
                 </div>
@@ -22,7 +22,6 @@ export default {
     data() {
         return {
             show: true,
-            url: '/readNotification/',
         }
     },
     methods: {
@@ -53,9 +52,6 @@ export default {
 
     },
     computed: {
-        readUrl: function () {
-            return this.url + this.id;
-        },
         csrfToken: function () {
             return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
         }
@@ -80,6 +76,12 @@ export default {
 
     span {
         margin-right: 15px;
+    }
+
+    .text {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
     .slide-fade-enter-active {
