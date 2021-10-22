@@ -6,6 +6,8 @@
             :projects="{{ $projects }}"
             :user="{{ $userId }}"
             select="{{ $select ?? ""}}"
-        />
+            :notifications="{{ $notifications }}"
+        >
+        </projects-list>
     </div>
 @endsection
