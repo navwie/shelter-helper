@@ -3,7 +3,7 @@
         <transition name="slide-fade">
             <div v-if="show" @click="this.click" class="content">
                 <div class="text">
-                    <span>You have deleted project: <em><strong>{{ this.data.projectName }}</strong></em></span>
+                    <span>You have deleted document: <em><strong>{{ this.data.document.name }}</strong></em></span>
                     <V-MaterialIcon icon="check_circle" color="white"></V-MaterialIcon>
                 </div>
             </div>
@@ -14,7 +14,7 @@
 
 <script>
 export default {
-    name: "DeleteProjectNotification",
+    name: "DeleteDocumentNotification",
     props: {
         id: "",
         data: [],
@@ -60,6 +60,7 @@ export default {
 </script>
 
 <style scoped>
+
     .content {
         padding: 16px;
         border-radius: 7px;

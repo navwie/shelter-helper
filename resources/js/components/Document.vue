@@ -1,13 +1,16 @@
 <template>
     <a :href="url" target="_blank" class="col-3 document">
-        <div>
-            <div>
+        <div class="d-flex flex-row justify-content-between">
+            <div class="flex-grow-1 flex-shrink-0">
                 <h3>{{ name }}</h3>
                 <p>{{ description }}</p>
+                <div>
+                    <p v-if="lastUserOpened === null">Created by Artem</p>
+                    <p v-else>Last updated 3 mins ago by Artem</p>
+                </div>
             </div>
-            <div>
-                <p v-if="lastUserOpened === null">Created by Artem</p>
-                <p v-else>Last updated 3 mins ago by Artem</p>
+            <div class="remove align-items-end align-self-end remove">
+                <a :href="deleteUrlId" class="btn btn-outline-danger">Remove</a>
             </div>
         </div>
     </a>
@@ -17,11 +20,22 @@
 export default {
     name: "Document",
     props: {
+        id: "",
         name: "",
         description: "",
         url: "",
         lastUserOpened: "",
         lastOpenedTime: ""
+    },
+    data() {
+        return {
+            deleteUrl: "/deleteDocumentService/"
+        }
+    },
+    computed: {
+        deleteUrlId: function () {
+            return this.deleteUrl + this.id;
+        }
     }
 }
 </script>
@@ -49,5 +63,9 @@ export default {
         margin-left: 3em;
         margin-right: 3em;
         padding: 12px;
+    }
+
+    .remove {
+        z-index: 100;
     }
 </style>

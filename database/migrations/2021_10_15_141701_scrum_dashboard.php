@@ -133,7 +133,7 @@ class ScrumDashboard extends Migration
          */
         Schema::table('projects', function (Blueprint $table) {
             $table->after('description', function ($table) {
-              $table->foreignId('author_id')->constrained('users');
+              $table->foreignId('author_id')->constrained('users')->onDelete('cascade');
             });
         });
 
@@ -143,7 +143,7 @@ class ScrumDashboard extends Migration
         Schema::table('documents', function (Blueprint $table) {
             $table->after('url', function ($table) {
                 $table->foreignId("author_id")->constrained('users');
-                $table->foreignId("last_user_opened")->nullable()->constrained('users');
+                $table->foreignId("last_user_opened")->nullable()->constrained('users')->onDelete('cascade');
             });
         });
 
@@ -152,7 +152,7 @@ class ScrumDashboard extends Migration
          */
         Schema::table('boards', function (Blueprint $table) {
             $table->after('id', function ($table) {
-                $table->foreignId('project_id')->constrained('projects');
+                $table->foreignId('project_id')->constrained('projects')->onDelete('cascade');
             });
         });
 
@@ -161,8 +161,8 @@ class ScrumDashboard extends Migration
          */
         Schema::table('boards_cards', function (Blueprint $table) {
             $table->after('id', function ($table) {
-                $table->foreignId('board_id')->constrained('boards');
-                $table->foreignId('card_id')->constrained('cards');
+                $table->foreignId('board_id')->constrained('boards')->onDelete('cascade');
+                $table->foreignId('card_id')->constrained('cards')->onDelete('cascade');
             });
         });
 
@@ -171,8 +171,8 @@ class ScrumDashboard extends Migration
          */
         Schema::table('projects_documents', function (Blueprint $table) {
             $table->after('id', function ($table) {
-                $table->foreignId('project_id')->constrained('projects');
-                $table->foreignId('document_id')->constrained('documents');
+                $table->foreignId('project_id')->constrained('projects')->onDelete('cascade');
+                $table->foreignId('document_id')->constrained('documents')->onDelete('cascade');
             });
         });
 
@@ -181,8 +181,8 @@ class ScrumDashboard extends Migration
          */
         Schema::table('projects_users', function (Blueprint $table) {
             $table->after('id', function ($table) {
-                $table->foreignId('project_id')->constrained('projects');
-                $table->foreignId('user_id')->constrained('users');
+                $table->foreignId('project_id')->constrained('projects')->onDelete('cascade');
+                $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             });
         });
 
@@ -191,8 +191,8 @@ class ScrumDashboard extends Migration
          */
         Schema::table('projects_reports', function (Blueprint $table) {
             $table->after('id', function ($table) {
-                $table->foreignId('project_id')->constrained('projects');
-                $table->foreignId('report_id')->constrained('reports');
+                $table->foreignId('project_id')->constrained('projects')->onDelete('cascade');
+                $table->foreignId('report_id')->constrained('reports')->onDelete('cascade');
             });
         });
     }

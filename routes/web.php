@@ -41,7 +41,11 @@ Route::get('/', function () {
         'name' => session()->get('name'),
         'surname' => session()->get('surname'),
         'documents' => DocumentService::getDocumentsByProject(),
-        'project' => ProjectService::getProjectBySession()
+        'project' => ProjectService::getProjectBySession(),
+        'create_document_notifications' =>
+            NotificationService::getUnreadNotifications("CreateDocumentNotification"),
+        'delete_document_notifications' =>
+            NotificationService::getUnreadNotifications("DeleteDocumentNotification")
     ]);
 });
 
@@ -54,7 +58,11 @@ Route::get('/documents', function () {
         'name' => session()->get('name'),
         'surname' => session()->get('surname'),
         'documents' => DocumentService::getDocumentsByProject(),
-        'project' => ProjectService::getProjectBySession()
+        'project' => ProjectService::getProjectBySession(),
+        'create_document_notifications' =>
+            NotificationService::getUnreadNotifications("CreateDocumentNotification"),
+        'delete_document_notifications' =>
+            NotificationService::getUnreadNotifications("DeleteDocumentNotification")
     ]);
 });
 
@@ -71,6 +79,12 @@ Route::match(
     '/createDocumentService',
     [DocumentController::class, 'createDocument']
 )->name('createDocumentService');
+
+Route::match(
+    ['get', 'post'],
+    '/deleteDocumentService/{id}',
+    [DocumentController::class, 'deleteDocument']
+)->name('deleteDocumentService');
 
 /*
 |--------------------------------------------------------------------------

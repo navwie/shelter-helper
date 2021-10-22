@@ -81,13 +81,13 @@ export default {
 </script>
 
 <style scoped>
-.notification {
-    position: fixed;
-    top: 80px;
-    right: 16px;
-    z-index: 15;
-    font-size: large;
-}
+    .notification {
+        position: fixed;
+        top: 80px;
+        right: 16px;
+        z-index: 15;
+        font-size: large;
+    }
     .projects-header {
         margin-left: 15px;
     }

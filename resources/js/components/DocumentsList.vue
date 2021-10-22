@@ -1,27 +1,45 @@
 <template>
-    <div class="row col-12 justify-content-center">
-        <document
-            v-for="document in this.userDocuments"
-            :key="document.index"
-            :name="document.name"
-            :description="document.description"
-            :url="document.url"
-            :lastUserOpened="document.last_user_opened"
-            :lastOpenedTime="document.last_opened_time"
+    <div>
 
-        />
-
-        <not-such-projects-documents v-if="computedProjects === 'null'"/>
-        <not-such-documents v-else-if="userDocuments.length === 0"/>
-
-        <div  v-if="computedProjects !== 'null'">
-            <a class="btn btn-outline-dark" href="/createDocument">
-                Create document
-            </a>
+        <div class="notification">
+            <notify-create-document
+                v-for="notification in this.create_document_notifications"
+                :key="notification.id"
+                :id="notification.id"
+                :data="notification.data"
+            />
+            <notify-delete-document
+                v-for="notification in this.delete_document_notifications"
+                :key="notification.id"
+                :id="notification.id"
+                :data="notification.data"
+            />
         </div>
-    </div>
 
+        <div class="container d-flex list-group align-items-center flex-row">
+            <div class="row col-12 justify-content-center">
+                <document
+                    v-for="document in this.userDocuments"
+                    :key="document.index"
+                    :id="document.id"
+                    :name="document.name"
+                    :description="document.description"
+                    :url="document.url"
+                    :lastUserOpened="document.last_user_opened"
+                    :lastOpenedTime="document.last_opened_time"
+                />
 
+                <not-such-projects-documents v-if="computedProjects === 'null'"/>
+                <not-such-documents v-else-if="userDocuments.length === 0"/>
+            </div>
+        </div>
+
+            <div  v-if="computedProjects !== 'null'">
+                <a class="btn btn-outline-dark" href="/createDocument">
+                    Create document
+                </a>
+            </div>
+        </div>
 </template>
 
 <script>
@@ -30,7 +48,9 @@ export default {
     props: {
         documents: [],
         user: "",
-        project: ""
+        project: "",
+        create_document_notifications: [],
+        delete_document_notifications: [],
     },
     computed: {
         userDocuments: function () {
@@ -39,14 +59,19 @@ export default {
         computedProjects: function () {
             return this.project;
         }
-    },
-    mounted() {
-        console.log(typeof this.computedProjects);
     }
 }
 </script>
 
 <style scoped>
+
+    .notification {
+        position: fixed;
+        top: 80px;
+        right: 16px;
+        z-index: 15;
+        font-size: large;
+    }
     p {
         margin-top: 1em;
     }
