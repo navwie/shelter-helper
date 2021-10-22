@@ -7,6 +7,7 @@ require('./bootstrap');
 
 window.Vue = require('vue').default;
 
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -14,6 +15,11 @@ window.Vue = require('vue').default;
  *
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
+
+import 'material-icons/iconfont/material-icons.css';
+
+//defined as global component
+Vue.component('V-MaterialIcon', require('vue-materials-icon/MaterialIcon').default);
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
@@ -34,6 +40,8 @@ Vue.component('not-auth', require('./components/NotAuth.vue').default);
 Vue.component('not-such-documents', require('./components/NotSuchDocuments.vue').default);
 Vue.component('not-such-projects', require('./components/NotSuchProjects.vue').default);
 Vue.component('not-such-projects-documents', require('./components/NotSuchProjectsDocuments.vue').default);
+Vue.component('notify-create-project', require('./components/notifications/CreateProjectNotification.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -43,15 +51,10 @@ Vue.component('not-such-projects-documents', require('./components/NotSuchProjec
 
 const app = new Vue({
     el: '#app',
-    created() {
-        Echo.channel('notification')
-            .listen('CreateProjectNotification', (e) => {
-                alert('Message without refresh!');
-            });
-    }
-
-})
+});
 
 const navbar = new Vue({
     el: '#navbar',
 })
+
+

@@ -10,21 +10,20 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use App\Models\User;
 
-class CreateProject extends Notification
+class CreateProjectNotification extends Notification
 {
     use Queueable;
 
-    private Project $project;
-
+    private $projectName;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(Project $project)
+    public function __construct($projectName)
     {
-        $this->project = $project;
+        $this->projectName = $projectName;
     }
 
     /**
@@ -35,7 +34,7 @@ class CreateProject extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database'];
     }
 
     /**
@@ -60,11 +59,10 @@ class CreateProject extends Notification
      * @param  mixed  $notifiable
      * @return array
      */
-    public function toArray($notifiable)
+    public function toDatabase($notifiable)
     {
         return [
-            'invoice_id' => "id",
-            'amount' => "id",
+            'projectName' => $this->projectName,
         ];
     }
 

@@ -14,16 +14,16 @@ class CreateProjectNotification implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $message;
+    private $projectName;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($message)
+    public function __construct($projectName)
     {
-        $this->message = $message;
+        $this->projectName = $projectName;
     }
 
     /**
@@ -35,4 +35,10 @@ class CreateProjectNotification implements ShouldBroadcast
     {
         return new Channel('notification');
     }
+
+    public function broadcastWith()    {
+
+        return ['name' => $this->projectName];
+    }
+
 }

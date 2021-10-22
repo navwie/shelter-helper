@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf_token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Scrum Dashboard</title>
 
@@ -45,12 +45,10 @@
 </head>
 <body>
     <div>
-        @php
-        //phpinfo();
-        @endphp
         <div id="navbar">
             <navbar name="{{$name ?? ''}}" surname="{{$surname ?? ''}}" project="{{$project->name ?? ''}}"></navbar>
         </div>
+        @csrf
         @yield('content')
     </div>
     <script src="{{ mix('/js/app.js') }}"></script>
