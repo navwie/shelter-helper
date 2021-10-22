@@ -12,4 +12,9 @@ class DocumentController extends Controller
     {
         DocumentService::createDocument($request);
     }
+
+    public function deleteDocument($id): void
+    {
+        DocumentService::deleteDocument($id);
+    }
 }
