@@ -7,10 +7,13 @@ use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\FacebookController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\NotificationController;
 
 use App\Services\UserService;
 use App\Services\DocumentService;
 use App\Services\ProjectService;
+use App\Services\NotificationService;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -85,7 +88,8 @@ Route::get('/projects', function () {
         'surname' => session()->get('surname'),
         'projects' => ProjectService::getAllProjects(),
         'select' => session()->get('project'),
-        'project' => ProjectService::getProjectBySession()
+        'project' => ProjectService::getProjectBySession(),
+        'notifications' => NotificationService::getUnreadCreateProjectNotifications()
     ]);
 });
 
@@ -202,6 +206,18 @@ Route::get('/createReport', function () {
         'project' => ProjectService::getProjectBySession()
     ]);
 });
+
+/*
+|--------------------------------------------------------------------------
+| Notification Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::match(
+    ['get', 'post'],
+    '/readNotification',
+    [NotificationController::class, 'readNotification']
+)->name('readNotification');
 
 /*
 |--------------------------------------------------------------------------
