@@ -41,6 +41,7 @@ Vue.component('not-such-documents', require('./components/NotSuchDocuments.vue')
 Vue.component('not-such-projects', require('./components/NotSuchProjects.vue').default);
 Vue.component('not-such-projects-documents', require('./components/NotSuchProjectsDocuments.vue').default);
 Vue.component('notify-create-project', require('./components/notifications/CreateProjectNotification.vue').default);
+Vue.component('notify-delete-project', require('./components/notifications/DeleteProjectNotification.vue').default);
 
 
 /**

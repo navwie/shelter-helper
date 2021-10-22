@@ -89,7 +89,8 @@ Route::get('/projects', function () {
         'projects' => ProjectService::getAllProjects(),
         'select' => session()->get('project'),
         'project' => ProjectService::getProjectBySession(),
-        'notifications' => NotificationService::getUnreadCreateProjectNotifications()
+        'create_project_notifications' => NotificationService::getUnreadNotifications("CreateProjectNotification"),
+        'delete_project_notifications' => NotificationService::getUnreadNotifications("DeleteProjectNotification")
     ]);
 });
 
