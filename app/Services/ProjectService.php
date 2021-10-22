@@ -2,12 +2,12 @@
 
 namespace App\Services;
 
-use App\Events\CreateProjectNotification;
 use App\Http\Requests\CreateProjectRequest;
 use App\Models\Project;
-use App\Notifications\CreateProject;
+use App\Notifications\CreateProjectNotification;
 use App\Notifications\DeleteProject;
 use App\Services\UserService;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
 use stdClass;
@@ -22,9 +22,14 @@ class ProjectService
             'author_id' => session()->get('userId')
         ]);
 
-        event(new CreateProjectNotification('You have been created a new project!'));
+        $project = self::getProjectById($id);
+        $user = User::find(session()->get("userId"));
+
+        Notification::sendNow($user, new CreateProjectNotification($project->getName()));
 
         header("Location: /projects");
+
+        /*event(new CreateProjectNotification($project->getName()));*/
     }
 
     public static function getAllProjects(): string|bool
