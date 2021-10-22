@@ -2,40 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory, Notifiable;
 
-    private $id;
     private $name;
     private $surname;
     private $email;
     private $password;
     private $google_id;
     private $facebook_id;
-
-    /**
-     * @param $id
-     * @param $name
-     * @param $surname
-     * @param $email
-     * @param $password
-     */
-    public function __construct($id, $name, $surname, $email, $password)
-    {
-        $this->id = $id;
-        $this->name = $name;
-        $this->surname = $surname;
-        $this->email = $email;
-        $this->password = $password;
-    }
 
     /**
      * @return mixed
@@ -149,9 +129,10 @@ class User extends Model
         $this->facebook_id = $facebook_id;
     }
 
-    public function notifiable()
-    {
-        return $this->morphTo();
-    }
-
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
 }
