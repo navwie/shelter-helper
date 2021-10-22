@@ -9,22 +9,20 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class DeleteProject extends Notification
+class DeleteProjectNotification extends Notification
 {
     use Queueable;
 
-    private Project $project;
-    private User $user;
+    private $projectName;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(User $user, Project $project)
+    public function __construct($projectName)
     {
-        $this->user = $user;
-        $this->project = $project;
+        $this->projectName = $projectName;
     }
     /**
      * Get the notification's delivery channels.
@@ -63,8 +61,7 @@ class DeleteProject extends Notification
     public function toArray($notifiable)
     {
         return [
-            $this->user->getId(),
-            $this->project->getId()
+            'projectName' => $this->projectName,
         ];
     }
 }

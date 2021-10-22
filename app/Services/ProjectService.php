@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Http\Requests\CreateProjectRequest;
 use App\Models\Project;
 use App\Notifications\CreateProjectNotification;
-use App\Notifications\DeleteProject;
+use App\Notifications\DeleteProjectNotification;
 use App\Services\UserService;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -28,8 +28,6 @@ class ProjectService
         Notification::sendNow($user, new CreateProjectNotification($project->getName()));
 
         header("Location: /projects");
-
-        /*event(new CreateProjectNotification($project->getName()));*/
     }
 
     public static function getAllProjects(): string|bool
@@ -47,9 +45,10 @@ class ProjectService
 
     public static function deleteProject($id): void
     {
-       /* $project = self::getProjectById($id);
-        $user = UserService::getUserBySession();
-        Notification::sendNow($user, new DeleteProject($user, $project));*/
+        $project = self::getProjectById($id);
+        $user = User::find(session()->get("userId"));
+
+        Notification::sendNow($user, new DeleteProjectNotification($project->getName()));
 
         DB::table('projects')->delete($id);
 
@@ -70,18 +69,12 @@ class ProjectService
         header("Location: /projects");
     }
 
-    public static function getProjectById($id): Project
+    public static function getProjectById($id)
     {
         $projectDb = DB::table("projects")
             ->where('id', '=',  $id)
             ->first();
-
-        return new Project(
-            $projectDb->id,
-            $projectDb->name,
-            $projectDb->description,
-            $projectDb->author_id
-        );
+        return new Project($projectDb->id, $projectDb->name, $projectDb->description, $projectDb->author_id);
     }
 
 
