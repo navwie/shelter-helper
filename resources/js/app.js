@@ -33,18 +33,18 @@ Vue.component('board', require('./components/Board.vue').default);
 Vue.component('reports', require('./components/Reports.vue').default);
 Vue.component('sign-up', require('./components/SignUp.vue').default);
 Vue.component('sign-in', require('./components/SignIn.vue').default);
-Vue.component('create-document', require('./components/CreateDocument.vue').default);
-Vue.component('create-project', require('./components/CreateProject.vue').default);
-Vue.component('create-report', require('./components/CreateReport.vue').default);
-Vue.component('not-auth', require('./components/NotAuth.vue').default);
-Vue.component('not-such-documents', require('./components/NotSuchDocuments.vue').default);
-Vue.component('not-such-projects', require('./components/NotSuchProjects.vue').default);
-Vue.component('not-such-projects-documents', require('./components/NotSuchProjectsDocuments.vue').default);
+Vue.component('create-document', require('./components/create/CreateDocument.vue').default);
+Vue.component('create-project', require('./components/create/CreateProject.vue').default);
+Vue.component('create-report', require('./components/create/CreateReport.vue').default);
+Vue.component('not-auth', require('./components/warnings/NotAuth.vue').default);
+Vue.component('not-such-documents', require('./components/warnings/NotSuchDocuments.vue').default);
+Vue.component('not-such-projects', require('./components/warnings/NotSuchProjects.vue').default);
+Vue.component('not-such-selected-projects', require('./components/warnings/NotSuchSelectedProjects.vue').default);
 Vue.component('notify-create-project', require('./components/notifications/CreateProjectNotification.vue').default);
 Vue.component('notify-delete-project', require('./components/notifications/DeleteProjectNotification.vue').default);
 Vue.component('notify-create-document', require('./components/notifications/CreateDocumentNotification.vue').default);
 Vue.component('notify-delete-document', require('./components/notifications/DeleteDocumentNotification.vue').default);
-Vue.component('create-card', require('./components/CreateCard.vue').default);
+Vue.component('create-card', require('./components/create/CreateCard.vue').default);
 Vue.component('board-card', require('./components/BoardCard.vue').default);
 
 /**
