@@ -1,12 +1,14 @@
 <template>
-    <a :href="url" target="_blank" class="col-3 document">
+
+    <a :href="url" @click="openDocument" target="_blank" class="col-3 document">
+        <input type="hidden" name="_token" :value="this.csrfToken">
         <div class="d-flex flex-row justify-content-between">
             <div class="flex-grow-1 flex-shrink-0">
                 <h3>{{ name }}</h3>
                 <p>{{ description }}</p>
                 <div>
                     <p v-if="lastUserOpened === null">Created by Artem</p>
-                    <p v-else>Last updated 3 mins ago by Artem</p>
+                    <p v-else>Last opened {{ this.openedAt }} by Artem</p>
                 </div>
             </div>
             <div class="remove align-items-end align-self-end remove">
@@ -17,6 +19,8 @@
 </template>
 
 <script>
+import moment from "moment";
+
 export default {
     name: "Document",
     props: {
@@ -25,7 +29,7 @@ export default {
         description: "",
         url: "",
         lastUserOpened: "",
-        lastOpenedTime: ""
+        lastTimeOpened: ""
     },
     data() {
         return {
@@ -35,6 +39,36 @@ export default {
     computed: {
         deleteUrlId: function () {
             return this.deleteUrl + this.id;
+        },
+        csrfToken: function () {
+                return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        },
+        openedAt: function () {
+            //let now = new Date();
+            //let opened = Date.parse(this.lastTimeOpened);
+            return moment("20120620", "DD").fromNow();
+        }
+    },
+    methods: {
+        openDocument: function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': this.csrfToken
+                }
+            });
+            $.ajax({
+                url: '/openDocument',
+                method: 'POST',
+                data: {
+                    'id': this.id
+                },
+                success: function(){
+                    console.log('We did succeed!');
+                },
+                error: function(){
+                    console.log('We did not succeed!');
+                }
+            });
         }
     }
 }
