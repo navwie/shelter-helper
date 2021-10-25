@@ -17,4 +17,10 @@ class DocumentController extends Controller
     {
         DocumentService::deleteDocument($id);
     }
+
+    public function openDocument(): void
+    {
+        $id = request("id");
+        DocumentService::openDocument($id);
+    }
 }

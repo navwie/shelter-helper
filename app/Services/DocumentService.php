@@ -7,6 +7,7 @@ use App\Models\Document;
 use App\Models\User;
 use App\Notifications\CreateDocumentNotification;
 use App\Notifications\DeleteDocumentNotification;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
 
@@ -14,6 +15,8 @@ class DocumentService
 {
     public static function createDocument(CreateDocumentRequest $request): void
     {
+        Carbon::setLocale("rus");
+
         $documentId = DB::table('documents')->insertGetId([
             'name' => $request['name'],
             'description' => $request['description'],
@@ -55,6 +58,18 @@ class DocumentService
         DB::table('documents')->delete($id);
 
         header("Location: /documents");
+    }
+
+    public static function openDocument($id): void
+    {
+        Carbon::setLocale("rus");
+
+        DB::table('documents')
+            ->where('id', $id)
+            ->update([
+                'last_user_opened' => session()->get("userId"),
+                'last_time_opened' => Carbon::now()->toDateTimeString()
+            ]);
     }
 
 

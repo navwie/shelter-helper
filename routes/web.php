@@ -86,6 +86,12 @@ Route::match(
     [DocumentController::class, 'deleteDocument']
 )->name('deleteDocumentService');
 
+Route::match(
+    ['get', 'post'],
+    '/openDocument',
+    [DocumentController::class, 'openDocument']
+)->name('openDocument');
+
 /*
 |--------------------------------------------------------------------------
 | Projects Routes

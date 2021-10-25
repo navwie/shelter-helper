@@ -26,7 +26,7 @@
                     :description="document.description"
                     :url="document.url"
                     :lastUserOpened="document.last_user_opened"
-                    :lastOpenedTime="document.last_opened_time"
+                    :lastTimeOpened="document.last_time_opened"
                 />
 
                 <not-such-projects-documents v-if="computedProjects === 'null'"/>

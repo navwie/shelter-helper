@@ -36,12 +36,6 @@ export default {
                 method: 'POST',
                 data: {
                     'id': this.id
-                },
-                success: function(){
-                    console.log('We did succeed!');
-                },
-                error: function(){
-                    console.log('We did not succeed!');
                 }
             });
         },

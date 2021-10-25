@@ -32,7 +32,7 @@ class ScrumDashboard extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('url');
-            $table->dateTime('last_opened_time')->nullable();
+            $table->dateTime('last_time_opened')->nullable();
             $table->dateTime('created_at')->useCurrent();
             $table->dateTime('updated_at')->nullable()->useCurrentOnUpdate();
         });
