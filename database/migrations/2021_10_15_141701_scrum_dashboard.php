@@ -51,8 +51,9 @@ class ScrumDashboard extends Migration
          */
         Schema::create('cards', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string('title');
+            $table->string('name');
             $table->text('description');
+            $table->string('category');
             $table->dateTime('deadline');
             $table->dateTime('created_at')->useCurrent();
             $table->dateTime('updated_at')->nullable()->useCurrentOnUpdate();
