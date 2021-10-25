@@ -1,5 +1,6 @@
 <template>
-    <div class="d-flex col board">
+    <not-such-selected-projects v-if="computedProjects === 'null'"/>
+    <div v-else class="d-flex col board">
         <div class="col-3 h-auto board-column">
             <h5 class="board-title">Product backlog</h5>
             <board-card
@@ -57,11 +58,15 @@
 export default {
     name: "Board",
     props: {
-        cards: ""
+        cards: "",
+        project: ""
     },
     computed: {
         backlogCards: function () {
             return this.cards.filter(card => card.category === "backlog");
+        },
+        computedProjects: function () {
+            return this.project;
         }
     }
 }
