@@ -1,11 +1,15 @@
 <template>
     <div class="d-flex col board">
         <div class="col-3 h-auto board-column">
-            <h5>Product backlog</h5>
-            <div class="col-8 mt-3 card">
-                <h5 class="card-title">Card example</h5>
-                <h6 class="card-description">Example of user card that can be displayed here</h6>
-            </div>
+            <h5 class="board-title">Product backlog</h5>
+            <board-card
+                v-for="card in this.backlogCards"
+                :key="card.index"
+                :id="card.id"
+                :name="card.name"
+                :description="card.description"
+                :deadline="card.deadline"
+            />
             <a href="/createCard" class="btn btn-outline-secondary add-card">
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
@@ -15,7 +19,7 @@
             </a>
         </div>
         <div class="col-3 board-column">
-            <h5>To do</h5>
+            <h5 class="board-title">To do</h5>
             <div class="col-8 mt-3 card">
                 <h5 class="card-title">Card example</h5>
                 <h6 class="card-description">Example of user card that can be displayed here</h6>
@@ -26,21 +30,21 @@
             </div>
         </div>
         <div class="col-3 board-column">
-            <h5>In progress</h5>
+            <h5 class="board-title">In progress</h5>
             <div class="col-8 mt-3 card">
                 <h5 class="card-title">Card example</h5>
                 <h6 class="card-description">Example of user card that can be displayed here</h6>
             </div>
         </div>
         <div class="col-3 board-column">
-            <h5>Testing</h5>
+            <h5 class="board-title">Testing</h5>
             <div class="col-8 mt-3 card">
                 <h5 class="card-title">Card example</h5>
                 <h6 class="card-description">Example of user card that can be displayed here</h6>
             </div>
         </div>
         <div class="col-3 board-column">
-            <h5>Done</h5>
+            <h5 class="board-title">Done</h5>
             <div class="col-8 mt-3 card">
                 <h5 class="card-title">Card example</h5>
                 <h6 class="card-description">Example of user card that can be displayed here</h6>
@@ -51,7 +55,15 @@
 
 <script>
 export default {
-    name: "Board"
+    name: "Board",
+    props: {
+        cards: ""
+    },
+    computed: {
+        backlogCards: function () {
+            return this.cards.filter(card => card.category === "backlog");
+        }
+    }
 }
 </script>
 
@@ -68,6 +80,10 @@ export default {
         width: 18em;
         padding: 15px;
         flex: auto;
+    }
+
+    .board-title {
+        margin-left: 7px;
     }
 
     .card {

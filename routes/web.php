@@ -201,7 +201,8 @@ Route::get('/board', function () {
     return view('board', [
         'name' => session()->get('name'),
         'surname' => session()->get('surname'),
-        'project' => ProjectService::getProjectBySession()
+        'project' => ProjectService::getProjectBySession(),
+        'cards' => BoardService::getCardsAtBoard()
     ]);
 });
 
