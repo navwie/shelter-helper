@@ -8,11 +8,13 @@ use App\Http\Controllers\FacebookController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\BoardController;
 
 use App\Services\UserService;
 use App\Services\DocumentService;
 use App\Services\ProjectService;
 use App\Services\NotificationService;
+use App\Services\BoardService;
 
 
 /*
@@ -202,6 +204,20 @@ Route::get('/board', function () {
         'project' => ProjectService::getProjectBySession()
     ]);
 });
+
+Route::get('/createCard', function () {
+    return view('createCard', [
+        'name' => session()->get('name'),
+        'surname' => session()->get('surname'),
+        'project' => ProjectService::getProjectBySession()
+    ]);
+});
+
+Route::match(
+    ['get', 'post'],
+    '/createCardService',
+    [BoardController::class, 'createCard']
+)->name('createCard');
 
 /*
 |--------------------------------------------------------------------------

@@ -16,13 +16,17 @@ class ProjectService
 {
     public static function createProject(CreateProjectRequest $request): void
     {
-        $id = DB::table('projects')->insertGetId([
+        $projectId = DB::table('projects')->insertGetId([
             'name' => $request['name'],
             'description' => $request['description'],
             'author_id' => session()->get('userId')
         ]);
 
-        $project = self::getProjectById($id);
+        DB::table("boards")->insert([
+            'project_id' => $projectId
+        ]);
+
+        $project = self::getProjectById($projectId);
         $user = User::find(session()->get("userId"));
 
         Notification::sendNow($user, new CreateProjectNotification($project->getName()));
