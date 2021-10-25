@@ -29,7 +29,7 @@
                     :lastTimeOpened="document.last_time_opened"
                 />
 
-                <not-such-projects-documents v-if="computedProjects === 'null'"/>
+                <not-such-selected-projects v-if="computedProjects === 'null'"/>
                 <not-such-documents v-else-if="userDocuments.length === 0"/>
             </div>
         </div>
