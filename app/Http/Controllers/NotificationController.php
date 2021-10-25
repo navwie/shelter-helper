@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\NotificationService;
 
-class NotificationController
+class NotificationController extends Controller
 {
     public function readNotification(): void
     {
