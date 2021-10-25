@@ -45,6 +45,7 @@ Vue.component('notify-delete-project', require('./components/notifications/Delet
 Vue.component('notify-create-document', require('./components/notifications/CreateDocumentNotification.vue').default);
 Vue.component('notify-delete-document', require('./components/notifications/DeleteDocumentNotification.vue').default);
 Vue.component('create-card', require('./components/CreateCard.vue').default);
+Vue.component('board-card', require('./components/BoardCard.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
