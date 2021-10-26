@@ -12,4 +12,21 @@ class BoardController extends Controller
     {
         BoardService::createCard($request);
     }
+
+    public function saveCards(): void
+    {
+        $backlogList = request("backlog");
+        $toDoList = request("toDo");
+        $inProgressList = request("inProgress");
+        $testingList = request("testing");
+        $doneList = request("done");
+
+        BoardService::saveCards(
+            $backlogList,
+            $toDoList,
+            $inProgressList,
+            $testingList,
+            $doneList
+        );
+    }
 }

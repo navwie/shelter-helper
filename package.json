@@ -30,8 +30,10 @@
         "moment": "^2.29.1",
         "pusher-js": "^7.0.3",
         "vue-axios": "^3.3.7",
+        "vue-drag-n-drop": "^1.2.2",
         "vue-materials-icon": "^1.7.0",
         "vue-notification": "^1.3.20",
-        "vue-router": "^3.5.2"
+        "vue-router": "^3.5.2",
+        "vuedraggable": "^2.24.3"
     }
 }
