@@ -41,4 +41,41 @@ class BoardService
             )
         );
     }
+
+    public static function saveCards(
+        $backlogList,
+        $toDoList,
+        $inProgressList,
+        $testingList,
+        $doneList
+    ): void
+    {
+        if ($backlogList !== null)
+            self::setCardsCategoriesOfFront($backlogList, 'backlog');
+
+        if ($toDoList !== null)
+            self::setCardsCategoriesOfFront($toDoList, 'toDo');
+
+        if ($inProgressList !== null)
+            self::setCardsCategoriesOfFront($inProgressList, 'inProgress');
+
+        if ($testingList !== null)
+            self::setCardsCategoriesOfFront($testingList, 'testing');
+
+        if ($doneList !== null)
+            self::setCardsCategoriesOfFront($doneList, 'done');
+
+    }
+
+    private static function setCardsCategoriesOfFront (array $cardsList, string $category): void
+    {
+        foreach ($cardsList as $card) {
+            if ($card["category"] !== $category)
+                DB::table('cards')
+                    ->where("id", $card["id"])
+                    ->update([
+                        'category' => $category
+                    ]);
+        }
+    }
 }
