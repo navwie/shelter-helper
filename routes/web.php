@@ -220,6 +220,12 @@ Route::match(
     [BoardController::class, 'createCard']
 )->name('createCard');
 
+Route::match(
+    ['get', 'post'],
+    '/saveCards',
+    [BoardController::class, 'saveCards']
+)->name('saveCards');
+
 /*
 |--------------------------------------------------------------------------
 | Reports Routes
