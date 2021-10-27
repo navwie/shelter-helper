@@ -6,26 +6,27 @@
         </div>
         <div>
             <a :href=deleteUrlId class="btn btn-outline-danger">Remove</a>
-            <a :href=selectUrlId class="btn btn-outline-secondary">Select</a>
-<!--            <h6 class="project-description text-success" v-if="this.$attrs.selectedProject === id">Selected</h6>-->
+            <a href="/unselectProject" v-if="this.id == this.selected" class="btn btn-warning">Unselect</a>
+            <a :href=selectUrlId v-else class="btn btn-outline-secondary">Select</a>
         </div>
-
     </div>
 </template>
 
 <script>
 export default {
     name: "Project",
-    data() {
-        return {
-            deleteUrl: "/deleteProjectService/",
-            selectUrl: "/selectProject/",
-        }
-    },
     props: {
         id: "",
         name: "",
         description: "",
+        select: String
+    },
+    data() {
+        return {
+            deleteUrl: "/deleteProjectService/",
+            selectUrl: "/selectProject/",
+            selected: this.select
+        }
     },
     computed: {
         deleteUrlId: function () {

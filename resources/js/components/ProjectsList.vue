@@ -32,6 +32,7 @@
                 :id="project.id"
                 :name="project.name"
                 :description="project.description"
+                :select="project.select"
             />
             <not-such-projects v-if="userProjects.length === 0" />
 
@@ -51,31 +52,27 @@ export default {
     name: "Projects",
     data() {
         return {
-            show: false
+            show: false,
+            projectsData: this.projects
         }
     },
     props: {
         projects: [],
         user: "",
-        select: "",
+        select: {
+            Number
+        },
         create_project_notifications: [],
         delete_project_notifications: [],
     },
     computed: {
         userProjects: function () {
-            return this.projects.filter(project => project.author_id === this.user);
+            this.projectsData.map(project => project['select'] = this.select);
+            return this.projectsData.filter(project => project.author_id === this.user);
         },
-        /*selectedProject: function () {
-            return this.projects.filter(project => function () {
-                ;
-                project['select'] === false;
-                /!*if (project.id === this.select) {
-                    project.select = true;
-                } else {
-                    project.select = false;
-                }*!/
-            });
-        }*/
+        selected: function () {
+            return this.select;
+        }
     }
 }
 </script>
