@@ -23,18 +23,19 @@
                         </div>
                     </form>-->
             <div v-if="this.userProjects.length !== 0" class="col-8 mt-5">
-                <h5 class="projects-header">Projects {{ this.userProjects.length }}</h5>
+                <h5 class="projects-header">Projects {{ this.projectsData.length }}</h5>
             </div>
 
             <project
-                v-for="project in this.userProjects"
+                v-for="project in this.projectsData"
                 :key="project.index"
-                :id="project.id"
+                :id="project.project_id"
                 :name="project.name"
                 :description="project.description"
                 :select="project.select"
+                :role="project.role"
             />
-            <not-such-projects v-if="userProjects.length === 0" />
+            <not-such-projects v-if="projectsData.length === 0" />
 
             <div>
                 <a class="btn btn-outline-dark" href="/createProject">
@@ -67,12 +68,8 @@ export default {
     },
     computed: {
         userProjects: function () {
-            this.projectsData.map(project => project['select'] = this.select);
-            return this.projectsData.filter(project => project.author_id === this.user);
+            return this.projectsData.map(project => project['select'] = this.select);
         },
-        selected: function () {
-            return this.select;
-        }
     }
 }
 </script>
