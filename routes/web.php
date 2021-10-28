@@ -159,6 +159,12 @@ Route::get('/projectPage/{id}', function () {
     ]);
 });
 
+Route::match(
+    ['get', 'post'],
+    '/selectAndOpenProjectPage/{id}',
+    [ProjectController::class, 'selectAndOpenProjectPage']
+)->name('selectAndOpenProjectPage');
+
 Route::get('/addUserToProject', function () {
     return view('addUserToProject', [
         'name' => session()->get('name'),

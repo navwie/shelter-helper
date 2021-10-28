@@ -24,6 +24,12 @@ class ProjectController extends Controller
         ProjectService::selectProject($id);
     }
 
+    public function selectAndOpenProjectPage($id):void
+    {
+        ProjectService::selectProject($id);
+        header('location: /projectPage/' . $id);
+    }
+
     public function unselectProject(): void
     {
         ProjectService::unselectProject();
