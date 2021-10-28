@@ -46,7 +46,7 @@
 <body>
     <div>
         <div id="navbar">
-            <navbar name="{{$name ?? ''}}" surname="{{$surname ?? ''}}" project="{{$project->name ?? ''}}"></navbar>
+            <navbar name="{{$name ?? ''}}" surname="{{$surname ?? ''}}" project="{{$activeProject ?? ''}}"></navbar>
         </div>
         @csrf
         @yield('content')

@@ -50,7 +50,7 @@ class UserService
         session()->pull('id');
         session()->pull('name');
         session()->pull('surname');
-        session()->pull('project');
+        session()->pull('activeProject');
         header("Location: /");
     }
 
