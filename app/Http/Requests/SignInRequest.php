@@ -24,8 +24,8 @@ class SignInRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required | min: 4',
-            'surname' => 'required | min: 5',
+            'name' => 'required | min: 3',
+            'surname' => 'required | min: 4',
             'email' => 'required | email:rfc',
             'password' => 'required | min: 5'
         ];

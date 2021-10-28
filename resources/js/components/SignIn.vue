@@ -61,13 +61,13 @@ export default {
     watch: {
         name() {
             this.formErrors.name = "is-valid";
-            if (this.name.length < 5 || this.name.length > 32) {
+            if (this.name.length < 3 || this.name.length > 32) {
                 this.formErrors.name = "is-invalid";
             }
         },
         surname() {
             this.formErrors.surname = "is-valid";
-            if (this.surname.length < 5 || this.surname.length > 32) {
+            if (this.surname.length < 4 || this.surname.length > 32) {
                 this.formErrors.surname = "is-invalid";
             }
         },
