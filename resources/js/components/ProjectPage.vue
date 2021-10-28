@@ -7,8 +7,8 @@
                 {{ this.owner.name }} {{ this.owner.surname }}
                 <em class="text-secondary"><u>{{ this.owner.email }}</u></em></p>
             <p>
-                <em class="text-primary"><u><strong>Date:</strong></u></em>
-                {{ this.project.created_at }}
+                <em class="text-primary"><u><strong>Create date:</strong></u></em>
+                {{ this.createdAt }}
             </p>
         </div>
         <div class="mt-3 p-4">
@@ -40,6 +40,8 @@
 </template>
 
 <script>
+import moment from "moment/moment";
+
 export default {
     name: "ProjectInfo",
     props: {
@@ -53,6 +55,10 @@ export default {
         },
         projectUsers: function () {
             return this.project_users.filter(user => user.role !== "Owner");
+        },
+        createdAt: function () {
+            let create = this.project_users[0].created_at;
+            return moment(create).format("MMMM Do YYYY, h:mm:a");
         }
     }
 
