@@ -24,8 +24,8 @@
                         </div>
                     </li>
                     <li><a type="button" href="/logOut" v-if="name.length !== 0" class="btn btn-primary me-2">Log Out</a></li>
-                    <li v-if="project.length !== 0" class="nav-item">
-                        <a href="/unselectProject" class="nav-link link-dark px-2">Project: {{project}}</a>
+                    <li v-if="this.projectData !== `null` && this.projectData.length !== 0" class="nav-item">
+                        <a :href=infoUrlId class="nav-link link-dark px-2">Project: {{computedProject.name}}</a>
                     </li>
                 </ul>
             </div>
@@ -39,8 +39,25 @@ export default {
     props: {
         name: "",
         surname: "",
-        project: ""
+        project: []
     },
+    data() {
+        return {
+            infoUrl: "/projectPage/",
+            projectData: this.project,
+        }
+    },
+    computed: {
+        infoUrlId: function () {
+            return this.infoUrl + this.projectData.id;
+        },
+        computedProject: function () {
+            if(this.projectData !== "null" && this.projectData.length !== 0)
+                return JSON.parse(this.projectData);
+            else
+                return "";
+        }
+    }
 }
 </script>
 

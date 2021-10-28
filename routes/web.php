@@ -43,7 +43,7 @@ Route::get('/', function () {
         'name' => session()->get('name'),
         'surname' => session()->get('surname'),
         'documents' => DocumentService::getDocumentsByProject(),
-        'project' => ProjectService::getProjectBySession(),
+        'activeProject' => ProjectService::getProjectBySession(),
         'create_document_notifications' =>
             NotificationService::getUnreadNotifications("CreateDocumentNotification"),
         'delete_document_notifications' =>
@@ -60,7 +60,7 @@ Route::get('/documents', function () {
         'name' => session()->get('name'),
         'surname' => session()->get('surname'),
         'documents' => DocumentService::getDocumentsByProject(),
-        'project' => ProjectService::getProjectBySession(),
+        'activeProject' => ProjectService::getProjectBySession(),
         'create_document_notifications' =>
             NotificationService::getUnreadNotifications("CreateDocumentNotification"),
         'delete_document_notifications' =>
@@ -72,7 +72,7 @@ Route::get('/createDocument', function () {
     return view('createDocument', [
         'name' => session()->get('name'),
         'surname' => session()->get('surname'),
-        'project' => ProjectService::getProjectBySession()
+        'activeProject' => ProjectService::getProjectBySession()
     ]);
 });
 
@@ -109,8 +109,8 @@ Route::get('/projects', function () {
         'name' => session()->get('name'),
         'surname' => session()->get('surname'),
         'projects' => ProjectService::getAllProjects(),
-        'select' => session()->get('project'),
-        'project' => ProjectService::getProjectBySession(),
+        'select' => session()->get('activeProject'),
+        'activeProject' => ProjectService::getProjectBySession(),
         'create_project_notifications' => NotificationService::getUnreadNotifications("CreateProjectNotification"),
         'delete_project_notifications' => NotificationService::getUnreadNotifications("DeleteProjectNotification")
     ]);
@@ -120,7 +120,7 @@ Route::get('/createProject', function () {
     return view('createProject', [
         'name' => session()->get('name'),
         'surname' => session()->get('surname'),
-        'project' => ProjectService::getProjectBySession()
+        'activeProject' => ProjectService::getProjectBySession()
     ]);
 });
 
@@ -148,6 +148,30 @@ Route::match(
     [ProjectController::class, 'unselectProject']
 )->name('unselectProject');
 
+Route::get('/projectPage/{id}', function () {
+    return view('projectPage', [
+        'userId' => session()->get('userId'),
+        'name' => session()->get('name'),
+        'surname' => session()->get('surname'),
+        'activeProject' => ProjectService::getProjectBySession(),
+        'user' => json_encode(UserService::getUserBySession()),
+    ]);
+});
+
+Route::get('/addUserToProject', function () {
+    return view('addUserToProject', [
+        'name' => session()->get('name'),
+        'surname' => session()->get('surname'),
+        'activeProject' => ProjectService::getProjectBySession()
+    ]);
+});
+
+Route::match(
+    ['get', 'post'],
+    '/addUserToProjectService',
+    [ProjectController::class, 'addUserToProject']
+)->name('addUserToProjectService');
+
 /*
 |--------------------------------------------------------------------------
 | Users Routes
@@ -158,7 +182,7 @@ Route::get('/signUp', function () {
     return view('signUp', [
         'name' => session()->get('name'),
         'surname' => session()->get('surname'),
-        'project' => ProjectService::getProjectBySession()
+        'activeProject' => ProjectService::getProjectBySession()
     ]);
 });
 
@@ -172,7 +196,7 @@ Route::get('/signIn', function () {
     return view('signIn', [
         'name' => session()->get('name'),
         'surname' => session()->get('surname'),
-        'project' => ProjectService::getProjectBySession()
+        'activeProject' => ProjectService::getProjectBySession()
     ]);
 });
 
@@ -201,7 +225,7 @@ Route::get('/board', function () {
     return view('board', [
         'name' => session()->get('name'),
         'surname' => session()->get('surname'),
-        'project' => ProjectService::getProjectBySession(),
+        'activeProject' => ProjectService::getProjectBySession(),
         'cards' => BoardService::getCardsAtBoard()
     ]);
 });
@@ -210,7 +234,7 @@ Route::get('/createCard', function () {
     return view('createCard', [
         'name' => session()->get('name'),
         'surname' => session()->get('surname'),
-        'project' => ProjectService::getProjectBySession()
+        'activeProject' => ProjectService::getProjectBySession()
     ]);
 });
 
@@ -239,7 +263,7 @@ Route::get('/reports', function () {
     return view('reports', [
         'name' => session()->get('name'),
         'surname' => session()->get('surname'),
-        'project' => ProjectService::getProjectBySession()
+        'activeProject' => ProjectService::getProjectBySession()
     ]);
 });
 
@@ -247,7 +271,7 @@ Route::get('/createReport', function () {
     return view('createReport', [
         'name' => session()->get('name'),
         'surname' => session()->get('surname'),
-        'project' => ProjectService::getProjectBySession()
+        'activeProject' => ProjectService::getProjectBySession()
     ]);
 });
 

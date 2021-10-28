@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddUserToProjectRequest;
 use App\Http\Requests\CreateProjectRequest;
 use App\Services\ProjectService;
 use Illuminate\Http\Request;
@@ -26,5 +27,10 @@ class ProjectController extends Controller
     public function unselectProject(): void
     {
         ProjectService::unselectProject();
+    }
+
+    public function addUserToProject(AddUserToProjectRequest $request): void
+    {
+        ProjectService::addUserToProject($request);
     }
 }
