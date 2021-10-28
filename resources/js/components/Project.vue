@@ -30,7 +30,7 @@ export default {
         return {
             deleteUrl: "/deleteProjectService/",
             selectUrl: "/selectProject/",
-            infoUrl: "/projectPage/",
+            infoUrl: "/selectAndOpenProjectPage/",
             selected: this.select,
         }
     },
