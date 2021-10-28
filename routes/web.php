@@ -108,7 +108,7 @@ Route::get('/projects', function () {
         'userId' => session()->get('userId'),
         'name' => session()->get('name'),
         'surname' => session()->get('surname'),
-        'projects' => ProjectService::getAllProjects(),
+        'projects' => ProjectService::getAllProjectsForUser(),
         'select' => session()->get('activeProject'),
         'activeProject' => ProjectService::getProjectBySession(),
         'create_project_notifications' => NotificationService::getUnreadNotifications("CreateProjectNotification"),
@@ -154,6 +154,7 @@ Route::get('/projectPage/{id}', function () {
         'name' => session()->get('name'),
         'surname' => session()->get('surname'),
         'activeProject' => ProjectService::getProjectBySession(),
+        'projectUsers' => ProjectService::getAllUsersForProject(),
         'user' => json_encode(UserService::getUserBySession()),
     ]);
 });

@@ -2,8 +2,14 @@
     <div class="d-flex flex-column col-8 project container justify-content-center align-content-center mt-5">
         <h2 class="text-center">{{ this.project.name }}</h2>
         <div class="d-flex info flex-row justify-content-around mt-4">
-            <p><em class="text-success"><u><strong>Owner:</strong></u></em> {{ this.user.name }} {{ this.user.surname }} <em class="text-secondary"><u>{{ this.user.email }}</u></em></p>
-            <p><em class="text-primary"><u><strong>Date:</strong></u></em> {{ this.project.created_at }}</p>
+            <p>
+                <em class="text-success"><u><strong>Owner:</strong></u></em>
+                {{ this.owner.name }} {{ this.owner.surname }}
+                <em class="text-secondary"><u>{{ this.owner.email }}</u></em></p>
+            <p>
+                <em class="text-primary"><u><strong>Date:</strong></u></em>
+                {{ this.project.created_at }}
+            </p>
         </div>
         <div class="mt-3 p-4">
             <h3 class="text-center">Users</h3>
@@ -18,26 +24,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>examle@exmale</td>
-                    <td>admin</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>examle@exmale</td>
-                    <td>developer</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>examle@exmale</td>
-                    <td>QA</td>
+                <tr v-for="(user, index) in this.projectUsers">
+                    <th scope="row">{{ index + 1 }}</th>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.surname }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.role }}</td>
                 </tr>
                 </tbody>
             </table>
@@ -52,8 +44,18 @@ export default {
     name: "ProjectInfo",
     props: {
         project: [],
-        user: ""
+        user: "",
+        project_users: []
+    },
+    computed: {
+        owner: function () {
+            return this.project_users.filter(user => user.role === "Owner")[0];
+        },
+        projectUsers: function () {
+            return this.project_users.filter(user => user.role !== "Owner");
+        }
     }
+
 }
 </script>
 
