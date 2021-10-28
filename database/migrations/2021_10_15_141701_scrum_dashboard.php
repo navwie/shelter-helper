@@ -109,6 +109,7 @@ class ScrumDashboard extends Migration
          */
         Schema::create('projects_users', function (Blueprint $table) {
             $table->id()->autoIncrement();
+            $table->string("role")->nullable();
             $table->dateTime('created_at')->useCurrent();
             $table->dateTime('updated_at')->nullable()->useCurrentOnUpdate();
         });
