@@ -5,6 +5,7 @@
         <project-page
             :project="{{ $activeProject }}"
             :user="{{ $user}}"
+            :project_users="{{ $projectUsers }}"
         >
         </project-page>
     </div>
