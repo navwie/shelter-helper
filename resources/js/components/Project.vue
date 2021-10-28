@@ -5,7 +5,8 @@
             <h6 class="project-description">{{ description }}</h6>
         </div>
         <div>
-            <a :href=deleteUrlId class="btn btn-outline-danger">Remove</a>
+            <a :href=deleteUrlId v-if="this.isOwner" class="btn btn-outline-danger">Remove</a>
+            <a :href=deleteUrlId v-else class="btn btn-outline-danger">Leave</a>
             <a href="/unselectProject" v-if="this.id == this.selected" class="btn btn-warning">Unselect</a>
             <a :href=selectUrlId v-else class="btn btn-outline-secondary">Select</a>
             <div class="d-flex flex-column mt-3">
@@ -42,6 +43,9 @@ export default {
         },
         infoUrlId: function () {
             return this.infoUrl + this.id;
+        },
+        isOwner: function () {
+            return this.role === "Owner";
         }
     }
 }
