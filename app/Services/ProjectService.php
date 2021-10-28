@@ -42,11 +42,28 @@ class ProjectService
         header("Location: /projects");
     }
 
-    public static function getAllProjects(): string|bool
+    public static function getAllProjectsForUser(): string|bool
     {
         return json_encode(
             DB::select('select * from projects, projects_users where projects_users.user_id = ? and projects.id = projects_users.project_id',
                 [session()->get("userId")]
+            )
+        );
+    }
+
+    public static function getAllUsersForProject(): string|bool
+    {
+        return json_encode(
+            DB::select('
+                        select projects.id, projects.name, projects.author_id, projects.created_at,
+                               projects_users.user_id, projects_users.project_id, projects_users.role,
+                               users.id, users.name, users.surname, users.email
+                        from projects, projects_users, users
+                        where projects_users.user_id = users.id
+                            and projects.id = projects_users.project_id
+                            and project_id = ?
+                        ',
+                [session()->get("activeProject")]
             )
         );
     }
@@ -95,7 +112,7 @@ class ProjectService
     public static function addUserToProject(AddUserToProjectRequest $request): void
     {
         $userByEmail = User::where('email', $request['email'])->first();
-        $project = self::getProjectById(session()->get('project'));
+        $project = self::getProjectById(session()->get('activeProject'));
 
         if ($userByEmail !== null) {
             DB::table("projects_users")->insert([
