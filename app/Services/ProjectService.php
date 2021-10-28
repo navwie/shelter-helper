@@ -80,9 +80,22 @@ class ProjectService
         $project = self::getProjectById($id);
         $user = User::find(session()->get("userId"));
 
+        $projectUser = DB::table('projects_users')
+            ->where('project_id', $project->getId())
+            ->where('user_id', $user->id)
+            ->first();
+
         Notification::sendNow($user, new DeleteProjectNotification($project->getName()));
 
-        DB::table('projects')->delete($id);
+        if ($projectUser->role === "Owner") {
+            DB::table('projects')->delete($id);
+        } else {
+            DB::table('projects_users')->delete($projectUser->id);
+        }
+
+
+
+
 
         header("Location: /projects");
     }
