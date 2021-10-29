@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Notification;
 
 class DocumentService
 {
+    /**
+     * Create new document that connect with project and notify user about it
+     *
+     * @param CreateDocumentRequest $request
+     */
     public static function createDocument(CreateDocumentRequest $request): void
     {
         Carbon::setLocale("rus");
@@ -26,7 +31,7 @@ class DocumentService
 
         DB::table("projects_documents")
             ->insert([
-                "project_id" => session()->get('project'),
+                "project_id" => session()->get('activeProject'),
                 "document_id" => $documentId
             ]);
 
@@ -38,16 +43,26 @@ class DocumentService
         header("Location: /documents");
     }
 
+    /**
+     * Get all documents that include at selected project
+     *
+     * @return string|bool
+     */
     public static function getDocumentsByProject(): string|bool
     {
         return json_encode(
             DB::select('select * from documents where id in
                               (select document_id from projects_documents where project_id = ?)',
-                [session()->get("project")]
+                [session()->get("activeProject")]
             )
         );
     }
 
+    /**
+     * Delete document and notify user about it
+     *
+     * @param $id
+     */
     public static function deleteDocument($id): void
     {
         $document = Document::find($id);
@@ -60,6 +75,11 @@ class DocumentService
         header("Location: /documents");
     }
 
+    /**
+     * Set at database data about opening document by user
+     *
+     * @param $id
+     */
     public static function openDocument($id): void
     {
         Carbon::setLocale("rus");
