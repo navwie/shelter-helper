@@ -11,6 +11,11 @@ use Laravel\Socialite\Facades\Socialite;
 
 class UserService
 {
+    /**
+     * Sign in new user
+     *
+     * @param SignInRequest $request
+     */
     public static function signIn(SignInRequest $request): void
     {
         DB::table('users')->insert([
@@ -22,6 +27,11 @@ class UserService
         header("Location: /");
     }
 
+    /**
+     * Sign up user
+     *
+     * @param SignUpRequest $request
+     */
     public static function signUp(SignUpRequest $request):void
     {
         $userData = DB::table('users')
@@ -36,6 +46,11 @@ class UserService
         header("Location: /");
     }
 
+    /**
+     * Return is user authorize or not
+     *
+     * @return bool
+     */
     public static function isAuth(): bool
     {
         if(session()->get('name') !== null) {
@@ -45,6 +60,9 @@ class UserService
         }
     }
 
+    /**
+     * Log out user
+     */
     public static function logOut(): void
     {
         session()->pull('id');
@@ -54,6 +72,9 @@ class UserService
         header("Location: /");
     }
 
+    /**
+     * Sign up with Google service
+     */
     public static function googleSignUp(): void
     {
         $googleUser = Socialite::driver('google')->user();
@@ -78,6 +99,9 @@ class UserService
         header("Location: /");
     }
 
+    /**
+     * Sign up with Facebook service
+     */
     public static function facebookSignUp(): void
     {
         $facebookUser = Socialite::driver('facebook')->user();
@@ -103,6 +127,11 @@ class UserService
         header("Location: /");
     }
 
+    /**
+     * Return user that authorised now
+     *
+     * @return mixed
+     */
     public static function getUserBySession()
     {
         return User::find(session()->get("userId"));
