@@ -97,6 +97,7 @@ export default {
         margin-left: 3em;
         margin-right: 3em;
         padding: 12px;
+        width: auto;
     }
 
     .remove {
