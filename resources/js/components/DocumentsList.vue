@@ -19,7 +19,7 @@
         <div class="container d-flex list-group align-items-center flex-row">
             <div class="row col-12 justify-content-center">
                 <document
-                    v-for="document in this.userDocuments"
+                    v-for="document in this.documents"
                     :key="document.index"
                     :id="document.id"
                     :name="document.name"
@@ -30,7 +30,7 @@
                 />
 
                 <not-such-selected-projects v-if="computedProjects === 'null'"/>
-                <not-such-documents v-else-if="userDocuments.length === 0"/>
+                <not-such-documents v-else-if="this.documents.length === 0"/>
             </div>
         </div>
 
@@ -53,9 +53,6 @@ export default {
         delete_document_notifications: [],
     },
     computed: {
-        userDocuments: function () {
-            return this.documents.filter(document => document.author_id === this.user);
-        },
         computedProjects: function () {
             return this.project;
         }
