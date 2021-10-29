@@ -19,6 +19,7 @@
                     :name="card.name"
                     :description="card.description"
                     :deadline="card.deadline"
+                    :assign_users="assign_users"
                 />
 
             </draggable>
@@ -48,6 +49,7 @@
                     :name="card.name"
                     :description="card.description"
                     :deadline="card.deadline"
+                    :assign_users="assign_users"
                 />
 
             </draggable>
@@ -69,6 +71,7 @@
                     :name="card.name"
                     :description="card.description"
                     :deadline="card.deadline"
+                    :assign_users="assign_users"
                 />
 
             </draggable>
@@ -90,6 +93,7 @@
                     :name="card.name"
                     :description="card.description"
                     :deadline="card.deadline"
+                    :assign_users="assign_users"
                 />
 
             </draggable>
@@ -111,6 +115,8 @@
                     :name="card.name"
                     :description="card.description"
                     :deadline="card.deadline"
+                    :assign_users="assign_users"
+
                 />
 
             </draggable>
@@ -129,7 +135,8 @@ export default {
     name: "Board",
     props: {
         cards: "",
-        project: ""
+        project: "",
+        assign_users: []
     },
     data() {
         return {
@@ -194,18 +201,6 @@ export default {
 </script>
 
 <style scoped>
-    .drop-zone {
-        background-color: #eee;
-        margin-bottom: 10px;
-        padding: 10px;
-    }
-
-    .drag-el {
-        background-color: #fff;
-        margin-bottom: 10px;
-        padding: 5px;
-    }
-
 
     .board {
         margin-top: 4em;
@@ -223,19 +218,6 @@ export default {
 
     .board-title {
         margin-left: 7px;
-    }
-
-    .card {
-        height: auto;
-        width: 97%;
-        padding: 6px 6px 6px 15px;
-        border-radius: 7px;
-        border: 2px solid #74787e;
-        box-shadow: 5px 5px 0 0 #74787e;
-    }
-
-    .card-description {
-        margin-top: 15px;
     }
 
     .add-card {

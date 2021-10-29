@@ -2,7 +2,26 @@
     <div class="col-8 mt-3 card">
         <h5 class="card-name">{{ this.name }}</h5>
         <h6 class="card-description">{{ this.description }}</h6>
-        <h6 :class="'deadline ' + this.checkDeadline">{{ this.formatDeadline }}</h6>
+        <h6 :class="'deadline mt-2 ' + this.checkDeadline">{{ this.formatDeadline }}</h6>
+        <div class="d-flex flex-row">
+            <h6 class="mt-3">Workers: &nbsp</h6>
+                <div class="mt-3" v-if="this.assignUser !== undefined">
+                    <h6>
+                        <em>{{ this.assignUser['name'] }}</em>
+                        <em>{{ this.assignUser['surname'] }}</em>
+                    </h6>
+                </div>
+                <div v-else>
+                    <a :href="assignUserLinkId" class="btn-light assign-user">
+                        <svg width="1.2em" height="2.5em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+                            <g transform="translate(0,4)">
+                            <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+                            <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+                            </g>
+                        </svg>
+                    </a>
+                </div>
+        </div>
     </div>
 </template>
 
@@ -15,7 +34,13 @@ export default {
         id: "",
         name: "",
         description: "",
-        deadline: ""
+        deadline: "",
+        assign_users: []
+    },
+    data() {
+        return {
+            assignUserLink: "/assignUser/"
+        }
     },
     computed: {
         formatDeadline: function () {
@@ -28,6 +53,12 @@ export default {
             } else {
                 return "text-success";
             }
+        },
+        assignUser: function () {
+            return  this.assign_users.find(user => user.card_id === this.id);
+        },
+        assignUserLinkId: function () {
+            return this.assignUserLink + this.id;
         }
     }
 }
@@ -45,5 +76,11 @@ export default {
 
     .card-description {
         margin-top: 15px;
+    }
+
+    .assign-user {
+        margin-top: 1.5em;
+        border: none;
+        width: 97%;
     }
 </style>

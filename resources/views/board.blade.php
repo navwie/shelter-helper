@@ -4,7 +4,8 @@
     <div id="app">
         <board
             :cards="{{ $cards }}"
-            project="{{ json_encode($activeProject) ?? ""}}"
+            project="{{ $activeProject ?? ""}}"
+            :assign_users="{{ $assignUsers }}"
         />
     </div>
 @endsection
