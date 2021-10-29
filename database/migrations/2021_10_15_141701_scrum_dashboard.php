@@ -123,6 +123,15 @@ class ScrumDashboard extends Migration
             $table->dateTime('updated_at')->nullable()->useCurrentOnUpdate();
         });
 
+        /**
+         * Table users_cards
+         */
+        Schema::create('users_cards', function (Blueprint $table) {
+            $table->id()->autoIncrement();
+            $table->dateTime('created_at')->useCurrent();
+            $table->dateTime('updated_at')->nullable()->useCurrentOnUpdate();
+        });
+
 
         /*
         |--------------------------------------------------------------------------
@@ -195,6 +204,16 @@ class ScrumDashboard extends Migration
             $table->after('id', function ($table) {
                 $table->foreignId('project_id')->constrained('projects')->onDelete('cascade');
                 $table->foreignId('report_id')->constrained('reports')->onDelete('cascade');
+            });
+        });
+
+        /**
+         * Foreign keys users_cards
+         */
+        Schema::table('users_cards', function (Blueprint $table) {
+            $table->after('id', function ($table) {
+                $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+                $table->foreignId('card_id')->constrained('cards')->onDelete('cascade');
             });
         });
     }
