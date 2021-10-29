@@ -29,4 +29,9 @@ class BoardController extends Controller
             $doneList
         );
     }
+
+    public function assignUser($id):void
+    {
+        BoardService::assignUser($id);
+    }
 }
