@@ -16,6 +16,11 @@ use stdClass;
 
 class ProjectService
 {
+    /**
+     * Create project. Set role Owner for current user. Notify user about creating
+     *
+     * @param CreateProjectRequest $request
+     */
     public static function createProject(CreateProjectRequest $request): void
     {
         $projectId = DB::table('projects')->insertGetId([
@@ -42,6 +47,11 @@ class ProjectService
         header("Location: /projects");
     }
 
+    /**
+     * Return array of projects for current user
+     *
+     * @return string|bool
+     */
     public static function getAllProjectsForUser(): string|bool
     {
         return json_encode(
@@ -51,6 +61,11 @@ class ProjectService
         );
     }
 
+    /**
+     * Return array of users that involved at active project
+     *
+     * @return string|bool
+     */
     public static function getAllUsersForProject(): string|bool
     {
         return json_encode(
@@ -68,6 +83,11 @@ class ProjectService
         );
     }
 
+    /**
+     * Return active project
+     *
+     * @return string|bool
+     */
     public static function getProjectBySession(): string|bool
     {
         return json_encode(DB::table('projects')
@@ -75,6 +95,12 @@ class ProjectService
             ->first());
     }
 
+    /**
+     * Delete project for owner and leave from project for staff.
+     * Notify user about deleting
+     *
+     * @param $id
+     */
     public static function deleteProject($id): void
     {
         $project = self::getProjectById($id);
@@ -93,13 +119,14 @@ class ProjectService
             DB::table('projects_users')->delete($projectUser->id);
         }
 
-
-
-
-
         header("Location: /projects");
     }
 
+    /**
+     * Make project select via session
+     *
+     * @param $id
+     */
     public static function selectProject($id): void
     {
         session()->put("activeProject", $id);
@@ -107,6 +134,9 @@ class ProjectService
         header("Location: /projects");
     }
 
+    /**
+     * Make project unselect via session
+     */
     public static function unselectProject(): void
     {
         session()->pull("activeProject");
@@ -114,7 +144,13 @@ class ProjectService
         header("Location: /projects");
     }
 
-    public static function getProjectById($id)
+    /**
+     * Return project object by id
+     *
+     * @param $id
+     * @return Project
+     */
+    public static function getProjectById($id): Project
     {
         $projectDb = DB::table("projects")
             ->where('id', '=',  $id)
@@ -122,6 +158,11 @@ class ProjectService
         return new Project($projectDb->id, $projectDb->name, $projectDb->description, $projectDb->author_id);
     }
 
+    /**
+     * Add user to project that was invited by project owner
+     *
+     * @param AddUserToProjectRequest $request
+     */
     public static function addUserToProject(AddUserToProjectRequest $request): void
     {
         $userByEmail = User::where('email', $request['email'])->first();
@@ -136,9 +177,5 @@ class ProjectService
         }
 
         header("location: /projectPage/" . $project->getId());
-
     }
-
-
-
 }
