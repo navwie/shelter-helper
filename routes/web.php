@@ -233,6 +233,7 @@ Route::get('/board', function () {
         'name' => session()->get('name'),
         'surname' => session()->get('surname'),
         'activeProject' => ProjectService::getProjectBySession(),
+        'assignUsers' => BoardService::getAssignUsers(),
         'cards' => BoardService::getCardsAtBoard()
     ]);
 });
@@ -256,6 +257,12 @@ Route::match(
     '/saveCards',
     [BoardController::class, 'saveCards']
 )->name('saveCards');
+
+Route::match(
+    ['get', 'post'],
+    '/assignUser/{id}',
+    [BoardController::class, 'assignUser']
+)->name('assignUser');
 
 /*
 |--------------------------------------------------------------------------
