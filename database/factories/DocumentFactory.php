@@ -3,11 +3,10 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Card;
 
-class CardFactory extends Factory
+class DocumentFactory extends Factory
 {
-    protected $model = Card::class;
+
 
     /**
      * Define the model's default state.
@@ -19,14 +18,8 @@ class CardFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'description' => $this->faker->text(),
-            'category' => $this->faker->randomElement([
-                'backlog',
-                'toDo',
-                'inProgress',
-                'testing',
-                'done'
-            ]),
-            'deadline' => $this->faker->dateTime()
+            'url' => $this->faker->url(),
+            'author_id' => $this->faker->randomDigit(),
         ];
     }
 }

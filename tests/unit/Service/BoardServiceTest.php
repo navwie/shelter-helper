@@ -9,6 +9,7 @@ use Faker\Factory;
 
 class BoardServiceTest extends \Codeception\Test\Unit
 {
+    private User $user;
     /**
      * @var \UnitTester
      */
@@ -16,6 +17,9 @@ class BoardServiceTest extends \Codeception\Test\Unit
 
     protected function _before()
     {
+        session()->put("userId", 1);
+        session()->put('activeProject', 1);
+        $this->user = User::all()->first();
     }
 
     protected function _after()
@@ -23,9 +27,6 @@ class BoardServiceTest extends \Codeception\Test\Unit
     }
 
 
-    /**
-     *  Needs to change session at BoardService::getBoardByProjectSession
-     */
     public function testCreateCard()
     {
         $request = CreateCardRequest::create(
@@ -41,6 +42,7 @@ class BoardServiceTest extends \Codeception\Test\Unit
 
         $this->assertTrue(BoardService::createCard($request));
     }
+
     public function testSaveCards()
     {
         $cards = [];
@@ -57,21 +59,13 @@ class BoardServiceTest extends \Codeception\Test\Unit
         $this->assertIsString(BoardService::getAssignUsers());
     }
 
-    /**
-     *  Needs to change session at BoardService::assignUser
-     */
     public function testAssignUser()
     {
-        $this->assertTrue(BoardService::assignUser(1, 1));
+        $this->assertTrue(BoardService::assignUser($this->user->id));
     }
 
-    /**
-     *  Needs to change session at BoardService::getBoardByProjectSession
-     */
     public function testGetBoardByProjectSession()
     {
         $this->assertIsInt(BoardService::getBoardByProjectSession());
     }
-
-
 }

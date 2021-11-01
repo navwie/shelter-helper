@@ -18,7 +18,7 @@ class DocumentService
      *
      * @param CreateDocumentRequest $request
      */
-    public static function createDocument(CreateDocumentRequest $request): void
+    public static function createDocument(CreateDocumentRequest $request): bool
     {
         Carbon::setLocale("rus");
 
@@ -41,6 +41,7 @@ class DocumentService
         Notification::sendNow($user, new CreateDocumentNotification($document));
 
         header("Location: /documents");
+        return true;
     }
 
     /**
@@ -63,7 +64,7 @@ class DocumentService
      *
      * @param $id
      */
-    public static function deleteDocument($id): void
+    public static function deleteDocument($id): bool
     {
         $document = Document::find($id);
         $user = User::find(session()->get("userId"));
@@ -73,6 +74,7 @@ class DocumentService
         DB::table('documents')->delete($id);
 
         header("Location: /documents");
+        return true;
     }
 
     /**
@@ -80,7 +82,7 @@ class DocumentService
      *
      * @param $id
      */
-    public static function openDocument($id): void
+    public static function openDocument($id): bool
     {
         Carbon::setLocale("rus");
 
@@ -90,6 +92,7 @@ class DocumentService
                 'last_user_opened' => session()->get("userId"),
                 'last_time_opened' => Carbon::now()->toDateTimeString()
             ]);
+        return true;
     }
 
 
