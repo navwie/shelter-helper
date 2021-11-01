@@ -38,12 +38,14 @@ class NotificationService
      *
      * @param $notificationId
      */
-    public static function readNotification($notificationId): void
+    public static function readNotification($notificationId): bool
     {
         UserService::getUserBySession()
             ->unreadNotifications
             ->where('id', $notificationId)
             ->first()
             ->markAsRead();
+
+        return true;
     }
 }
