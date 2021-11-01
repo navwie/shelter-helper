@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Http\Requests\CreateCardRequest;
 use Illuminate\Support\Facades\DB;
+use phpDocumentor\Reflection\Types\True_;
 
 class BoardService
 {
@@ -12,7 +13,7 @@ class BoardService
      *
      * @param CreateCardRequest $request
      */
-    public static function createCard(CreateCardRequest $request): void
+    public static function createCard(CreateCardRequest $request): bool
     {
         $cardId = DB::table('cards')->insertGetId([
             'name' => $request['name'],
@@ -29,6 +30,7 @@ class BoardService
         ]);
 
         header('Location: /board');
+        return true;
     }
 
     /**
@@ -91,7 +93,7 @@ class BoardService
         $inProgressList,
         $testingList,
         $doneList
-    ): void
+    ): bool
     {
         if ($backlogList !== null)
             self::setCardsCategoriesOfFront($backlogList, 'backlog');
@@ -108,6 +110,7 @@ class BoardService
         if ($doneList !== null)
             self::setCardsCategoriesOfFront($doneList, 'done');
 
+        return true;
     }
 
     /**
@@ -133,7 +136,7 @@ class BoardService
      *
      * @param $id
      */
-    public static function assignUser($id): void
+    public static function assignUser($id): bool
     {
         DB::table('users_cards')->insert([
            'user_id' => session()->get('userId'),
@@ -141,5 +144,6 @@ class BoardService
         ]);
 
         header('location: /board');
+        return true;
     }
 }
