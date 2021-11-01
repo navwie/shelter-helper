@@ -6,8 +6,8 @@
                     <li class="nav-item"><a href="/documents" class="nav-link link-dark px-2 active" aria-current="page">Documents</a></li>
                     <li class="nav-item"><a href="/board" class="nav-link link-dark px-2">Board</a></li>
                     <li class="nav-item"><a href="/projects" class="nav-link link-dark px-2">Projects</a></li>
-                    <li class="nav-item"><a href="/reports" class="nav-link link-dark px-2">Reports</a></li>
-                    <li>
+<!--                    <li class="nav-item"><a href="/reports" class="nav-link link-dark px-2">Reports</a></li>-->
+<!--                    <li>
                         <div class="dropdown show">
                             <a class="nav-link link-dark dropdown-toggle" href="#" id="dropdownSettings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Settings
@@ -15,7 +15,7 @@
                             <div class="dropdown-menu" aria-labelledby="dropdownSettings">
                             </div>
                         </div>
-                    </li>
+                    </li>-->
                     <li><a type="button" href="/signIn" v-if="name.length === 0" class="nav-link active">Sign in</a></li>
                     <li><a type="button" href="/signUp" v-if="name.length === 0" class="btn btn-primary me-2">Sign up</a></li>
                     <li class="nav-item">
