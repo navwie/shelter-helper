@@ -17,10 +17,16 @@ class CardFactory extends Factory
     public function definition()
     {
         return [
-            $this->faker->name(),
-            $this->faker->text(),
-            'backlog',
-            $this->faker->dateTime()
+            'name' => $this->faker->name(),
+            'description' => $this->faker->text(),
+            'category' => $this->faker->randomElement([
+                'backlog',
+                'toDo',
+                'inProgress',
+                'testing',
+                'done'
+            ]),
+            'deadline' => $this->faker->dateTime()
         ];
     }
 }
