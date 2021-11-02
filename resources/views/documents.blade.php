@@ -5,7 +5,7 @@
         <documents-list
             :documents="{{ $documents }}"
             :user="{{ $userId }}"
-            project="{{ json_encode($activeProject) ?? ""}}"
+            project="{{ $activeProject ?? ""}}"
             :create_document_notifications="{{ $create_document_notifications }}"
             :delete_document_notifications="{{ $delete_document_notifications }}"
         />
