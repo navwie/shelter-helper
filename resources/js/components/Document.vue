@@ -7,8 +7,8 @@
                 <h3>{{ name }}</h3>
                 <p>{{ description }}</p>
                 <div>
-                    <p v-if="lastUserOpened === null">Created by Artem</p>
-                    <p v-else>Last opened {{ this.openedAt }} by Artem</p>
+                    <p>Created by Artem</p>
+<!--                    <p v-else>Last opened {{ this.openedAt }} by Artem</p>-->
                 </div>
             </div>
             <div class="remove align-items-end align-self-end remove">
