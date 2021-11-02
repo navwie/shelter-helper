@@ -29,7 +29,7 @@ class DocumentServiceTest extends \Codeception\Test\Unit
     public function testCreateDocument()
     {
         $request = CreateDocumentRequest::create(
-            'createCardService/',
+            '/createDocumentService',
             'GET',
             [
                 'name' => 'First document',

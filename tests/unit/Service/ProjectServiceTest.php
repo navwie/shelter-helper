@@ -28,7 +28,7 @@ class ProjectServiceTest extends \Codeception\Test\Unit
     public function testCreateProject()
     {
         $request = CreateProjectRequest::create(
-            'createCardService/',
+            '/createProjectService',
             'GET',
             [
                 'name' => 'Test project',
@@ -38,7 +38,7 @@ class ProjectServiceTest extends \Codeception\Test\Unit
         $this->assertIsInt(ProjectService::createProject($request));
 
         $request = CreateProjectRequest::create(
-            'createCardService/',
+            '/createProjectService',
             'GET',
             [
                 'name' => '',
@@ -48,7 +48,7 @@ class ProjectServiceTest extends \Codeception\Test\Unit
         $this->assertIsInt(ProjectService::createProject($request));
 
         $request = CreateProjectRequest::create(
-            'createCardService/',
+            '/createProjectService',
             'GET',
             [
                 'name' => 'Test project',
@@ -83,7 +83,7 @@ class ProjectServiceTest extends \Codeception\Test\Unit
     public function testDeleteProject()
     {
         $request = CreateProjectRequest::create(
-            'createCardService/',
+            '/createProjectService',
             'GET',
             [
                 'name' => 'Test project',
@@ -110,7 +110,7 @@ class ProjectServiceTest extends \Codeception\Test\Unit
     public function testAddUserToProject()
     {
         $request = AddUserToProjectRequest::create(
-            'addUserToProjectService/',
+            '/addUserToProjectService',
             'GET',
             [
                 'email' => 'testemail@email.com',
@@ -130,7 +130,7 @@ class ProjectServiceTest extends \Codeception\Test\Unit
         $this->assertTrue(ProjectService::addUserToProject($request));
 
         $request = AddUserToProjectRequest::create(
-            'addUserToProjectService/',
+            '/addUserToProjectService',
             'GET',
             [
                 'email' => '@email.com',
@@ -140,7 +140,7 @@ class ProjectServiceTest extends \Codeception\Test\Unit
         $this->assertTrue(ProjectService::addUserToProject($request));
 
         $request = AddUserToProjectRequest::create(
-            'addUserToProjectService/',
+            '/addUserToProjectService',
             'GET',
             [
                 'email' => '@email.com',

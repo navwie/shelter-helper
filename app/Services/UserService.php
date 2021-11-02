@@ -16,7 +16,7 @@ class UserService
      *
      * @param SignInRequest $request
      */
-    public static function signIn(SignInRequest $request): void
+    public static function signIn(SignInRequest $request): bool
     {
         DB::table('users')->insert([
             'name' => $request['name'],
@@ -25,6 +25,8 @@ class UserService
             'password' => $request['password']
         ]);
         header("Location: /");
+
+        return true;
     }
 
     /**
@@ -32,7 +34,7 @@ class UserService
      *
      * @param SignUpRequest $request
      */
-    public static function signUp(SignUpRequest $request):void
+    public static function signUp(SignUpRequest $request): bool
     {
         $userData = DB::table('users')
             ->where('email', '=', $request['email'])
@@ -44,6 +46,8 @@ class UserService
             session()->put('surname', $userData->surname);
         }
         header("Location: /");
+
+        return true;
     }
 
     /**
@@ -53,7 +57,7 @@ class UserService
      */
     public static function isAuth(): bool
     {
-        if(session()->get('name') !== null) {
+        if(session()->get('userId') !== null) {
             return true;
         } else {
             return false;
@@ -63,19 +67,20 @@ class UserService
     /**
      * Log out user
      */
-    public static function logOut(): void
+    public static function logOut(): bool
     {
         session()->pull('id');
         session()->pull('name');
         session()->pull('surname');
         session()->pull('activeProject');
         header("Location: /");
+        return true;
     }
 
     /**
      * Sign up with Google service
      */
-    public static function googleSignUp(): void
+    public static function googleSignUp(): bool
     {
         $googleUser = Socialite::driver('google')->user();
 
@@ -97,6 +102,7 @@ class UserService
         session()->put('name', $googleUser['given_name']);
         session()->put('surname', $googleUser['family_name']);
         header("Location: /");
+        return true;
     }
 
     /**
