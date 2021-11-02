@@ -2,18 +2,18 @@ version: '3'
 services:
 
   #PHP Service
-  app:
+  scrum-dashboard-app:
     build:
       context: .
       dockerfile: Dockerfile
     image: php:8.0.10-fpm
-    container_name: app
+    container_name: scrum-dashboard-app
     restart: unless-stopped
     tty: true
     environment:
       PHP_IDE_CONFIG: "serverName=docker.scrum-dashboard"
       XDEBUG_SESSION: docker-server
-      SERVICE_NAME: app
+      SERVICE_NAME: scrum-dashboard-app
       SERVICE_TAGS: dev
     working_dir: /var/www
     volumes:
@@ -23,9 +23,9 @@ services:
       - app-network
 
   #Nginx Service
-  webserver:
+  scrum-dashboard-webserver:
     image: nginx:alpine
-    container_name: webserver
+    container_name: scrum-dashboard-webserver
     restart: unless-stopped
     tty: true
     ports:
@@ -39,9 +39,9 @@ services:
       - app-network
 
   #MySQL Service
-  db:
+  scrum-dashboard-db:
     image: mysql:5.7.22
-    container_name: db
+    container_name: scrum-dashboard-db
     restart: unless-stopped
     tty: true
     ports:

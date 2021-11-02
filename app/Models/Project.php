@@ -10,40 +10,9 @@ class Project extends Model
 {
     use HasFactory, Notifiable;
 
-    private int $id;
     private string $name;
     private string $description;
     private int $author_id;
-
-    /**
-     * @param int $id
-     * @param string $name
-     * @param string $description
-     * @param int $author_id
-     */
-    public function __construct(int $id, string $name, string $description, int $author_id)
-    {
-        $this->id = $id;
-        $this->name = $name;
-        $this->description = $description;
-        $this->author_id = $author_id;
-    }
-
-    /**
-     * @return int
-     */
-    public function getId(): int
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
-    {
-        $this->id = $id;
-    }
 
     /**
      * @return string
@@ -92,8 +61,4 @@ class Project extends Model
     {
         $this->author_id = $author_id;
     }
-
-
-
-
 }

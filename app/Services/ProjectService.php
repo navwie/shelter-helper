@@ -20,8 +20,10 @@ class ProjectService
      * Create project. Set role Owner for current user. Notify user about creating
      *
      * @param CreateProjectRequest $request
+     *
+     * @return bool
      */
-    public static function createProject(CreateProjectRequest $request): void
+    public static function createProject(CreateProjectRequest $request): int
     {
         $projectId = DB::table('projects')->insertGetId([
             'name' => $request['name'],
@@ -39,12 +41,13 @@ class ProjectService
             'role' => 'Owner'
         ]);
 
-        $project = self::getProjectById($projectId);
+        $project = Project::find($projectId);
         $user = User::find(session()->get("userId"));
 
-        Notification::sendNow($user, new CreateProjectNotification($project->getName()));
+        Notification::sendNow($user, new CreateProjectNotification($project->name));
 
         header("Location: /projects");
+        return $projectId;
     }
 
     /**
@@ -101,17 +104,17 @@ class ProjectService
      *
      * @param $id
      */
-    public static function deleteProject($id): void
+    public static function deleteProject($id): bool
     {
-        $project = self::getProjectById($id);
+        $project = Project::find($id);
         $user = User::find(session()->get("userId"));
 
         $projectUser = DB::table('projects_users')
-            ->where('project_id', $project->getId())
+            ->where('project_id', $project->id)
             ->where('user_id', $user->id)
             ->first();
 
-        Notification::sendNow($user, new DeleteProjectNotification($project->getName()));
+        Notification::sendNow($user, new DeleteProjectNotification($project->name));
 
         if ($projectUser->role === "Owner") {
             DB::table('projects')->delete($id);
@@ -120,6 +123,7 @@ class ProjectService
         }
 
         header("Location: /projects");
+        return true;
     }
 
     /**
@@ -127,35 +131,22 @@ class ProjectService
      *
      * @param $id
      */
-    public static function selectProject($id): void
+    public static function selectProject($id): bool
     {
         session()->put("activeProject", $id);
-
         header("Location: /projects");
+
+        return true;
     }
 
     /**
      * Make project unselect via session
      */
-    public static function unselectProject(): void
+    public static function unselectProject(): bool
     {
         session()->pull("activeProject");
-
         header("Location: /projects");
-    }
-
-    /**
-     * Return project object by id
-     *
-     * @param $id
-     * @return Project
-     */
-    public static function getProjectById($id): Project
-    {
-        $projectDb = DB::table("projects")
-            ->where('id', '=',  $id)
-            ->first();
-        return new Project($projectDb->id, $projectDb->name, $projectDb->description, $projectDb->author_id);
+        return true;
     }
 
     /**
@@ -163,19 +154,20 @@ class ProjectService
      *
      * @param AddUserToProjectRequest $request
      */
-    public static function addUserToProject(AddUserToProjectRequest $request): void
+    public static function addUserToProject(AddUserToProjectRequest $request): bool
     {
         $userByEmail = User::where('email', $request['email'])->first();
-        $project = self::getProjectById(session()->get('activeProject'));
+        $project = Project::find(session()->get('activeProject'));
 
         if ($userByEmail !== null) {
             DB::table("projects_users")->insert([
-                'project_id' => $project->getId(),
+                'project_id' => $project->id,
                 'user_id' => $userByEmail->id,
                 'role' => $request['role']
             ]);
         }
 
-        header("location: /projectPage/" . $project->getId());
+        header("location: /projectPage/" . $project->id);
+        return true;
     }
 }
