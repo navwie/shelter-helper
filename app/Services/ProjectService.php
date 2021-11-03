@@ -5,14 +5,13 @@ namespace App\Services;
 use App\Http\Requests\AddUserToProjectRequest;
 use App\Http\Requests\CreateProjectRequest;
 use App\Models\Project;
-use App\Notifications\AddExistedUserToProjectNotification;
 use App\Notifications\CreateProjectNotification;
 use App\Notifications\DeleteProjectNotification;
-use App\Services\UserService;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
-use stdClass;
+use Illuminate\Http\Request;
+
 
 class ProjectService
 {
@@ -165,9 +164,21 @@ class ProjectService
                 'user_id' => $userByEmail->id,
                 'role' => $request['role']
             ]);
+
         }
 
         header("location: /projectPage/" . $project->id);
         return true;
+    }
+
+    public static function editProject(Request $request)
+    {
+        DB::table('projects')
+            ->where('id', $request->id)
+            ->update([
+               'name' => $request->name,
+               'description' => $request->description
+            ]);
+
     }
 }
