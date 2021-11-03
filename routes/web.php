@@ -157,7 +157,7 @@ Route::get('/projectPage/{id}', function () {
         'projectUsers' => ProjectService::getAllUsersForProject(),
         'user' => json_encode(UserService::getUserBySession()),
     ]);
-});
+})->name('projectPage');
 
 Route::match(
     ['get', 'post'],
@@ -179,6 +179,21 @@ Route::match(
     [ProjectController::class, 'addUserToProject']
 )->name('addUserToProjectService');
 
+Route::get(
+    '/editProject/{id}',
+    function () {
+        return view('editProject', [
+            'name' => session()->get('name'),
+            'surname' => session()->get('surname'),
+            'activeProject' => ProjectService::getProjectBySession(),
+            'project' => ProjectService::getProjectBySession()
+            ]);
+    }
+)->name('editProject');
+
+Route::put('/editProjectService',
+    [ProjectController::class, 'editProject']
+)->name('editProjectService');
 /*
 |--------------------------------------------------------------------------
 | Users Routes
