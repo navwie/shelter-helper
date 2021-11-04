@@ -4,11 +4,11 @@
             <h1 class="h3 mb-3 fw-normal text-center">Create new task</h1>
             <div class="form-group mt-4">
                 <label for="name"><h5>Name</h5></label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                <input v-model="name" :class="'form-control ' + this.formErrors.name" type="text" id="name" name="name" placeholder="Name">
             </div>
             <div class="form-group mt-4">
                 <h5>Description</h5>
-                <textarea name="description" id="description" cols="40" rows="5"></textarea>
+                <textarea v-model="description" :class="'form-control ' + this.formErrors.description" name="description" id="description" cols="40" rows="5"></textarea>
             </div>
             <div class="form-group mt-4">
                 <label for="category"><h5>Category</h5></label>
@@ -18,11 +18,11 @@
             </div>
             <div class="form-group mt-4">
                 <label for="deadline"><h5>Deadline</h5></label>
-                <input type="datetime-local" class="form-control" id="deadline" name="deadline">
+                <input class="form-control" type="datetime-local" id="deadline" name="deadline">
             </div>
             <div class="form-group text-center mt-3">
                 <a class="btn btn-danger" href="/board">Back</a>
-                <button class="btn btn-primary" type="submit">Create</button>
+                <button class="btn btn-primary" type="submit" :disabled="active">Create</button>
             </div>
         </form>
     </div>
@@ -30,7 +30,38 @@
 
 <script>
 export default {
-    name: "CreateCard"
+    name: "CreateCard",
+    data() {
+        return {
+            name: "",
+            description: "",
+            formErrors: {
+                name: 'is-invalid',
+                description: 'is-invalid'
+            },
+            active: true
+        }
+    },
+    updated() {
+        let errors = Object.values(this.formErrors);
+        this.active = errors.includes("is-invalid")
+    },
+    watch: {
+        name() {
+            this.formErrors.name = 'is-valid';
+
+            if (this.name.length < 5) {
+                this.formErrors.name = 'is-invalid';
+            }
+        },
+        description() {
+            this.formErrors.description = 'is-valid';
+
+            if (this.description.length < 6) {
+                this.formErrors.description = 'is-invalid';
+            }
+        }
+    }
 }
 </script>
 
