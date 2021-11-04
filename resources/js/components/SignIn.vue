@@ -24,7 +24,7 @@
                 </label>
             </div>
             <div class="form-group text-center mt-4">
-                <button class="btn btn-primary" type="submit">Sign in</button>
+                <button class="btn btn-primary" type="submit" :disabled="active">Sign in</button>
             </div>
             <div class="form-group text-center mt-3">
                 <p>
@@ -56,8 +56,18 @@ export default {
         surname: "",
         email: "",
         password: "",
-        formErrors: {}
+        formErrors: {
+            name: "is-invalid",
+            surname: "is-invalid",
+            email: "is-invalid",
+            password: "is-invalid"
+        },
+        active: true
     }),
+    updated() {
+        let errors = Object.values(this.formErrors);
+        this.active = errors.includes("is-invalid")
+    },
     watch: {
         name() {
             this.formErrors.name = "is-valid";

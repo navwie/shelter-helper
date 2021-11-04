@@ -4,19 +4,18 @@
             <h1 class="h3 mb-3 fw-normal text-center">Create document</h1>
             <div class="form-group mt-4">
                 <label for="name"><h5>Name</h5></label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Name">
-            </div>
+                <input v-model="name" type="text" :class="'form-control ' + this.formErrors.name" id="name" name="name">            </div>
             <div class="form-group mt-4">
                 <h5>Description</h5>
-                <textarea name="description" id="description" cols="40" rows="5"></textarea>
+                <textarea v-model="description" name="description" class="form-control is-valid" id="description" cols="40" rows="5"></textarea>
             </div>
             <div class="form-group mt-4">
                 <label for="url"><h5>Link</h5></label>
-                <input type="text" class="form-control" id="url" name="url" placeholder="Link">
+                <input v-model="url" type="url" :class="'form-control ' + this.formErrors.url" id="url" name="url">
             </div>
             <div class="form-group text-center mt-3">
                 <a class="btn btn-danger" href="/">Back</a>
-                <button class="btn btn-primary" type="submit">Create</button>
+                <button class="btn btn-primary" type="submit" :disabled="active">Create</button>
             </div>
         </form>
     </div>
@@ -24,7 +23,39 @@
 
 <script>
 export default {
-    name: "CreateDocument"
+    name: "CreateDocument",
+    data() {
+        return {
+            name: "",
+            description: "",
+            url: "",
+            formErrors: {
+                name: 'is-invalid',
+                url: 'is-invalid'
+            },
+            active: true
+        }
+    },
+    updated() {
+        let errors = Object.values(this.formErrors);
+        this.active = errors.includes("is-invalid")
+    },
+    watch: {
+        name() {
+            this.formErrors.name = 'is-valid';
+
+            if (this.name.length < 5) {
+                this.formErrors.name = 'is-invalid';
+            }
+        },
+        url() {
+            this.formErrors.url = 'is-valid';
+
+            if (!/(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/.test(this.url)) {
+                this.formErrors.url = 'is-invalid';
+            }
+        }
+    }
 }
 </script>
 
