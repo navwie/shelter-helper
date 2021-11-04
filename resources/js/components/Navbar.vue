@@ -49,7 +49,7 @@ export default {
     },
     computed: {
         infoUrlId: function () {
-            return this.infoUrl + this.projectData.id;
+            return this.infoUrl + this.computedProject.id;
         },
         computedProject: function () {
             if(this.projectData !== "null" && this.projectData.length !== 0)
