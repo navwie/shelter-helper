@@ -4,6 +4,7 @@ namespace Service;
 use App\Http\Requests\CreateDocumentRequest;
 use App\Models\Document;
 use App\Services\DocumentService;
+use Illuminate\Http\Request;
 
 class DocumentServiceTest extends \Codeception\Test\Unit
 {
@@ -54,5 +55,34 @@ class DocumentServiceTest extends \Codeception\Test\Unit
     public function testOpenDocument()
     {
         $this->assertTrue(DocumentService::openDocument($this->document->id));
+    }
+
+    public function testEditDocument()
+    {
+        $document = Document::factory()->make();
+
+        $request = Request::create(
+            "/editProjectService" . $document->id,
+            'PUT',
+            [
+                'id' => $document->id,
+                'name' => $document->name,
+                'description' => $document->description,
+                'url' => $document->url
+            ]
+        );
+        $this->assertTrue(DocumentService::editDocument($request));
+
+        $request = Request::create(
+            "/editProjectService" . $document->id,
+            'PUT',
+            [
+                'id' => '',
+                'name' => '',
+                'description' => '',
+                'url' => ''
+            ]
+        );
+        $this->assertTrue(DocumentService::editDocument($request));
     }
 }
