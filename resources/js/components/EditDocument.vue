@@ -65,13 +65,6 @@ export default {
     computed: {
         csrfToken: function () {
             return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-        },
-        hasErrors: function () {
-            let errors = Object.values(this.formErrors);
-            if (errors.length === 0)
-                return false
-            return this.errors.filter(error => error === 'is-invalid');
-
         }
     },
     updated() {
