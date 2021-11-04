@@ -94,6 +94,19 @@ Route::match(
     [DocumentController::class, 'openDocument']
 )->name('openDocument');
 
+Route::get('/editDocument/{id}', function ($id) {
+    return view('editDocument', [
+        'name' => session()->get('name'),
+        'surname' => session()->get('surname'),
+        'activeProject' => ProjectService::getProjectBySession(),
+        'document' => Document::find($id)
+    ]);
+});
+
+Route::put('/editDocumentService',
+    [DocumentController::class, 'editDocument']
+)->name('editDocumentService');
+
 /*
 |--------------------------------------------------------------------------
 | Projects Routes
