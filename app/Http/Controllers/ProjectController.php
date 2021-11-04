@@ -40,7 +40,7 @@ class ProjectController extends Controller
         ProjectService::addUserToProject($request);
     }
 
-    public function editProject(Request $request)
+    public function editProject(Request $request): void
     {
         ProjectService::editProject($request);
     }
