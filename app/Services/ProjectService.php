@@ -171,7 +171,7 @@ class ProjectService
         return true;
     }
 
-    public static function editProject(Request $request)
+    public static function editProject(Request $request): bool
     {
         DB::table('projects')
             ->where('id', $request->id)
@@ -179,6 +179,6 @@ class ProjectService
                'name' => $request->name,
                'description' => $request->description
             ]);
-
+        return true;
     }
 }

@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Notifications\CreateDocumentNotification;
 use App\Notifications\DeleteDocumentNotification;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
 
@@ -91,6 +92,18 @@ class DocumentService
             ->update([
                 'last_user_opened' => session()->get("userId"),
                 'last_time_opened' => Carbon::now()->toDateTimeString()
+            ]);
+        return true;
+    }
+
+    public static function editDocument(Request $request): bool
+    {
+        DB::table('documents')
+            ->where('id', $request->id)
+            ->update([
+                'name' => $request->name,
+                'description' => $request->description,
+                'url' => $request->url
             ]);
         return true;
     }

@@ -5,7 +5,7 @@ use App\Http\Requests\AddUserToProjectRequest;
 use App\Http\Requests\CreateProjectRequest;
 use App\Models\Project;
 use App\Services\ProjectService;
-use function PHPUnit\Framework\assertTrue;
+use Illuminate\Http\Request;
 
 class ProjectServiceTest extends \Codeception\Test\Unit
 {
@@ -148,5 +148,32 @@ class ProjectServiceTest extends \Codeception\Test\Unit
             ]
         );
         $this->assertTrue(ProjectService::addUserToProject($request));
+    }
+
+    public function testEditProject()
+    {
+        $project = Project::factory()->make();
+
+        $request = Request::create(
+            "/editProjectService" . $project->id,
+            'PUT',
+            [
+                'id' => $project->id,
+                'name' => $project->name,
+                'description' => $project->description
+            ]
+        );
+        $this->assertTrue(ProjectService::editProject($request));
+
+        $request = Request::create(
+            "/editProjectService" . $project->id,
+            'PUT',
+            [
+                'id' => '',
+                'name' => '',
+                'description' => ''
+            ]
+        );
+        $this->assertTrue(ProjectService::editProject($request));
     }
 }

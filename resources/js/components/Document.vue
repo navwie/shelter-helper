@@ -1,6 +1,5 @@
 <template>
-
-    <a :href="url" @click="openDocument" target="_blank" class="col-3 document">
+    <a :href="url" @click="openDocument" target="_blank" class="d-flex flex-row  document col-3 mt-5 project justify-content-between">
         <input type="hidden" name="_token" :value="this.csrfToken">
         <div class="d-flex flex-row justify-content-between">
             <div class="flex-grow-1 flex-shrink-0">
@@ -11,8 +10,9 @@
 <!--                    <p v-else>Last opened {{ this.openedAt }} by Artem</p>-->
                 </div>
             </div>
-            <div class="remove align-items-end align-self-end remove">
-                <a :href="deleteUrlId" class="btn btn-outline-danger">Remove</a>
+            <div class="d-block align-items-end align-self-end remove">
+                <a :href="deleteUrlId" class="btn btn-outline-danger h-auto">Remove</a>
+                <a :href="editUrlId" class="btn btn-outline-secondary">Edit</a>
             </div>
         </div>
     </a>
@@ -31,14 +31,12 @@ export default {
         lastUserOpened: "",
         lastTimeOpened: ""
     },
-    data() {
-        return {
-            deleteUrl: "/deleteDocumentService/"
-        }
-    },
     computed: {
         deleteUrlId: function () {
-            return this.deleteUrl + this.id;
+            return "/deleteDocumentService/" + this.id;
+        },
+        editUrlId: function () {
+          return '/editDocument/' + this.id
         },
         csrfToken: function () {
                 return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -85,11 +83,6 @@ export default {
         border-radius: 7px;
         border: 2px solid #74787e;
         box-shadow: 5px 5px 0 0 #adacac;
-
-    }
-
-
-    a {
         display: block;
         text-decoration: none;
         color: #1b1e21;
@@ -100,7 +93,10 @@ export default {
         width: auto;
     }
 
+
+
     .remove {
         z-index: 100;
+        margin-left: 20px;
     }
 </style>

@@ -23,4 +23,9 @@ class DocumentController extends Controller
         $id = request("id");
         DocumentService::openDocument($id);
     }
+
+    public function editDocument(Request $request): void
+    {
+        DocumentService::editDocument($request);
+    }
 }
