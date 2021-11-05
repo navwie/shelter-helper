@@ -264,11 +264,12 @@ Route::get('/board', function () {
     ]);
 });
 
-Route::get('/createCard', function () {
+Route::get('/createCard/{category}', function ($category) {
     return view('createCard', [
         'name' => session()->get('name'),
         'surname' => session()->get('surname'),
-        'activeProject' => ProjectService::getProjectBySession()
+        'activeProject' => ProjectService::getProjectBySession(),
+        'category' => $category
     ]);
 });
 
