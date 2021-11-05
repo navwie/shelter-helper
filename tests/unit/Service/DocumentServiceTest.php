@@ -17,8 +17,8 @@ class DocumentServiceTest extends \Codeception\Test\Unit
 
     protected function _before()
     {
-        session()->put("userId", 1);
-        session()->put('activeProject', 249);
+        session()->put("userId", 7);
+        session()->put('activeProject', 3);
         $this->document = Document::all()->first();
     }
 
