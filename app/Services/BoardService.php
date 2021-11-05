@@ -3,8 +3,8 @@
 namespace App\Services;
 
 use App\Http\Requests\CreateCardRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use phpDocumentor\Reflection\Types\True_;
 
 class BoardService
 {
@@ -144,6 +144,12 @@ class BoardService
         ]);
 
         header('location: /board');
+        return true;
+    }
+
+    public static function deleteCard(Request $request): bool
+    {
+        DB::table('cards')->delete($request->id);
         return true;
     }
 }
