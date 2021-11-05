@@ -13,7 +13,11 @@
             <div class="form-group mt-4">
                 <label for="category"><h5>Category</h5></label>
                 <select name="category" id="category" class="form-select">
-                    <option selected value="backlog">Product backlog</option>
+                    <option :selected="category === 'backlog'" value="backlog">Product backlog</option>
+                    <option :selected="category === 'toDo'" value="toDo">To do</option>
+                    <option :selected="category === 'inProgress'" value="inProgress">In progress</option>
+                    <option :selected="category === 'testing'" value="testing">Testing</option>
+                    <option :selected="category === 'done'" value="done">Done</option>
                 </select>
             </div>
             <div class="form-group mt-4">
@@ -31,6 +35,9 @@
 <script>
 export default {
     name: "CreateCard",
+    props: {
+        category: "",
+    },
     data() {
         return {
             name: "",
