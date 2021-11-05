@@ -40,14 +40,14 @@ export default {
         name() {
             this.formErrors.name = 'is-valid';
 
-            if (this.name.length < 5) {
+            if (this.name.length < 4) {
                 this.formErrors.name = 'is-invalid';
             }
         },
         description() {
             this.formErrors.description = 'is-valid';
 
-            if (this.description.length < 6) {
+            if (this.description.length < 4) {
                 this.formErrors.description = 'is-invalid';
             }
         }
