@@ -1,6 +1,7 @@
 <template>
     <div class="d-flex col-12 add-user container justify-content-center align-content-center mt-5">
-        <form action="/addUserToProjectService" method="get">
+        <form action="/addUserToProjectService" method="post">
+            <input type="hidden" name="_token" :value="this.csrfToken">
             <h1 class="h3 mb-5 fw-normal text-center">Add new user to your project</h1>
             <div class="form-group mt-4">
                 <label for="email"><h5>Email address</h5></label>
@@ -25,7 +26,12 @@
 
 <script>
 export default {
-    name: "AddUserToProject"
+    name: "AddUserToProject",
+    computed: {
+        csrfToken: function () {
+            return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        },
+    }
 }
 </script>
 

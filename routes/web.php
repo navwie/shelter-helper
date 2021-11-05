@@ -78,8 +78,7 @@ Route::get('/createDocument', function () {
     ]);
 });
 
-Route::match(
-    ['get', 'post'],
+Route::post(
     '/createDocumentService',
     [DocumentController::class, 'createDocument']
 )->name('createDocumentService');
@@ -138,8 +137,7 @@ Route::get('/createProject', function () {
     ]);
 });
 
-Route::match(
-    ['get', 'post'],
+Route::post(
     '/createProjectService',
     [ProjectController::class, 'createProject']
 )->name('createProjectService');
@@ -170,8 +168,7 @@ Route::get('/projectPage/{id}', function () {
     ]);
 })->name('projectPage');
 
-Route::match(
-    ['get', 'post'],
+Route::get(
     '/selectAndOpenProjectPage/{id}',
     [ProjectController::class, 'selectAndOpenProject']
 )->name('selectAndOpenProjectPage');
@@ -184,8 +181,7 @@ Route::get('/addUserToProject', function () {
     ]);
 });
 
-Route::match(
-    ['get', 'post'],
+Route::post(
     '/addUserToProjectService',
     [ProjectController::class, 'addUserToProject']
 )->name('addUserToProjectService');
@@ -273,8 +269,7 @@ Route::get('/createCard/{category}', function ($category) {
     ]);
 });
 
-Route::match(
-    ['get', 'post'],
+Route::post(
     '/createCardService',
     [BoardController::class, 'createCard']
 )->name('createCard');

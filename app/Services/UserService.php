@@ -24,7 +24,7 @@ class UserService
             'email' => $request['email'],
             'password' => $request['password']
         ]);
-        header("Location: /");
+        header("Location: /signUp");
 
         return true;
     }
@@ -45,7 +45,7 @@ class UserService
             session()->put('name', $userData->name);
             session()->put('surname', $userData->surname);
         }
-        header("Location: /");
+        header("Location: /projects");
 
         return true;
     }

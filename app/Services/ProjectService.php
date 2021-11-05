@@ -162,6 +162,7 @@ class ProjectService
             ]);
 
         }
+        header('location: /projectPage/' . $project->id);
         return true;
     }
 
