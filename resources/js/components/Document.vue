@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="d-block align-items-end align-self-end remove">
-                <a :href="deleteUrlId" class="btn btn-outline-danger h-auto">Remove</a>
+                <a href="#" class="btn btn-outline-danger h-auto" @click="deleteDocument">Remove</a>
                 <a :href="editUrlId" class="btn btn-outline-secondary">Edit</a>
             </div>
         </div>
@@ -32,9 +32,6 @@ export default {
         lastTimeOpened: ""
     },
     computed: {
-        deleteUrlId: function () {
-            return "/deleteDocumentService/" + this.id;
-        },
         editUrlId: function () {
           return '/editDocument/' + this.id
         },
@@ -59,12 +56,18 @@ export default {
                 method: 'POST',
                 data: {
                     'id': this.id
+                }
+            });
+        },
+        deleteDocument: function () {
+            $.ajax({
+                url: '/deleteDocument',
+                method: 'DELETE',
+                data: {
+                    'id': this.id
                 },
                 success: function(){
-                    console.log('We did succeed!');
-                },
-                error: function(){
-                    console.log('We did not succeed!');
+                    window.location.replace('http://docker.scrum-dashboard/documents');
                 }
             });
         }
