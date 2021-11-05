@@ -2,6 +2,8 @@
 
 @section('content')
     <div id="app">
-        <create-card></create-card>
+        <create-card
+            category="{{ $category }}"
+        />
     </div>
 @endsection
