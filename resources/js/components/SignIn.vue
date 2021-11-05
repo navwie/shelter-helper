@@ -1,6 +1,7 @@
 <template>
     <div class="d-flex col-12 form-signin container justify-content-center align-content-center mt-5">
-        <form action="/signInService" method="get">
+        <form action="/signInService" method="post">
+            <input type="hidden" name="_token" :value="this.csrfToken">
             <h1 class="h3 mb-3 fw-normal text-center">Sign in</h1>
             <div class="form-group mt-4">
                 <label for="name">Name</label>
@@ -67,6 +68,11 @@ export default {
     updated() {
         let errors = Object.values(this.formErrors);
         this.active = errors.includes("is-invalid")
+    },
+    computed: {
+        csrfToken: function () {
+            return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        },
     },
     watch: {
         name() {
