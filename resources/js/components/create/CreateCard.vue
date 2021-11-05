@@ -1,6 +1,7 @@
 <template>
     <div class="d-flex col-12 form-signin container justify-content-center align-content-center mt-5">
-        <form action="/createCardService" method="get">
+        <form action="/createCardService" method="post">
+            <input type="hidden" name="_token" :value="this.csrfToken">
             <h1 class="h3 mb-3 fw-normal text-center">Create new task</h1>
             <div class="form-group mt-4">
                 <label for="name"><h5>Name</h5></label>
@@ -52,6 +53,11 @@ export default {
     updated() {
         let errors = Object.values(this.formErrors);
         this.active = errors.includes("is-invalid")
+    },
+    computed: {
+        csrfToken: function () {
+            return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        },
     },
     watch: {
         name() {
