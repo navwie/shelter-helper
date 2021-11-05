@@ -17,7 +17,7 @@ class ProjectServiceTest extends \Codeception\Test\Unit
     protected function _before()
     {
         session()->put('userId', 1);
-        session()->put('activeProject', 1);
+        session()->put('activeProject', 249);
     }
 
     protected function _after()
@@ -82,7 +82,7 @@ class ProjectServiceTest extends \Codeception\Test\Unit
 
     public function testDeleteProject()
     {
-        $project = Project::all()->first();
+        $project = Project::all()->last();
 
         $request = Request::create(
             '/deleteProject',

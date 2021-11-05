@@ -18,7 +18,7 @@ class BoardServiceTest extends \Codeception\Test\Unit
     protected function _before()
     {
         session()->put("userId", 1);
-        session()->put('activeProject', 1);
+        session()->put('activeProject', 249);
         $this->user = User::all()->first();
     }
 
