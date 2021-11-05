@@ -30,8 +30,13 @@ class BoardController extends Controller
         );
     }
 
-    public function assignUser($id):void
+    public function assignUser($id): void
     {
         BoardService::assignUser($id);
+    }
+
+    public function deleteCard(Request $request): void
+    {
+        BoardService::deleteCard($request);
     }
 }
