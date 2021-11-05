@@ -14,23 +14,30 @@ class ProjectController extends Controller
         ProjectService::createProject($request);
     }
 
-    public function deleteProject($id): void
+    public function deleteProject(Request $request): void
     {
-        ProjectService::deleteProject($id);
+        ProjectService::deleteProject($request);
     }
 
-    public function selectProject($id): void
+    public function selectProject(Request $request): void
     {
-        ProjectService::selectProject($id);
+        ProjectService::selectProject($request);
     }
 
-    public function selectAndOpenProjectPage($id):void
+    public function selectAndOpenProject($id):void
     {
-        ProjectService::selectProject($id);
+        $request = Request::create(
+          '/',
+          'GET',
+          [
+              'id' => $id
+          ]
+        );
+        ProjectService::selectProject($request);
         header('location: /projectPage/' . $id);
     }
 
-    public function unselectProject(): void
+    public function unselectProject(Request $request): void
     {
         ProjectService::unselectProject();
     }

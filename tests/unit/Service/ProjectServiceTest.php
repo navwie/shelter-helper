@@ -82,24 +82,32 @@ class ProjectServiceTest extends \Codeception\Test\Unit
 
     public function testDeleteProject()
     {
-        $request = CreateProjectRequest::create(
-            '/createProjectService',
-            'GET',
+        $project = Project::all()->first();
+
+        $request = Request::create(
+            '/deleteProject',
+            'DELETE',
             [
-                'name' => 'Test project',
-                'description' => 'My test project',
-                'some data' => 'some data'
+                'id' => $project->id
             ]
         );
 
-        $id = ProjectService::createProject($request);
-        $this->assertTrue(ProjectService::deleteProject($id));
+        $this->assertTrue(ProjectService::deleteProject($request));
     }
 
     public function testSelectProject()
     {
-        $project = Project::factory()->make();
-        $this->assertTrue(ProjectService::selectProject($project->id));
+        $project = Project::all()->first();
+
+        $request = Request::create(
+            '/deleteProject',
+            'DELETE',
+            [
+                'id' => $project->id
+            ]
+        );
+
+        $this->assertTrue(ProjectService::selectProject($request));
     }
 
     public function testUnSelectProject()

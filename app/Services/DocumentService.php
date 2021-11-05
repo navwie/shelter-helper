@@ -65,16 +65,14 @@ class DocumentService
      *
      * @param $id
      */
-    public static function deleteDocument($id): bool
+    public static function deleteDocument(Request $request): bool
     {
-        $document = Document::find($id);
+        $document = Document::find($request->id);
         $user = User::find(session()->get("userId"));
 
         Notification::sendNow($user, new DeleteDocumentNotification($document));
 
-        DB::table('documents')->delete($id);
-
-        header("Location: /documents");
+        DB::table('documents')->delete($request->id);
         return true;
     }
 

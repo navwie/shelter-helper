@@ -49,7 +49,14 @@ class DocumentServiceTest extends \Codeception\Test\Unit
 
     public function testDeleteDocument()
     {
-        $this->assertTrue(DocumentService::deleteDocument($this->document->id));
+        $request = Request::create(
+            "/deleteDocument",
+            'DELETE',
+            [
+                'id' => $this->document->id
+            ]
+        );
+        $this->assertTrue(DocumentService::deleteDocument($request));
     }
 
     public function testOpenDocument()
@@ -62,7 +69,7 @@ class DocumentServiceTest extends \Codeception\Test\Unit
         $document = Document::factory()->make();
 
         $request = Request::create(
-            "/editProjectService" . $document->id,
+            "/editDocumentService" . $document->id,
             'PUT',
             [
                 'id' => $document->id,
@@ -74,7 +81,7 @@ class DocumentServiceTest extends \Codeception\Test\Unit
         $this->assertTrue(DocumentService::editDocument($request));
 
         $request = Request::create(
-            "/editProjectService" . $document->id,
+            "/editDocumentService" . $document->id,
             'PUT',
             [
                 'id' => '',

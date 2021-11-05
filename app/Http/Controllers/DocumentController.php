@@ -13,9 +13,9 @@ class DocumentController extends Controller
         DocumentService::createDocument($request);
     }
 
-    public function deleteDocument($id): void
+    public function deleteDocument(Request $request): void
     {
-        DocumentService::deleteDocument($id);
+        DocumentService::deleteDocument($request);
     }
 
     public function openDocument(): void

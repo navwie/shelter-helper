@@ -19,7 +19,7 @@
             </p>
         </div>
 
-        <a :href='this.editProject' class="btn-outline-secondary text-center edit-project mt-3">Edit project</a>
+        <a :href='this.editProject' class="btn btn-outline-secondary mt-3">Edit project</a>
 
         <div class="mt-3 p-4">
             <h3 class="text-center text-decoration-underline">Users</h3>
@@ -101,9 +101,5 @@ export default {
         font-size: 19px;
     }
 
-    .edit-project {
-        text-decoration: none;
-        font-size: 18px;
-    }
 
 </style>
