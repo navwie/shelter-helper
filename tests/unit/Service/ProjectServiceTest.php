@@ -16,8 +16,8 @@ class ProjectServiceTest extends \Codeception\Test\Unit
 
     protected function _before()
     {
-        session()->put('userId', 1);
-        session()->put('activeProject', 249);
+        session()->put('userId', 7);
+        session()->put('activeProject', 3);
     }
 
     protected function _after()
