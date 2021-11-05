@@ -1,5 +1,15 @@
 <template>
     <div class="col-8 mt-3 card">
+        <input type="hidden" name="_token" :value="this.csrfToken">
+        <div class="delete-card">
+            <a href="#" class="text-decoration-none btn-light" @click="deleteCard">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"></path>
+                    <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"></path>
+                </svg>
+            </a>
+        </div>
+
         <h5 class="card-name">{{ this.name }}</h5>
         <h6 class="card-description">{{ this.description }}</h6>
         <h6 :class="'deadline mt-2 ' + this.checkDeadline">{{ this.formatDeadline }}</h6>
@@ -42,6 +52,25 @@ export default {
             assignUserLink: "/assignUser/"
         }
     },
+    methods: {
+        deleteCard: function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': this.csrfToken
+                }
+            });
+            $.ajax({
+                url: '/deleteCard',
+                method: 'DELETE',
+                data: {
+                    'id': this.id
+                },
+                success: function () {
+                    window.location.replace('http://docker.scrum-dashboard/board');
+                }
+            });
+        }
+    },
     computed: {
         formatDeadline: function () {
             return moment(this.deadline).format("MMMM Do YYYY, h:mm:a");
@@ -59,7 +88,10 @@ export default {
         },
         assignUserLinkId: function () {
             return this.assignUserLink + this.id;
-        }
+        },
+        csrfToken: function () {
+            return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        },
     }
 }
 </script>
@@ -82,5 +114,11 @@ export default {
         margin-top: 1.5em;
         border: none;
         width: 97%;
+    }
+
+    .delete-card {
+        position: absolute;
+        top: 0px;
+        right: 5px;
     }
 </style>
