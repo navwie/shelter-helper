@@ -17,8 +17,8 @@ class BoardServiceTest extends \Codeception\Test\Unit
 
     protected function _before()
     {
-        session()->put("userId", 1);
-        session()->put('activeProject', 249);
+        session()->put("userId", 7);
+        session()->put('activeProject', 3);
         $this->user = User::all()->first();
     }
 
@@ -61,7 +61,8 @@ class BoardServiceTest extends \Codeception\Test\Unit
 
     public function testAssignUser()
     {
-        $this->assertTrue(BoardService::assignUser($this->user->id));
+        $card = Card::all()->first();
+        $this->assertTrue(BoardService::assignUser($card->id));
     }
 
     public function testGetBoardByProjectSession()
