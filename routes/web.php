@@ -17,6 +17,7 @@ use App\Services\NotificationService;
 use App\Services\BoardService;
 
 use App\Models\Document;
+use App\Models\Card;
 
 
 /*
@@ -280,8 +281,7 @@ Route::match(
     [BoardController::class, 'saveCards']
 )->name('saveCards');
 
-Route::match(
-    ['get', 'post'],
+Route::get(
     '/assignUser/{id}',
     [BoardController::class, 'assignUser']
 )->name('assignUser');
@@ -290,6 +290,22 @@ Route::delete(
     '/deleteCard',
     [BoardController::class, 'deleteCard']
 )->name('deleteCard');
+
+Route::get(
+    '/editCard/{id}', function ($id) {
+    return view('editCard', [
+        'name' => session()->get('name'),
+        'surname' => session()->get('surname'),
+        'activeProject' => ProjectService::getProjectBySession(),
+        'card' => Card::find($id)
+    ]);
+    }
+)->name('editCard');
+
+Route::put(
+    '/editCardService',
+    [BoardController::class, 'editCard']
+)->name('editCardService');
 
 /*
 |--------------------------------------------------------------------------
