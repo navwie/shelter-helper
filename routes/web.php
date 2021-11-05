@@ -84,11 +84,10 @@ Route::match(
     [DocumentController::class, 'createDocument']
 )->name('createDocumentService');
 
-Route::match(
-    ['get', 'post'],
-    '/deleteDocumentService/{id}',
+Route::delete(
+    '/deleteDocument',
     [DocumentController::class, 'deleteDocument']
-)->name('deleteDocumentService');
+)->name('deleteDocument');
 
 Route::match(
     ['get', 'post'],
@@ -145,20 +144,17 @@ Route::match(
     [ProjectController::class, 'createProject']
 )->name('createProjectService');
 
-Route::match(
-    ['get', 'post'],
-    '/deleteProjectService/{id}',
+Route::delete(
+    '/deleteProject',
     [ProjectController::class, 'deleteProject']
-)->name('deleteProjectService');
+)->name('deleteProject');
 
-Route::match(
-    ['get', 'post'],
-    '/selectProject/{id}',
+Route::put(
+    '/selectProject',
     [ProjectController::class, 'selectProject']
 )->name('selectProject');
 
-Route::match(
-    ['get', 'post'],
+Route::put(
     '/unselectProject',
     [ProjectController::class, 'unselectProject']
 )->name('unselectProject');
@@ -177,7 +173,7 @@ Route::get('/projectPage/{id}', function () {
 Route::match(
     ['get', 'post'],
     '/selectAndOpenProjectPage/{id}',
-    [ProjectController::class, 'selectAndOpenProjectPage']
+    [ProjectController::class, 'selectAndOpenProject']
 )->name('selectAndOpenProjectPage');
 
 Route::get('/addUserToProject', function () {
@@ -293,6 +289,11 @@ Route::match(
     '/assignUser/{id}',
     [BoardController::class, 'assignUser']
 )->name('assignUser');
+
+Route::delete(
+    '/deleteCard',
+    [BoardController::class, 'deleteCard']
+)->name('deleteCard');
 
 /*
 |--------------------------------------------------------------------------
