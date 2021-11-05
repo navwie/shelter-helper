@@ -152,4 +152,17 @@ class BoardService
         DB::table('cards')->delete($request->id);
         return true;
     }
+
+    public static function editCard(Request $request): bool
+    {
+        DB::table('cards')
+            ->where('id', $request->id)
+            ->update([
+                'name' => $request->name,
+                'description' => $request->description,
+                'category' => $request->category,
+                'deadline' => $request->deadline
+            ]);
+        return true;
+    }
 }

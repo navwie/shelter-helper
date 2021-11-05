@@ -39,4 +39,9 @@ class BoardController extends Controller
     {
         BoardService::deleteCard($request);
     }
+
+    public function editCard(Request $request): void
+    {
+        BoardService::editCard($request);
+    }
 }
