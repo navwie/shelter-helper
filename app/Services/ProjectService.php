@@ -103,9 +103,9 @@ class ProjectService
      *
      * @param $id
      */
-    public static function deleteProject($id): bool
+    public static function deleteProject(Request $request): bool
     {
-        $project = Project::find($id);
+        $project = Project::find($request->id);
         $user = User::find(session()->get("userId"));
 
         $projectUser = DB::table('projects_users')
@@ -116,12 +116,11 @@ class ProjectService
         Notification::sendNow($user, new DeleteProjectNotification($project->name));
 
         if ($projectUser->role === "Owner") {
-            DB::table('projects')->delete($id);
+            DB::table('projects')->delete($request->id);
         } else {
             DB::table('projects_users')->delete($projectUser->id);
         }
 
-        header("Location: /projects");
         return true;
     }
 
@@ -130,11 +129,9 @@ class ProjectService
      *
      * @param $id
      */
-    public static function selectProject($id): bool
+    public static function selectProject(Request $request): bool
     {
-        session()->put("activeProject", $id);
-        header("Location: /projects");
-
+        session()->put("activeProject", $request->id);
         return true;
     }
 
@@ -144,7 +141,6 @@ class ProjectService
     public static function unselectProject(): bool
     {
         session()->pull("activeProject");
-        header("Location: /projects");
         return true;
     }
 
@@ -166,8 +162,6 @@ class ProjectService
             ]);
 
         }
-
-        header("location: /projectPage/" . $project->id);
         return true;
     }
 
