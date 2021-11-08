@@ -165,4 +165,12 @@ class BoardService
             ]);
         return true;
     }
+
+    public static function deleteAssign(Request $request): bool
+    {
+        DB::table('users_cards')
+            ->where('card_id', $request->id)
+            ->delete();
+        return true;
+    }
 }

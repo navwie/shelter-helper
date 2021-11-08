@@ -24,22 +24,33 @@
         <h6 :class="'deadline mt-2 ' + this.checkDeadline">{{ this.formatDeadline }}</h6>
         <div class="d-flex flex-row">
             <h6 class="mt-3">Workers: &nbsp</h6>
-                <div class="mt-3" v-if="this.assignUser !== undefined">
-                    <h6>
-                        <em>{{ this.assignUser['name'] }}</em>
-                        <em>{{ this.assignUser['surname'] }}</em>
-                    </h6>
-                </div>
-                <div v-else>
-                    <a :href="assignUserLinkId" class="assign-user text-black">
-                        <svg width="1.2em" height="2.5em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-                            <g transform="translate(0,4)">
-                            <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
-                            <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
-                            </g>
-                        </svg>
-                    </a>
-                </div>
+            <div class="d-flex flex-row mt-3" v-if="this.assignUser !== undefined">
+                <h6>
+                    <em>{{ this.assignUser['name'] }}</em>
+                    <em>{{ this.assignUser['surname'] }}</em>
+                </h6>
+
+                <a href="#" @click="deleteAssign" class="text-decoration-none text-black">
+                    <svg data-v-5c9575ff="" xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="currentColor" viewBox="0 0 16 16" preserveAspectRatio="xMinYMin meet" class="bi bi-person-dash">
+                        <g data-v-5c9575ff="" transform="translate(4,-2)">
+                            <path data-v-5c9575ff="" d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"></path>
+                            <path data-v-5c9575ff="" fill-rule="evenodd" d="M11 7.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z"></path>
+                        </g>
+                    </svg>
+                </a>
+
+            </div>
+
+            <div v-else>
+                <a :href="assignUserLink" class="assign-user text-black">
+                    <svg width="1.2em" height="2.5em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+                        <g transform="translate(0,4)">
+                        <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+                        <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+                        </g>
+                    </svg>
+                </a>
+            </div>
         </div>
     </div>
 </template>
@@ -56,11 +67,6 @@ export default {
         deadline: "",
         assign_users: []
     },
-    data() {
-        return {
-            assignUserLink: "/assignUser/"
-        }
-    },
     methods: {
         deleteCard: function () {
             $.ajaxSetup({
@@ -70,6 +76,23 @@ export default {
             });
             $.ajax({
                 url: '/deleteCard',
+                method: 'DELETE',
+                data: {
+                    'id': this.id
+                },
+                success: function () {
+                    window.location.replace('http://docker.scrum-dashboard/board');
+                }
+            });
+        },
+        deleteAssign: function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': this.csrfToken
+                }
+            });
+            $.ajax({
+                url: '/deleteAssign',
                 method: 'DELETE',
                 data: {
                     'id': this.id
@@ -95,8 +118,8 @@ export default {
         assignUser: function () {
             return  this.assign_users.find(user => user.card_id === this.id);
         },
-        assignUserLinkId: function () {
-            return this.assignUserLink + this.id;
+        assignUserLink: function () {
+            return "/assignUser/" + this.id;
         },
         editCard: function () {
             return '/editCard/' + this.id;
