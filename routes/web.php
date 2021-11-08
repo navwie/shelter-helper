@@ -307,6 +307,11 @@ Route::put(
     [BoardController::class, 'editCard']
 )->name('editCardService');
 
+Route::delete(
+    '/deleteAssign',
+    [BoardController::class, 'deleteAssign']
+)->name('deleteAssign');
+
 /*
 |--------------------------------------------------------------------------
 | Reports Routes
