@@ -4,19 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
 
-class User extends Model
+class Shelter extends Model
 {
     use HasFactory;
 
+
+    private $ID_user;
     private $Name;
-    private $Surname;
-    private $Email;
+    private $Address;
     private $Phone;
-    private $Password;
-    private $Role;
+    private $Email;
 
 
-    protected $table = 'User';
+    protected $table = 'Shelter';
 }
