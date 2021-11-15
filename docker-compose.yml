@@ -2,18 +2,18 @@ version: '3'
 services:
 
   #PHP Service
-  scrum-dashboard-app:
+  shelter-helper-app:
     build:
       context: .
       dockerfile: Dockerfile
     image: php:8.0.10-fpm
-    container_name: scrum-dashboard-app
+    container_name: shelter-helper-app
     restart: unless-stopped
     tty: true
     environment:
-      PHP_IDE_CONFIG: "serverName=docker.scrum-dashboard"
+      PHP_IDE_CONFIG: "serverName=shelter-helper"
       XDEBUG_SESSION: docker-server
-      SERVICE_NAME: scrum-dashboard-app
+      SERVICE_NAME: shelter-helper-app
       SERVICE_TAGS: dev
     working_dir: /var/www
     volumes:
@@ -23,9 +23,9 @@ services:
       - app-network
 
   #Nginx Service
-  scrum-dashboard-webserver:
+  shelter-helper-webserver:
     image: nginx:alpine
-    container_name: scrum-dashboard-webserver
+    container_name: shelter-helper-webserver
     restart: unless-stopped
     tty: true
     ports:
@@ -39,15 +39,15 @@ services:
       - app-network
 
   #MySQL Service
-  scrum-dashboard-db:
+  shelter-helper-db:
     image: mysql:5.7.22
-    container_name: scrum-dashboard-db
+    container_name: shelter-helper-db
     restart: unless-stopped
     tty: true
     ports:
       - "3310:3310"
     environment:
-      MYSQL_DATABASE: ScrumDashboard
+      MYSQL_DATABASE: ShelterHelper
       MYSQL_ROOT_PASSWORD: root
       SERVICE_TAGS: dev
       SERVICE_NAME: localhost

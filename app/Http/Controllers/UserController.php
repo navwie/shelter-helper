@@ -10,7 +10,7 @@ use App\Services\UserService;
 
 class UserController extends Controller
 {
-    public function signIn(SignInRequest $request): void
+    public function signIn(Request $request): void
     {
         UserService::signIn($request);
     }

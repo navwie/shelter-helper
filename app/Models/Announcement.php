@@ -5,10 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Board extends Model
+class Announcement extends Model
 {
     use HasFactory;
 
-    private $project_id;
+    private $ID_shelter;
+    private $Topic;
+    private $Description;
 
+
+
+    protected $table = 'Announcement';
 }

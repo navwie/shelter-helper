@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Http\Requests\SignUpRequest;
 use App\Models\User;
 use App\Http\Requests\SignInRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Laravel\Socialite\Facades\Socialite;
@@ -14,17 +15,19 @@ class UserService
     /**
      * Sign in new user
      *
-     * @param SignInRequest $request
+     * @param Request $request
      */
-    public static function signIn(SignInRequest $request): bool
+    public static function signIn(Request $request): bool
     {
-        DB::table('users')->insert([
-            'name' => $request['name'],
-            'surname' => $request['surname'],
-            'email' => $request['email'],
-            'password' => $request['password']
+        DB::table('User')->insert([
+            'Name' => $request['name'],
+            'Surname' => $request['surname'],
+            'Email' => $request['email'],
+            'Phone' => $request['phone'],
+            'Password' => $request['password'],
+            'Role'=> $request['role']
         ]);
-        header("Location: /signUp");
+        header("Location: /");
 
         return true;
     }
