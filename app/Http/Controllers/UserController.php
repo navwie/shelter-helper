@@ -25,5 +25,8 @@ class UserController extends Controller
         UserService::logOut();
 
     }
-
+    public function profile($id): void
+    {
+        UserService::profile($id);
+    }
 }

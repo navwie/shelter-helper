@@ -18,6 +18,7 @@ window.Vue = require('vue').default;
 
 import 'material-icons/iconfont/material-icons.css';
 
+
 //defined as global component
 Vue.component('V-MaterialIcon', require('vue-materials-icon/MaterialIcon').default);
 
@@ -27,6 +28,13 @@ Vue.component('navbar', require('./components/Navbar.vue').default);
 Vue.component('sign-up', require('./components/SignUp.vue').default);
 Vue.component('sign-in', require('./components/SignIn.vue').default);
 Vue.component('main-page', require('./components/Main').default);
+Vue.component('user-page',require('./components/UserPage').default);
+Vue.component('create-shelter',require('./components/CreateShelter').default);
+Vue.component('shelter',require('./components/Shelter').default);
+Vue.component('user-profile',require('./components/UserProfile').default);
+Vue.component('user-change-data',require('./components/UserChangeData').default);
+Vue.component('admin-profile',require('./components/AdminProfile').default)
+Vue.component('contacts',require('./components/Contacts').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
