@@ -39,25 +39,40 @@ class UserService
      */
     public static function signUp(SignUpRequest $request): bool
     {
-        $userData = DB::table('users')
-            ->where('email', '=', $request['email'])
-            ->where('password', '=', $request['password'])
+        $userData = DB::table('User')
+            ->where('Email', '=', $request['email'])
+            ->where('Password', '=', $request['password'])
             ->first();
         if (is_object($userData)) {
             session()->put('userId', $userData->id);
-            session()->put('name', $userData->name);
-            session()->put('surname', $userData->surname);
+            session()->put('userRole', $userData->Role);
+            if ($userData->Role === 0) {
+                header("location: /UserPage");
+            } else {
+                $shelter = DB::table('Shelter')->where('ID_user', $userData->id)->first();
+                if(is_object($shelter)){
+                    header('location: /Shelter');
+                } else {
+                    header('location: /CreateShelter');
+                }
+            }
         }
-        header("Location: /projects");
-
         return true;
     }
 
-    /**
-     * Return is user authorize or not
-     *
-     * @return bool
-     */
+    public static function profile($id)
+    {
+        $user = DB::table("User")
+            ->where('id', $id)
+            ->first();
+
+        if ($user->Role === 0){
+            header("location: /UserProfile");
+        } else {
+            header('location: /AdminProfile'); // create admin page
+        }
+    }
+
     public static function isAuth(): bool
     {
         if(session()->get('userId') !== null) {
@@ -72,77 +87,15 @@ class UserService
      */
     public static function logOut(): bool
     {
-        session()->pull('id');
-        session()->pull('name');
-        session()->pull('surname');
-        session()->pull('activeProject');
+        session()->pull('userId');
+        session()->pull('userRole');
         header("Location: /");
         return true;
     }
 
-    /**
-     * Sign up with Google service
-     */
-    public static function googleSignUp(): bool
-    {
-        $googleUser = Socialite::driver('google')->user();
 
-        $user = DB::table('users')
-            ->where("google_id", "=", $googleUser->getId())
-            ->first();
-        if($user === null) {
-            $id = DB::table('users')->insertGetId([
-                'name' => $googleUser['given_name'],
-                'surname' => $googleUser["family_name"],
-                'email' => $googleUser['email'],
-                'google_id' => $googleUser->getId()
-            ]);
-            session()->put('userId', $id);
-        } else {
-            session()->put('userId', $user->id);
-        }
-
-        session()->put('name', $googleUser['given_name']);
-        session()->put('surname', $googleUser['family_name']);
-        header("Location: /");
-        return true;
-    }
-
-    /**
-     * Sign up with Facebook service
-     */
-    public static function facebookSignUp(): void
-    {
-        $facebookUser = Socialite::driver('facebook')->user();
-        $fullName = explode(" ", $facebookUser['name']);
-        $user = DB::table('users')
-            ->where("facebook_id", "=", $facebookUser->getId())
-            ->first();
-
-        if($user === null) {
-            $id = DB::table('users')->insertGetId([
-                'name' => $fullName[0],
-                'surname' => $fullName[1],
-                'email' => $facebookUser['email'],
-                'facebook_id' => $facebookUser->getId()
-            ]);
-            session()->put('userId', $id);
-        } else {
-            session()->put('userId', $user->id);
-        }
-
-        session()->put('name', $fullName[0]);
-        session()->put('surname', $fullName[1]);
-        header("Location: /");
-    }
-
-    /**
-     * Return user that authorised now
-     *
-     * @return mixed
-     */
     public static function getUserBySession()
     {
-        return User::find(session()->get("userId"));
+        return json_encode(User::find(session()->get("userId")));
     }
 }
