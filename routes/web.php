@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Models\Animal;
+
 use App\Http\Controllers\UserController;
 
 
