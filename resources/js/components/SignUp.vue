@@ -1,10 +1,10 @@
 <template>
-    <div class="page">
+    <div class="SingUp">
         <div class="SignPage">
             <div class="d-flex col-12 form-signin container justify-content-center ">
                 <form action="/signUpService" method="post">
                     <input type="hidden" name="_token" :value="this.csrfToken">
-                    <h1 class="h3  fw-normal text-center">Вхід</h1>
+                    <h1 class="h3  fw-normal text-center">{{ $t("signUp.h1") }}</h1>
                     <div class="form-group mt-4">
                         <label for="email">Електронна пошта</label>
                         <input v-model="email" type="email" :class="'form-control ' + formErrors.email" id="email" name="email" placeholder="name@example.com">

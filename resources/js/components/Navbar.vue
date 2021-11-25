@@ -13,16 +13,21 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav col-12 mb-2 text-center justify-content-center mb-md-0">
                             <li v-if="role === ''"><div class="enter">
-                                <a type="button" href="/signIn" class="nav-link link-dark px-2">Реєстрація</a>
-                                <a type="button" href="/" class="nav-link link-dark px-2">Увійти</a>
+                                <a type="button" href="/signIn" class="nav-link link-dark px-2">{{ $t("navbar.registration") }}</a>
+                                <a type="button" href="/" class="nav-link link-dark px-2">{{ $t("navbar.enter") }}</a>
                             </div></li>
                             <li v-if="user !== ''"><div class="profileElem">
-                                <a type="button" :href="mainUrlId" class="nav-link link-dark px-2">Головна</a>
-                                <a type="button"  :href="profileUrlId" class="nav-link link-dark px-2">Профіль</a>
-                                <a type="button" href="/logOut" class="nav-link link-dark px-2">Вийти</a>
+                                <a type="button" :href="mainUrlId" class="nav-link link-dark px-2">{{ $t("navbar.main") }}</a>
+                                <a type="button"  :href="profileUrlId" class="nav-link link-dark px-2">{{ $t("navbar.profile") }}</a>
+                                <a type="button" href="/logOut" class="nav-link link-dark px-2">{{ $t("navbar.exit") }}</a>
                             </div></li>
-                            <li><a type="button" href="/contacts" class="nav-link link-dark px-2">Контакти</a></li>
-                            <li><a type="button" href="/" class="nav-link link-dark px-2">Ua</a></li>
+                            <li><a type="button" href="/contacts" class="nav-link link-dark px-2">{{ $t("navbar.contacts") }}</a></li>
+                            <li><a class="nav-link link-dark px-2 dropdown-toggle " href="#" role="button" id="dropdownMenuLinkLan" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ua</a>
+                                <div class="dropdown-menu" id = "lang" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item"  @click="setLocale('en')" href="#">En</a>
+                                    <a class="dropdown-item" @click="setLocale('ua')" href="#">Ua</a>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -37,6 +42,12 @@ export default {
     props:{
         user:"",
         role:"",
+    },
+    methods: {
+        setLocale: function (locale) {
+            localStorage.setItem('locale', locale);
+            window.location.reload();
+        }
     },
     computed:{
         profileUrlId: function (){

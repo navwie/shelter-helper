@@ -17,6 +17,54 @@ window.Vue = require('vue').default;
  */
 
 import 'material-icons/iconfont/material-icons.css';
+import VueI18n from 'vue-i18n'
+
+Vue.use(VueI18n)
+
+
+const messages = {
+    en: {
+        navbar: {
+            main: 'Main',
+            exit: 'Exit',
+            contacts: 'Contacts',
+            profile: 'Profile',
+            enter: 'Enter',
+            registration:'Registration',
+        },
+        signUp:{
+            h1: 'Enter',
+            email:'Email',
+            password:'Password',
+            href:'Not registered yet?'
+
+
+        }
+
+    },
+    ua: {
+        navbar: {
+            main: 'Головна',
+            exit: 'Увійти',
+            contacts: 'Контакти',
+            profile: 'Профіль',
+            enter: 'Вхід',
+            registration:'Реєстрація',
+        },
+        signUp: {
+            h1: 'Вхід',
+            email:'Пошта',
+            password:'Пароль',
+            href:'Ще не зареєстровані?'
+        }
+    }
+}
+
+
+const i18n = new VueI18n({
+    locale: 'en', // set locale
+    messages, // set locale messages
+})
 
 //defined as global component
 Vue.component('V-MaterialIcon', require('vue-materials-icon/MaterialIcon').default);
@@ -55,9 +103,15 @@ Vue.component('animal-card', require('./components/AnimalCard.vue').default);
  */
 
 const app = new Vue({
+    i18n,
     el: '#app',
 });
 
 const navbar = new Vue({
+    i18n,
     el: '#navbar',
 })
+
+if(localStorage.getItem('locale') !== null) {
+    i18n.locale = localStorage.getItem('locale');
+}
