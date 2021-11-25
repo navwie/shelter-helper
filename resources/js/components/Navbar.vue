@@ -1,24 +1,31 @@
 <template>
     <header>
-        <nav class="py-2 bg-light border-bottom">
-            <div class="container">
-                <ul class="nav col-12 mb-2 text-center justify-content-center mb-md-0">
-                    <li class="nav-item"><a href="/documents" class="nav-link link-dark px-2 active" aria-current="page">Documents</a></li>
-                    <li class="nav-item"><a href="/board" class="nav-link link-dark px-2">Board</a></li>
-                    <li class="nav-item"><a href="/projects" class="nav-link link-dark px-2">Projects</a></li>
-                    <!--                    <li class="nav-item"><a href="/reports" class="nav-link link-dark px-2">Reports</a></li>-->
-                    <!--                    <li>
-                                            <div class="dropdown show">
-                                                <a class="nav-link link-dark dropdown-toggle" href="#" id="dropdownSettings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Settings
-                                                </a>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownSettings">
-                                                </div>
-                                            </div>
-                                        </li>-->
-                    <li><a type="button" href="/signIn" class="nav-link active">Регистрация</a></li>
-                    <li><a type="button" href="/signUp" class="btn btn-primary me-2">Увийты</a></li>
-                </ul>
+        <nav class="navbar navbar-expand-lg navbar-light" >
+            <div class="container-fluid">
+
+                <a class="navbar-brand" href="#">ShelterHelper</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="d-flex">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav col-12 mb-2 text-center justify-content-center mb-md-0">
+                            <li v-if="role === ''"><div class="enter">
+                                <a type="button" href="/signIn" class="nav-link link-dark px-2">Реєстрація</a>
+                                <a type="button" href="/" class="nav-link link-dark px-2">Увійти</a>
+                            </div></li>
+                            <li v-if="user !== ''"><div class="profileElem">
+                                <a type="button" :href="mainUrlId" class="nav-link link-dark px-2">Головна</a>
+                                <a type="button"  :href="profileUrlId" class="nav-link link-dark px-2">Профіль</a>
+                                <a type="button" href="/logOut" class="nav-link link-dark px-2">Вийти</a>
+                            </div></li>
+                            <li><a type="button" href="/contacts" class="nav-link link-dark px-2">Контакти</a></li>
+                            <li><a type="button" href="/" class="nav-link link-dark px-2">Ua</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>
@@ -26,17 +33,53 @@
 
 <script>
 export default {
-    name: "Navbar"
+    name: "Navbar",
+    props:{
+        user:"",
+        role:"",
+    },
+    computed:{
+        profileUrlId: function (){
+            return '/profile/'+ this.user;
+        },
+        mainUrlId:function (){
+            return '/mainPage/'+ this.user;
+        }
+    }
 }
 </script>
-
+<style>
+header{
+    background-color: #D1E8E2;
+    font-size: 22px;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+}
+</style>
 <style scoped>
-.nav-item {
-    margin: 0 10px 0 10px;
+.navbar-brand{
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 38px;
+    font-weight: 700;
+    font-style:italic;
+    margin-left:20px;
 }
-
-.button {
-    margin-left: 50px;
+.enter{
+    display: flex;
+    justify-content: space-between;
 }
-
+.profileElem{
+    display: flex;
+    justify-content: space-between;
+}
+ul li a:hover{
+    color:blue;
+    text-decoration: underline;
+}
+.d-flex a{
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    margin-right:20px;
+}
 </style>

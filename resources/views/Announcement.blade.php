@@ -3,7 +3,7 @@
 @section('content')
     <div id="app">
         <announcement
-
+            announcements="{{ $announcements }}"
         />
-    </div>
+    </div>с
 @endsection

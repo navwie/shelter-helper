@@ -1,20 +1,27 @@
 <template>
-    <div class="d-flex col-12 form-signin container justify-content-center align-content-center mt-5">
-        <form action="/signUpService" method="post">
-            <input type="hidden" name="_token" :value="this.csrfToken">
-            <h1 class="h3 mb-3 fw-normal text-center">Sign up</h1>
-            <div class="form-group mt-4">
-                <label for="email">Email address</label>
-                <input v-model="email" type="email" :class="'form-control ' + formErrors.email" id="email" name="email" placeholder="name@example.com">
+    <div class="page">
+        <div class="SignPage">
+            <div class="d-flex col-12 form-signin container justify-content-center ">
+                <form action="/signUpService" method="post">
+                    <input type="hidden" name="_token" :value="this.csrfToken">
+                    <h1 class="h3  fw-normal text-center">Вхід</h1>
+                    <div class="form-group mt-4">
+                        <label for="email">Електронна пошта</label>
+                        <input v-model="email" type="email" :class="'form-control ' + formErrors.email" id="email" name="email" placeholder="name@example.com">
+                    </div>
+                    <div class="form-group mt-4">
+                        <label for="password">Пароль</label>
+                        <input v-model="password" type="password" :class="'form-control ' + formErrors.password" id="password" name="password" placeholder="Пароль">
+                    </div>
+                    <div class="form-group text-center">
+                        <button class="btn btn-primary" type="submit" :disabled="active">Увійти</button>
+                    </div>
+                    <div class="form-group text-center">
+                        <a href="/signIn">Ще не зареєстровані?</a>
+                    </div>
+                </form>
             </div>
-            <div class="form-group mt-4">
-                <label for="password">Password</label>
-                <input v-model="password" type="password" :class="'form-control ' + formErrors.password" id="password" name="password" placeholder="Password">
-            </div>
-            <div class="form-group text-center">
-                <button class="btn btn-primary" type="submit" :disabled="active">Sign up</button>
-            </div>
-        </form>
+        </div>
     </div>
 </template>
 
@@ -57,7 +64,59 @@ export default {
 </script>
 
 <style scoped>
-    form {
-        margin-top: 7em;
-    }
+h1{
+    margin-top:20px;
+    margin-bottom: 40px;
+    color:#000;
+    font-size: 38px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+.SignPage{
+    margin: 60px auto;
+    max-width: 650px;
+    padding: 40px 20px;
+    background:#D1E8E2;
+    border-radius: 40px;
+    position: relative;
+    text-shadow: none;
+    box-shadow: 0 3px 5px 0 rgba(0,0,0,0.31);
+}
+.form-group{
+    display: flex;
+    justify-content: space-between;
+}
+.form-group label{
+    color:#2C3531;
+    top:5px;
+    position: relative;
+    right: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+}
+.form-group button{
+    margin-top: 20px;
+    position:relative;
+    margin-left:180px;
+    width: 40%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    border-radius:10px;
+}
+.form-group a{
+    margin-top: 20px;
+    position:relative;
+    margin-left:200px;
+    color:#000;
+    font-family: 'Montserrat', sans-serif;
+}
+input{
+    margin-bottom: 18px;
+    width:300px;
+    position: relative;
+    left: 20px;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+}
 </style>

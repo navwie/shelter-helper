@@ -43,6 +43,11 @@ Vue.component('create-announcement', require('./components/CreateAnnouncement.vu
 Vue.component('contacts', require('./components/Contacts.vue').default);
 
 Vue.component('main-page', require('./components/Main').default);
+Vue.component('announcement-card', require('./components/AnnouncementCard').default);
+Vue.component('create-animal', require('./components/CreateAnimal.vue').default);
+Vue.component('edit-animal', require('./components/EditAnimal.vue').default);
+Vue.component('animal-card', require('./components/AnimalCard.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

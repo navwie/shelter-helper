@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Shelter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -23,5 +24,17 @@ class AnnouncementService
     {
         DB::table('Announcement')->delete($id);
         header('location: /announcement');
+    }
+
+    public static function getAnnouncementForUser()
+    {
+        $shelter = DB::table('Shelter')
+            ->where('ID_user', session()->get('userId'))
+            ->first();
+
+        return json_encode(DB::table('Announcement')
+            ->where('ID_shelter', $shelter->id)
+            ->get()
+        );
     }
 }

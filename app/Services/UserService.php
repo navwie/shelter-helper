@@ -37,7 +37,34 @@ class UserService
      *
      * @param SignUpRequest $request
      */
-    public static function signUp(Request $request): bool
+    public static function profile($id)
+    {
+        $user = DB::table("User")
+            ->where('id', $id)
+            ->first();
+
+        if ($user->Role === 0){
+            header("location: /userProfile");
+        } else {
+            header('location: /adminProfile'); // create admin page
+        }
+    }
+
+
+    public static function mainPage($id)
+    {
+        $user = DB::table("User")
+            ->where('id', $id)
+            ->first();
+
+        if ($user->Role === 0){
+            header("location: /userPage");
+        } else {
+            header('location: /shelter');
+        }
+    }
+
+    public static function signUp(SignUpRequest $request): bool
     {
         $userData = DB::table('User')
             ->where('Email', '=', $request['email'])
@@ -45,12 +72,18 @@ class UserService
             ->first();
         if (is_object($userData)) {
             session()->put('userId', $userData->id);
-            header("Location: /userPage");
-
-        } else {
-            header('Location: /signUp');
+            session()->put('userRole', $userData->Role);
+            if ($userData->Role == 0) {
+                header("location: /userPage");
+            } else {
+                $shelter = DB::table('Shelter')->where('ID_user', $userData->id)->first();
+                if(is_object($shelter)){
+                    header('location: /shelter');
+                } else {
+                    header('location: /createShelter');
+                }
+            }
         }
-
         return true;
     }
 
@@ -73,10 +106,8 @@ class UserService
      */
     public static function logOut(): bool
     {
-        session()->pull('id');
-        session()->pull('name');
-        session()->pull('surname');
-        session()->pull('activeProject');
+        session()->pull('userId');
+        session()->pull('userRole');
         header("Location: /");
         return true;
     }
@@ -88,11 +119,17 @@ class UserService
      */
     public static function getUserBySession()
     {
-        return User::find(session()->get("userId"));
+        return json_encode(User::find(session()->get("userId")));
     }
 
     public static function editUser(Request $request, $id)
     {
+
+        $userData = DB::table('User')
+            ->where('Email', '=', $request['email'])
+            ->where('Password', '=', $request['password'])
+            ->first();
+
         DB::table('User')
             ->where('id', $id)
             ->update([
@@ -101,10 +138,12 @@ class UserService
                 'Email' => $request['email'],
                 'Phone' => $request['phone'],
                 'Password' => $request['password'],
-                'Role' => $request['role'],
-
             ]);
 
-        header('Location: /userPage');
+        if ($userData->Role == 0) {
+            header("location: /userProfile");
+        } else {
+            header("location: /adminProfile");
+        }
     }
 }

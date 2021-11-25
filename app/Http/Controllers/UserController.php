@@ -15,7 +15,7 @@ class UserController extends Controller
         UserService::signIn($request);
     }
 
-    public function signUp(Request $request): void
+    public function signUp(SignUpRequest $request): void
     {
         UserService::signUp($request);
     }
@@ -30,5 +30,12 @@ class UserController extends Controller
     {
         UserService::editUser($request, $id);
     }
-
+    public function profile($id): void
+    {
+        UserService::profile($id);
+    }
+    public function mainPage($id): void
+    {
+        UserService::mainPage($id);
+    }
 }

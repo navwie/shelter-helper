@@ -1,28 +1,30 @@
 <template>
-    <div class="d-flex col-12 form-signin container justify-content-center align-content-center mt-5">
-        <form action="/createShelterService" method="post">
-            <input type="hidden" name="_token" :value="this.csrfToken">
-            <h1 class="h3 mb-3 fw-normal text-center">Створити притулок</h1>
-            <div class="form-group mt-4">
-                <label for="Name">Назва</label>
-                <input v-model="name" type="text" :class="'form-control ' + formErrors.name" id="name" name="name" placeholder="name">
-            </div>
-            <div class="form-group mt-4">
-                <label for="address">Адреса</label>
-                <input v-model="address" type="text" :class="'form-control ' + formErrors.address" id="address" name="address" placeholder="Адреса">
-            </div>
-            <div class="form-group mt-4">
-                <label for="phone">Телефон</label>
-                <input v-model="phone" type="phone" :class="'form-control ' + formErrors.phone" id="phone" name="phone" placeholder="Телефон">
-            </div>
-            <div class="form-group mt-4">
-                <label for="email">Пошта</label>
-                <input v-model="email" type="email" :class="'form-control ' + formErrors.email" id="email" name="email" placeholder="Пошта">
-            </div>
-            <div class="form-group text-center mt-4">
-                <button class="btn btn-primary" type="submit" :disabled="active">Створити</button>
-            </div>
-        </form>
+    <div class="SignPage">
+        <div class="d-flex col-12 form-signin container justify-content-center align-content-center mt-5">
+            <form action="/createShelterService" method="post">
+                <input type="hidden" name="_token" :value="this.csrfToken">
+                <h1 class="h3 mb-3 fw-normal text-center">Створити притулок</h1>
+                <div class="form-group mt-4">
+                    <label for="Name">Назва</label>
+                    <input v-model="name" type="text" :class="'form-control ' + formErrors.name" id="name" name="name" placeholder="Введіть назву притулку">
+                </div>
+                <div class="form-group mt-4">
+                    <label for="address">Адреса</label>
+                    <input v-model="address" type="text" :class="'form-control ' + formErrors.address" id="address" name="address" placeholder="Введіть адресу">
+                </div>
+                <div class="form-group mt-4">
+                    <label for="phone">Телефон</label>
+                    <input v-model="phone" type="phone" :class="'form-control ' + formErrors.phone" id="phone" name="phone" placeholder="Введіть телефон">
+                </div>
+                <div class="form-group mt-4">
+                    <label for="email">Пошта</label>
+                    <input v-model="email" type="email" :class="'form-control ' + formErrors.email" id="email" name="email" placeholder="Введіть пошту">
+                </div>
+                <div class="form-group  mt-4">
+                    <button class="btn btn-primary" type="submit" :disabled="active">Створити</button>
+                </div>
+            </form>
+        </div>
     </div>
 </template>
 
@@ -79,7 +81,55 @@ export default {
     },
 }
 </script>
-
 <style scoped>
+
+h1{
+    padding-bottom: 30px;
+    color:#000;
+    font-size: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-style: italic;
+}
+.SignPage{
+    margin: 40px auto;
+    max-width: 650px;
+    padding: 5px 20px 40px 20px;
+    background:#D1E8E2;
+    border-radius: 40px;
+    position: relative;
+    text-shadow: none;
+    box-shadow: 0 3px 5px 0 rgba(0,0,0,0.31);
+    margin-bottom: 90px;
+}
+.form-group{
+    display: flex;
+    justify-content: space-between;
+}
+.form-group label{
+    color:#2C3531;
+    top:5px;
+    position: relative;
+    right: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+}
+.form-group button{
+    position:relative;
+    margin-left:130px;
+    width: 40%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    border-radius:10px;
+}
+input{
+    margin-bottom: 18px;
+    width:350px;
+    position: relative;
+    left: 70px;
+    border-radius: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+}
 
 </style>

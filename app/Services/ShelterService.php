@@ -38,6 +38,6 @@ class ShelterService
                 'Email' => $request['email'],
             ]);
 
-        header('Location: /userPage');
+        header('Location: /adminProfile');
     }
 }

@@ -1,39 +1,34 @@
 <template>
-    <div class="d-flex col-12 form-signin container justify-content-center align-content-center mt-5">
-        <form :action=editLink method="post">
-            <input type="hidden" name="_token" :value="this.csrfToken">
-            <h1 class="h3 mb-3 fw-normal text-center">Змінення користувача</h1>
-            <div class="form-group mt-4">
-                <label for="Name">Ім'я</label>
-                <input v-model="name" type="text" :class="'form-control ' + formErrors.name" id="name" name="name" placeholder="Ім'я">
-            </div>
-            <div class="form-group mt-4">
-                <label for="surname">Прізвище</label>
-                <input v-model="surname" type="text" :class="'form-control ' + formErrors.surname" id="surname" name="surname" placeholder="Прізвище">
-            </div>
-            <div class="form-group mt-4">
-                <label for="email">Email address</label>
-                <input v-model="email" type="email" :class="'form-control ' + formErrors.email" id="email" name="email" placeholder="name@example.com">
-            </div>
-            <div class="form-group mt-4">
-                <label for="phone">Phone</label>
-                <input v-model="phone" type="phone" :class="'form-control ' + formErrors.phone" id="phone" name="phone" placeholder="phone">
-            </div>
-            <div class="form-group mt-4">
-                <label for="password">Password</label>
-                <input v-model="password" type="password" :class="'form-control ' + formErrors.password" id="password" name="password" placeholder="password">
-            </div>
-            <div class="form-group mt-4">
-                <label><h5>Role</h5></label>
-                <select name="role" id="role" class="form-select">
-                    <option value="1" selected>Адмін</option>
-                    <option value="0">Користувач</option>
-                </select>
-            </div>
-            <div class="form-group text-center mt-4">
-                <button class="btn btn-primary" type="submit" :disabled="active">Змінити</button>
-            </div>
-        </form>
+    <div class="sign-page">
+        <div class="d-flex col-12 form-signin container justify-content-center align-content-center mt-5">
+            <form :action=editLink method="post">
+                <input type="hidden" name="_token" :value="this.csrfToken">
+                <h1 class="h3 mb-3 fw-normal text-center">Змінення даних користувача</h1>
+                <div class="form-group mt-4">
+                    <label for="Name">Ім'я</label>
+                    <input v-model="name" type="text" :class="'form-control ' + formErrors.name" id="name" name="name" placeholder="Ім'я">
+                </div>
+                <div class="form-group mt-4">
+                    <label for="surname">Прізвище</label>
+                    <input v-model="surname" type="text" :class="'form-control ' + formErrors.surname" id="surname" name="surname" placeholder="Прізвище">
+                </div>
+                <div class="form-group mt-4">
+                    <label for="email">Електронна пошта</label>
+                    <input v-model="email" type="email" :class="'form-control ' + formErrors.email" id="email" name="email" placeholder="name@example.com">
+                </div>
+                <div class="form-group mt-4">
+                    <label for="phone">Номер телефону</label>
+                    <input v-model="phone" type="phone" :class="'form-control ' + formErrors.phone" id="phone" name="phone" placeholder="phone">
+                </div>
+                <div class="form-group mt-4">
+                    <label for="password">Пароль</label>
+                    <input v-model="password" type="password" :class="'form-control ' + formErrors.password" id="password" name="password" placeholder="password">
+                </div>
+                <div class="form-group text-center mt-4">
+                    <button class="btn btn-primary" type="submit" :disabled="active">Змінити</button>
+                </div>
+            </form>
+        </div>
     </div>
 </template>
 
@@ -118,4 +113,62 @@ export default {
 
 <style scoped>
 
+h3{
+    margin-top:20px;
+    color:#000;
+    font-size: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.sign-page{
+    margin: 40px auto;
+    max-width: 650px;
+    padding: 10px 20px 40px;
+    background:#D1E8E2;
+    border-radius: 40px;
+    position: relative;
+    text-shadow: none;
+    box-shadow: 0 3px 5px 0 rgba(0,0,0,0.31);
+    margin-bottom: 90px;
+}
+.form-group{
+    display: flex;
+    justify-content: space-between;
+}
+.form-group label{
+    color:#2C3531;
+    top:5px;
+    position: relative;
+    right: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+}
+.form-group button{
+    position:relative;
+    margin-left:140px;
+    width: 40%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    border-radius:10px;
+}
+input{
+    margin-bottom: 18px;
+    width:300px;
+    position: relative;
+    left: 20px;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+}
+.form-select{
+    position: relative;
+    left: 20px;
+    width:300px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    border-radius:10px;
+    margin-bottom: 10px;
+}
 </style>

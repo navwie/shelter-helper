@@ -1,47 +1,51 @@
 <template>
-    <div class="d-flex col-12 form-signin container justify-content-center align-content-center mt-5">
-        <form action="/createShelter" method="post">
-            <input type="hidden" name="_token" :value="this.csrfToken">
-            <h1 class="h3 mb-3 fw-normal text-center">Створити притулок</h1>
-            <div class="form-group mt-4">
-                <label for="Name">Назва</label>
-                <input v-model="name" type="text" :class="'form-control ' + formErrors.name" id="name" name="name" placeholder="name">
-            </div>
-            <div class="form-group mt-4">
-                <label for="address">Адреса</label>
-                <input v-model="address" type="text" :class="'form-control ' + formErrors.address" id="address" name="address" placeholder="Адреса">
-            </div>
-            <div class="form-group mt-4">
-                <label for="phone">Телефон</label>
-                <input v-model="phone" type="phone" :class="'form-control ' + formErrors.phone" id="phone" name="phone" placeholder="Телефон">
-            </div>
-            <div class="form-group mt-4">
-                <label for="email">Пошта</label>
-                <input v-model="email" type="email" :class="'form-control ' + formErrors.email" id="email" name="email" placeholder="Пошта">
-            </div>
-            <div class="form-group text-center mt-4">
-                <button class="btn btn-primary" type="submit" :disabled="active">Створити</button>
-            </div>
-        </form>
+    <div class="shelter-page">
+        <h1 class="text-center">{{ shelterData.Name }}</h1>
+        <p class="text-center">Ми дуже раді, що ви користуєтесь нашою системою і намагаємося зробити зручний інтерфейс</p>
+        <div class="buttons">
+            <a class="btn btn-primary" href="/createAnimal">Додати тварину</a>
+            <a class="btn btn-primary" href="/announcement">Об'яви</a>
+        </div>
+      <div class="card-ann">
+          <animal-card
+              v-for="animal in this.animalsData"
+              :key="animal.index"
+              :id="animal.id"
+              :name="animal.Name"
+              :age="animal.Age"
+              :sex="animal.Sex"
+              :img_url="animal.Img_URL"
+              :type="animal.Type"
+              :weight="animal.Weight"
+          />
+      </div>
     </div>
 </template>
 
 <script>
 export default {
     name: "Shelter",
-    data: () => ({
-        name: "",
-        address: "",
-        email: "",
-        phone: "",
-        formErrors: {
-            name: "is-invalid",
-            address: "is-invalid",
-            email: "is-invalid",
-            phone: "is-invalid",
-        },
-        active: true
-    }),
+    props: {
+        animals: [],
+        shelter: ''
+    },
+    data() {
+        return {
+            animalsData: JSON.parse(this.animals),
+            shelterData: JSON.parse(this.shelter),
+            name: "",
+            address: "",
+            email: "",
+            phone: "",
+            formErrors: {
+                name: "is-invalid",
+                address: "is-invalid",
+                email: "is-invalid",
+                phone: "is-invalid",
+            },
+            active: true
+        }
+    },
     updated() {
         let errors = Object.values(this.formErrors);
         this.active = errors.includes("is-invalid")
@@ -81,5 +85,29 @@ export default {
 </script>
 
 <style scoped>
-
+    .shelter-page h1{
+        margin-top: 50px;
+        font-size: 30px;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .shelter-page p{
+        margin-top: 20px;
+        font-size: 28px;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .buttons a{
+        text-decoration: none;
+        width: 220px;
+        font-size: 22px;
+        margin-left: 15px;
+        font-family: 'Montserrat', sans-serif;
+        border-radius: 15px;
+    }
+    .buttons{
+        margin-left: 680px;
+    }
+    .card-ann{
+        display: flex;
+        flex-wrap:wrap;
+    }
 </style>
