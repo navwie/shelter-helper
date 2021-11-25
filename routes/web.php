@@ -5,6 +5,12 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Animal;
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ShelterController;
+use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\AnimalController;
+
+use App\Services\ShelterService;
+use App\Services\UserService;
 
 
 
