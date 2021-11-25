@@ -27,7 +27,7 @@ class UserService
             'Password' => $request['password'],
             'Role'=> $request['role']
         ]);
-        header("Location: /");
+        header("Location: /signUp");
 
         return true;
     }
@@ -37,18 +37,19 @@ class UserService
      *
      * @param SignUpRequest $request
      */
-    public static function signUp(SignUpRequest $request): bool
+    public static function signUp(Request $request): bool
     {
-        $userData = DB::table('users')
-            ->where('email', '=', $request['email'])
-            ->where('password', '=', $request['password'])
+        $userData = DB::table('User')
+            ->where('Email', '=', $request['email'])
+            ->where('Password', '=', $request['password'])
             ->first();
         if (is_object($userData)) {
             session()->put('userId', $userData->id);
-            session()->put('name', $userData->name);
-            session()->put('surname', $userData->surname);
+            header("Location: /userPage");
+
+        } else {
+            header('Location: /signUp');
         }
-        header("Location: /projects");
 
         return true;
     }
@@ -81,62 +82,6 @@ class UserService
     }
 
     /**
-     * Sign up with Google service
-     */
-    public static function googleSignUp(): bool
-    {
-        $googleUser = Socialite::driver('google')->user();
-
-        $user = DB::table('users')
-            ->where("google_id", "=", $googleUser->getId())
-            ->first();
-        if($user === null) {
-            $id = DB::table('users')->insertGetId([
-                'name' => $googleUser['given_name'],
-                'surname' => $googleUser["family_name"],
-                'email' => $googleUser['email'],
-                'google_id' => $googleUser->getId()
-            ]);
-            session()->put('userId', $id);
-        } else {
-            session()->put('userId', $user->id);
-        }
-
-        session()->put('name', $googleUser['given_name']);
-        session()->put('surname', $googleUser['family_name']);
-        header("Location: /");
-        return true;
-    }
-
-    /**
-     * Sign up with Facebook service
-     */
-    public static function facebookSignUp(): void
-    {
-        $facebookUser = Socialite::driver('facebook')->user();
-        $fullName = explode(" ", $facebookUser['name']);
-        $user = DB::table('users')
-            ->where("facebook_id", "=", $facebookUser->getId())
-            ->first();
-
-        if($user === null) {
-            $id = DB::table('users')->insertGetId([
-                'name' => $fullName[0],
-                'surname' => $fullName[1],
-                'email' => $facebookUser['email'],
-                'facebook_id' => $facebookUser->getId()
-            ]);
-            session()->put('userId', $id);
-        } else {
-            session()->put('userId', $user->id);
-        }
-
-        session()->put('name', $fullName[0]);
-        session()->put('surname', $fullName[1]);
-        header("Location: /");
-    }
-
-    /**
      * Return user that authorised now
      *
      * @return mixed
@@ -144,5 +89,22 @@ class UserService
     public static function getUserBySession()
     {
         return User::find(session()->get("userId"));
+    }
+
+    public static function editUser(Request $request, $id)
+    {
+        DB::table('User')
+            ->where('id', $id)
+            ->update([
+                'Name' => $request['name'],
+                'Surname' => $request['surname'],
+                'Email' => $request['email'],
+                'Phone' => $request['phone'],
+                'Password' => $request['password'],
+                'Role' => $request['role'],
+
+            ]);
+
+        header('Location: /userPage');
     }
 }

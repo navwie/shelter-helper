@@ -1,8 +1,8 @@
 <template>
     <div class="d-flex col-12 form-signin container justify-content-center align-content-center mt-5">
-        <form action="/signInService" method="post">
+        <form :action=editLink method="post">
             <input type="hidden" name="_token" :value="this.csrfToken">
-            <h1 class="h3 mb-3 fw-normal text-center">Зарееструватись</h1>
+            <h1 class="h3 mb-3 fw-normal text-center">Змінення користувача</h1>
             <div class="form-group mt-4">
                 <label for="Name">Ім'я</label>
                 <input v-model="name" type="text" :class="'form-control ' + formErrors.name" id="name" name="name" placeholder="Ім'я">
@@ -31,7 +31,7 @@
                 </select>
             </div>
             <div class="form-group text-center mt-4">
-                <button class="btn btn-primary" type="submit" :disabled="active">Sign in</button>
+                <button class="btn btn-primary" type="submit" :disabled="active">Змінити</button>
             </div>
         </form>
     </div>
@@ -39,23 +39,36 @@
 
 <script>
 export default {
-    name: "SignIn",
-    data: () => ({
-        name: "",
-        surname: "",
-        email: "",
-        phone: "",
-        password: "",
-        role: "",
-        formErrors: {
-            name: "is-invalid",
-            surname: "is-invalid",
-            email: "is-invalid",
-            phone: "is-invalid",
-            password: "is-invalid"
-        },
-        active: true
-    }),
+    name: "UserChangeData",
+    props: {
+        user: {}
+    },
+    data() {
+        return {
+            userData: JSON.parse(this.user),
+            name: "",
+            surname: "",
+            email: "",
+            phone: "",
+            password: "",
+            role: "",
+            formErrors: {
+                name: "is-valid",
+                surname: "is-valid",
+                email: "is-valid",
+                phone: "is-valid",
+                password: "is-valid"
+            },
+            active: true
+        }
+    },
+    mounted() {
+        this.name = this.userData.Name;
+        this.surname = this.userData.Surname;
+        this.email = this.userData.Email;
+        this.phone = this.userData.Phone;
+        this.password = this.userData.Password;
+    },
     updated() {
         let errors = Object.values(this.formErrors);
         this.active = errors.includes("is-invalid")
@@ -64,6 +77,9 @@ export default {
         csrfToken: function () {
             return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
         },
+        editLink: function () {
+            return `/editUserService/${this.userData.id}`;
+        }
     },
     watch: {
         name() {
@@ -101,7 +117,5 @@ export default {
 </script>
 
 <style scoped>
-    form {
-        margin-top: 3em;
-    }
+
 </style>

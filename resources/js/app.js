@@ -26,6 +26,22 @@ Vue.component('navbar', require('./components/Navbar.vue').default);
 
 Vue.component('sign-up', require('./components/SignUp.vue').default);
 Vue.component('sign-in', require('./components/SignIn.vue').default);
+
+Vue.component('admin-profile', require('./components/AdminProfile.vue').default);
+
+Vue.component('user-page', require('./components/UserPage.vue').default);
+Vue.component('user-profile', require('./components/UserProfile.vue').default);
+Vue.component('user-change-data', require('./components/UserChangeData.vue').default);
+
+Vue.component('shelter', require('./components/Shelter.vue').default);
+Vue.component('create-shelter', require('./components/CreateShelter.vue').default);
+Vue.component('edit-shelter', require('./components/EditShelter.vue').default);
+
+Vue.component('announcement', require('./components/Announcement.vue').default);
+Vue.component('create-announcement', require('./components/CreateAnnouncement.vue').default);
+
+Vue.component('contacts', require('./components/Contacts.vue').default);
+
 Vue.component('main-page', require('./components/Main').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -2,6 +2,8 @@
 
 @section('content')
     <div id="app">
-        <main-page></main-page>
+        <shelter
+
+        />
     </div>
 @endsection

@@ -23,9 +23,31 @@ use App\Http\Controllers\UserController;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', function () {
-    return view('Main');
-});
+Route::get('/', fn() => view('SignUp'));
+
+Route::get('/shelter', fn() => view('Shelter'));
+Route::get('/createShelter', fn() => view('CreateShelter'));
+Route::get('/editShelter', fn() => view('EditShelter', ['shelter' => ShelterService::getShelterForUser()]));
+
+Route::post('/createShelterService', [ShelterController::class, 'createShelter']);
+Route::post('/editShelterService/{id}', [ShelterController::class, 'editShelter']);
+
+Route::get('/adminProfile', fn() => view('AdminProfile'));
+Route::get('/contacts', fn() => view('Contacts'));
+
+Route::get('/userPage', fn() => view('UserPage'));
+Route::get('/userChangeData', fn() => view('UserChangeData', ['user' => UserService::getUserBySession()]));
+Route::get('/userProfile', fn() => view('UserProfile'));
+
+Route::post('/editUserService/{id}', [UserController::class, 'editUser']);
+
+Route::get('/announcement', fn() => view('Announcement'));
+Route::get('/createAnnouncement', fn() => view('CreateAnnouncement'));
+
+Route::post('/createAnnouncementService', [AnnouncementController::class, 'createAnnouncement']);
+Route::get('/deleteAnnouncement/{id}', [AnnouncementController::class, 'deleteAnnouncement']);
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -33,9 +55,7 @@ Route::get('/', function () {
 |--------------------------------------------------------------------------
 */
 
-Route::get('/signUp', function () {
-    return view('signUp');
-});
+Route::get('/signUp', fn () => view('SignUp'));
 
 Route::match(
     ['get', 'post'],
@@ -43,9 +63,7 @@ Route::match(
     [UserController::class, 'signUp']
 )->name('signUp');
 
-Route::get('/signIn', function () {
-    return view('signIn');
-});
+Route::get('/signIn', fn () => view('SignIn'));
 
 Route::post(
     '/signInService',
