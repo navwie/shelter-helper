@@ -34,18 +34,82 @@ const messages = {
         },
         signUp:{
             h1: 'Enter',
-            email:'Email',
-            password:'Password',
             href:'Not registered yet?'
-
-
+        },
+        form:{
+            email:'Email:',
+            password:'Password:',
+            name:'Name:',
+            surname:'Surname:',
+            phone: 'Phone:',
+            asked: 'Are you admin or user?',
+            btnReg:'Registration',
+            btnEnter:'Enter',
+            nameAnimal:'Animal name:',
+            address:'Address:',
+            changeBtn:'Change',
+            deleteBtn:'Delete',
+            shelterName:'Shelter name:',
+            ageAnimal:'Age animal:',
+            typeAnimal:'Type animal:',
+            createBtn:'Create',
+            weightAnimal:'Weight animal:',
+            sexAnimal:'Sex animal:',
+            topicAnnouncement:'Topic announcement:',
+            descriptionAnnouncement:'Description announcement:'
+        },
+        signIn:{
+            banner:'Glad to welcome you to our ShelterHelper animal care system',
+            h3:'Please register to use our system',
+            title:'SingIn'
+        },
+        contacts:{
+            h2:'Write to us',
+            p:'Write or call us at the contacts below',
+            message:'Message',
+            btn:'Send',
+            skype:'Скайп',
+            telegram:'Телеграм'
+        },
+        shelter:{
+            p:'We are very glad that you use our system and try to make a user-friendly interface',
+            addAnimal:'Add animal',
+            announcement:'Announcement',
+            changeTitle:'Change shelter',
+        },
+        adminProfile:{
+            aboutPerson:'Data about You',
+            aboutShelter:'Data about shelter',
+            changePerson:'Change data about yourself',
+            changeShelter:'Change data about shelter',
+        },
+        user:{
+            changeUser:'Change data about User',
+            aboutUser:'Data about User',
+            h1:'Dear friend, we are very glad that you have decided to use our system',
+            p:'We have developed a convenient system so that you can quickly find the information you need:',
+            li1:'Choose the right city and get all the shelters in it',
+            li2:'View what animals are in it and find all the detailed information',
+            li3:'Donate money for the needs of shelters',
+            li4:'Find an animal you want to spend time with',
+            h2:'You can use all this in our mobile application "ShelterHelper", which you can find in PlayMarket',
+        },
+        announcement:{
+            announcementTitle:"Yours announcement",
+            addAnnouncement:"Add announcement",
+            createAnnouncement:"Create announcement",
+        },
+        animal:{
+            animalTitle:'Enter info about animal',
+            animalImg:'Img animal'
         }
+
 
     },
     ua: {
         navbar: {
             main: 'Головна',
-            exit: 'Увійти',
+            exit: 'Вихід',
             contacts: 'Контакти',
             profile: 'Профіль',
             enter: 'Вхід',
@@ -53,9 +117,76 @@ const messages = {
         },
         signUp: {
             h1: 'Вхід',
-            email:'Пошта',
-            password:'Пароль',
             href:'Ще не зареєстровані?'
+        },
+        form:{
+            email:'Електронна пошта:',
+            password:'Пароль:',
+            name:"Iм'я:",
+            surname:'Прізвище:',
+            phone: 'Номер телефону:',
+            asked: 'Ви адмін чи користувач:',
+            btnReg:'Зареєструватись',
+            btnEnter:'Увійти',
+            nameAnimal:'Кличка тварини:',
+            address:'Адреса:',
+            changeBtn:'Змінити',
+            deleteBtn:'Видалити',
+            createBtn:'Створити',
+            shelterName:'Назва:',
+            ageAnimal:'Вік тварини:',
+            sexAnimal:'Стать тварини:',
+            typeAnimal:'Вид тварини:',
+            weightAnimal:'Вага тварини:',
+            topicAnnouncement:"Тема об'яви:",
+            descriptionAnnouncement:"Опис об'яви:",
+
+        },
+        signIn:{
+            banner:'Раді вітати Вас у нашій системі допомоги тваринам ',
+            h3:'Зареєструйтесь, будь-ласка, щоб користуватися нашою системою',
+            title:'Зареєструватись'
+
+        },
+        contacts:{
+            h2:'Напишіть нам',
+            p:'Напишіть або наберіть нам за нижче вказаними контактами',
+            message:'Повідомлення',
+            btn:'Відправити',
+            skype:'Скайп',
+            telegram:'Телеграм'
+        },
+        shelter:{
+            p:'Ми дуже раді, що ви користуєтесь нашою системою і намагаємося зробити зручний інтерфейс',
+            addAnimal:'Додати тварину',
+            announcement:"Об'яви",
+            changeTitle:'Редагувати притулок',
+        },
+        adminProfile:{
+            aboutPerson:'Дані про Вас',
+            aboutShelter:'Дані про притулок',
+            changePerson:'Змінити дані про себе',
+            changeShelter:'Змінити дані про притулок',
+        },
+        user:{
+            changeUser:'Змінення даних користувача',
+            aboutUser:'Дані про Вас',
+            h1:'Дорогий друже, ми дуже раді, що ти вирішив скористуватися нашою системою',
+            p:'Щоб ти зміг швидко знаходити потрібну інформацію, ми розробили зручну систему:',
+            li1:'Обрати потрібне місто та отримати усі притулки в ньому',
+            li2:'Переглянути які є в ньому тварини та знайти усю детальну інформацію',
+            li3:'Задонатити гроші на потреби притулків',
+            li4:'Знайти тваринку з якою ви хочете провести час',
+            h2:'Все це ти зможешь використовувати в нашому мобільному додатку "ShelterHelper", який ви можете знайти в PlayMarket',
+        },
+        announcement:{
+            announcementTitle:"Ваші об'яви",
+            addAnnouncement:"Дати об'яву",
+            createAnnouncement:"Створити об'яву",
+        },
+        animal:{
+            animalTitle:'Внести дані про тварину',
+            animalImg:'Фото тварини'
         }
     }
 }

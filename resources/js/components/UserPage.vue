@@ -2,20 +2,20 @@
     <div class="userPage ">
         <div class="PageItems">
             <div class="items">
-                <h1 class="text-center">Дорогий друже, ми дуже раді, що ти вирішив скористуватися нашою системою</h1>
-                <p class="text-center">Щоб ти зміг швидко знаходити потрібну інформацію, ми розробили зручну систему:</p>
+                <h1 class="text-center">{{$t("user.h1")}}</h1>
+                <p class="text-center">{{$t("user.p")}}</p>
                 <ul class="rounded">
-                    <li>Обрати потрібне місто та отримати усі притулки в ньому</li>
-                    <li>Переглянути які є в ньому тварини та знайти усю детальну інформацію</li>
-                    <li>Задонатити гроші на потреби притулків</li>
-                    <li>Знайти тваринку з якою ви хочете провести час</li>
+                    <li>{{$t("user.li1")}}</li>
+                    <li>{{$t("user.li2")}}</li>
+                    <li>{{$t("user.li3")}}</li>
+                    <li>{{$t("user.li4")}}</li>
                 </ul>
             </div>
             <div class="items">
                 <img  src="https://scontent.fhrk2-1.fna.fbcdn.net/v/t39.30808-6/256148075_3061445684183319_1094536608817383091_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=K0-H6jBTk5UAX8pnBxp&tn=LOty3kmthzo0ldSh&_nc_ht=scontent.fhrk2-1.fna&oh=6ce6f56b277f089177fc6a6b30bc4168&oe=61A3DB7D" alt="">
             </div>
         </div>
-        <h2 class="text-center">Все це ти зможешь використовувати в нашому мобільному додатку "ShelterHelper", який ви можете знайти в PlayMarket</h2>
+        <h2 class="text-center">{{$t("user.h2")}}</h2>
     </div>
 </template>
 

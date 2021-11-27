@@ -6,18 +6,18 @@
                     <input type="hidden" name="_token" :value="this.csrfToken">
                     <h1 class="h3  fw-normal text-center">{{ $t("signUp.h1") }}</h1>
                     <div class="form-group mt-4">
-                        <label for="email">Електронна пошта</label>
+                        <label for="email">{{$t("form.email")}}</label>
                         <input v-model="email" type="email" :class="'form-control ' + formErrors.email" id="email" name="email" placeholder="name@example.com">
                     </div>
                     <div class="form-group mt-4">
-                        <label for="password">Пароль</label>
+                        <label for="password">{{$t("form.password")}}</label>
                         <input v-model="password" type="password" :class="'form-control ' + formErrors.password" id="password" name="password" placeholder="Пароль">
                     </div>
                     <div class="form-group text-center">
-                        <button class="btn btn-primary" type="submit" :disabled="active">Увійти</button>
+                        <button class="btn btn-primary" type="submit" :disabled="active">{{$t("form.btnEnter")}}</button>
                     </div>
-                    <div class="form-group text-center">
-                        <a href="/signIn">Ще не зареєстровані?</a>
+                    <div class="form-group ">
+                        <a href="/signIn">{{ $t("signUp.href") }}</a>
                     </div>
                 </form>
             </div>
@@ -37,6 +37,12 @@ export default {
         },
         active: 'true'
     }),
+    methods: {
+        setLocale: function (locale) {
+            localStorage.setItem('locale', locale);
+            window.location.reload();
+        }
+    },
     updated() {
         let errors = Object.values(this.formErrors);
         this.active = errors.includes("is-invalid")
@@ -97,7 +103,7 @@ h1{
 .form-group button{
     margin-top: 20px;
     position:relative;
-    margin-left:180px;
+    margin-left:130px;
     width: 40%;
     font-family: 'Montserrat', sans-serif;
     font-size: 24px;
@@ -106,7 +112,7 @@ h1{
 .form-group a{
     margin-top: 20px;
     position:relative;
-    margin-left:200px;
+    margin-left:130px;
     color:#000;
     font-family: 'Montserrat', sans-serif;
 }

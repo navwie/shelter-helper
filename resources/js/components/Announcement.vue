@@ -1,7 +1,7 @@
 <template>
     <div class="sign-page">
-        <h2 class="title text-center" >Ваші об'яви</h2>
-        <a class="btn text-center btn-primary" href="/createAnnouncement">Додати об'яву</a>
+        <h2 class="title text-center" >{{$t("announcement.announcementTitle")}}</h2>
+        <a class="btn text-center btn-primary" href="/createAnnouncement">{{$t("announcement.addAnnouncement")}}</a>
         <div class="card-ann">
             <announcement-card
                 v-for="announcement in this.announcementsData"
@@ -37,8 +37,8 @@ h2{
 .btn{
     font-family: 'Montserrat', sans-serif;
     font-size: 24px;
-    width: 250px;
-    margin-left: 800px;
+    width: 350px;
+    margin-left: 740px;
     border-radius: 10px;
 }
 .card-ann{

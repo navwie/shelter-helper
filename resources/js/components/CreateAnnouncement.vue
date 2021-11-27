@@ -3,10 +3,10 @@
         <div class="d-flex col-12 form-signin container justify-content-center align-content-center mt-5">
             <form action="/createAnnouncementService" method="post">
                 <input type="hidden" name="_token" :value="this.csrfToken">
-                <h1 class="h3 mb-3 fw-normal text-center">Створити об'яву</h1>
+                <h1 class="h3 mb-3 fw-normal text-center">{{$t("announcement.createAnnouncement")}}</h1>
                 <div class="form-items">
                     <div class="form-group mt-4">
-                        <label for="topic">Тема:</label>
+                        <label for="topic">{{$t("form.topicAnnouncement")}}</label>
                         <select v-model="topic" name="topic" >
                             <option value="Їжа">Їжа</option>
                             <option value="Посуд">Посуд</option>
@@ -16,12 +16,12 @@
                         <!--<input v-model="topic" type="text" :class="'form-control ' + formErrors.topic" id="topic" name="topic" placeholder="topic"> -->
                     </div>
                     <div class="form-group mt-4">
-                        <label for="description">Опис:</label>
+                        <label for="description">{{$t("form.descriptionAnnouncement")}}</label>
                         <textarea v-model="description" type="text" :class="'form-control ' + formErrors.description" id="description" name="description" placeholder="Опишіть потребу" />
                     </div>
                 </div>
                 <div class="form-group mt-4">
-                    <button class="btn btn-primary" type="submit" :disabled="active">Створити</button>
+                    <button class="btn btn-primary" type="submit" :disabled="active">{{$t("form.createBtn")}}</button>
                 </div>
             </form>
         </div>

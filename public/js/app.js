@@ -4399,7 +4399,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AdminProfile",
   props: {
@@ -5326,6 +5325,12 @@ __webpack_require__.r(__webpack_exports__);
       active: true
     };
   },
+  methods: {
+    setLocale: function setLocale(locale) {
+      localStorage.setItem('locale', locale);
+      window.location.reload();
+    }
+  },
   updated: function updated() {
     var errors = Object.values(this.formErrors);
     this.active = errors.includes("is-invalid");
@@ -5447,6 +5452,12 @@ __webpack_require__.r(__webpack_exports__);
       active: true
     };
   },
+  methods: {
+    setLocale: function setLocale(locale) {
+      localStorage.setItem('locale', locale);
+      window.location.reload();
+    }
+  },
   updated: function updated() {
     var errors = Object.values(this.formErrors);
     this.active = errors.includes("is-invalid");
@@ -5547,6 +5558,12 @@ __webpack_require__.r(__webpack_exports__);
       },
       active: 'true'
     };
+  },
+  methods: {
+    setLocale: function setLocale(locale) {
+      localStorage.setItem('locale', locale);
+      window.location.reload();
+    }
   },
   updated: function updated() {
     var errors = Object.values(this.formErrors);
@@ -5755,7 +5772,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
 //
 //
 //
@@ -10308,7 +10324,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nh2[data-v-4945c5b2]{\n    font-family: 'Montserrat', sans-serif;\n    font-size:40px;\n    margin: 40px 0 30px;\n}\n.btn[data-v-4945c5b2]{\n    font-family: 'Montserrat', sans-serif;\n    font-size: 24px;\n    width: 250px;\n    margin-left: 800px;\n    border-radius: 10px;\n}\n.card-ann[data-v-4945c5b2]{\n    display: flex;\n    flex-wrap:wrap;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nh2[data-v-4945c5b2]{\n    font-family: 'Montserrat', sans-serif;\n    font-size:40px;\n    margin: 40px 0 30px;\n}\n.btn[data-v-4945c5b2]{\n    font-family: 'Montserrat', sans-serif;\n    font-size: 24px;\n    width: 350px;\n    margin-left: 740px;\n    border-radius: 10px;\n}\n.card-ann[data-v-4945c5b2]{\n    display: flex;\n    flex-wrap:wrap;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10380,7 +10396,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nh3[data-v-2c4dd3fa]{\n    margin-top:20px;\n    color:#000;\n    font-size: 30px;\n    font-family: 'Montserrat', sans-serif;\n    font-weight: 500;\n    font-style: italic;\n}\n.title[data-v-2c4dd3fa]{\n    margin-bottom: 40px;\n    font-family: 'Montserrat', sans-serif;\n    font-size: 40px;\n}\n.SignPage[data-v-2c4dd3fa]{\n    margin: 40px auto;\n    max-width: 650px;\n    padding: 40px 20px;\n    background:#D1E8E2;\n    border-radius: 40px;\n    position: relative;\n    text-shadow: none;\n    box-shadow: 0 3px 5px 0 rgba(0,0,0,0.31);\n    margin-bottom: 90px;\n}\n.form-group[data-v-2c4dd3fa]{\n    display: flex;\n    justify-content: space-between;\n}\n.form-group-label[data-v-2c4dd3fa]{\n    color:#2C3531;\n    top:5px;\n    position: relative;\n    right: 10px;\n    font-family: 'Montserrat', sans-serif;\n    font-size: 22px;\n}\n.form-group button[data-v-2c4dd3fa]{\n    position:relative;\n    margin-left:180px;\n    width: 40%;\n    font-family: 'Montserrat', sans-serif;\n    font-size: 24px;\n    border-radius:10px;\n}\ninput[data-v-2c4dd3fa]{\n    margin-bottom: 18px;\n    width:300px;\n    position: relative;\n    left: 20px;\n    border-radius: 10px;\n    font-family: 'Montserrat', sans-serif;\n    font-size: 20px;\n}\n.form-check-input[data-v-2c4dd3fa]{\n    width:21px;\n    top: 5px;\n    border-radius: 100px;\n    font-family: 'Montserrat', sans-serif;\n    font-size: 20px;\n    position: relative;\n    margin-right: 61px;\n}\n.sex-choice[data-v-2c4dd3fa]{\n    display: flex;\n    justify-content: space-between;\n}\n.form-check-label[data-v-2c4dd3fa]{\n    color:#2C3531;\n    position: relative;\n    right: 27px;\n    font-family: 'Montserrat', sans-serif;\n    font-size: 22px;\n}\n\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nh3[data-v-2c4dd3fa]{\n    margin-top:20px;\n    color:#000;\n    font-size: 30px;\n    font-family: 'Montserrat', sans-serif;\n    font-weight: 500;\n    font-style: italic;\n}\n.title[data-v-2c4dd3fa]{\n    margin-bottom: 40px;\n    font-family: 'Montserrat', sans-serif;\n    font-size: 40px;\n}\n.SignPage[data-v-2c4dd3fa]{\n    margin: 40px auto;\n    max-width: 650px;\n    padding: 40px 20px;\n    background:#D1E8E2;\n    border-radius: 40px;\n    position: relative;\n    text-shadow: none;\n    box-shadow: 0 3px 5px 0 rgba(0,0,0,0.31);\n    margin-bottom: 90px;\n}\n.form-group[data-v-2c4dd3fa]{\n    display: flex;\n    justify-content: space-between;\n}\n.form-group-label[data-v-2c4dd3fa]{\n    color:#2C3531;\n    top:5px;\n    position: relative;\n    right: 10px;\n    font-family: 'Montserrat', sans-serif;\n    font-size: 22px;\n}\n.form-group button[data-v-2c4dd3fa]{\n    position:relative;\n    margin-left:120px;\n    width: 280px;\n    font-family: 'Montserrat', sans-serif;\n    font-size: 24px;\n    border-radius:10px;\n}\ninput[data-v-2c4dd3fa]{\n    margin-bottom: 18px;\n    width:300px;\n    position: relative;\n    left: 20px;\n    border-radius: 10px;\n    font-family: 'Montserrat', sans-serif;\n    font-size: 20px;\n}\n.form-check-input[data-v-2c4dd3fa]{\n    width:21px;\n    top: 5px;\n    border-radius: 100px;\n    font-family: 'Montserrat', sans-serif;\n    font-size: 20px;\n    position: relative;\n    margin-right: 61px;\n}\n.sex-choice[data-v-2c4dd3fa]{\n    display: flex;\n    justify-content: space-between;\n}\n.form-check-label[data-v-2c4dd3fa]{\n    color:#2C3531;\n    position: relative;\n    right: 27px;\n    font-family: 'Montserrat', sans-serif;\n    font-size: 22px;\n}\n\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10596,7 +10612,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nh3[data-v-10dd68ed]{\n    margin-top:20px;\n    color:#000;\n    font-size: 30px;\n    font-family: 'Montserrat', sans-serif;\n    font-weight: 500;\n    font-style: italic;\n}\n.title[data-v-10dd68ed]{\n    margin-bottom: 40px;\n    font-family: 'Montserrat', sans-serif;\n    font-size: 40px;\n}\n.banner[data-v-10dd68ed]{\n    margin-top:30px;\n    color:#000;\n    font-size: 38px;\n    font-family: 'Montserrat', sans-serif;\n    font-weight: 500;\n    font-style: italic;\n}\n.SignPage[data-v-10dd68ed]{\n    margin: 40px auto;\n    max-width: 650px;\n    padding: 40px 20px;\n    background:#D1E8E2;\n    border-radius: 40px;\n    position: relative;\n    text-shadow: none;\n    box-shadow: 0 3px 5px 0 rgba(0,0,0,0.31);\n    margin-bottom: 90px;\n}\n.form-group[data-v-10dd68ed]{\n    display: flex;\n    justify-content: space-between;\n}\n.form-group label[data-v-10dd68ed]{\n    color:#2C3531;\n    top:5px;\n    position: relative;\n    right: 10px;\n    font-family: 'Montserrat', sans-serif;\n    font-size: 22px;\n}\n.form-group button[data-v-10dd68ed]{\n    position:relative;\n    margin-left:180px;\n    width: 40%;\n    font-family: 'Montserrat', sans-serif;\n    font-size: 24px;\n    border-radius:10px;\n}\ninput[data-v-10dd68ed]{\n    margin-bottom: 18px;\n    width:300px;\n    position: relative;\n    left: 20px;\n    border-radius: 10px;\n    font-family: 'Montserrat', sans-serif;\n    font-size: 20px;\n}\n.form-select[data-v-10dd68ed]{\n    position: relative;\n    left: 20px;\n    width:300px;\n    font-family: 'Montserrat', sans-serif;\n    font-size: 20px;\n    border-radius:10px;\n    margin-bottom: 10px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nh3[data-v-10dd68ed]{\n    margin-top:20px;\n    color:#000;\n    font-size: 30px;\n    font-family: 'Montserrat', sans-serif;\n    font-weight: 500;\n    font-style: italic;\n}\n.title[data-v-10dd68ed]{\n    margin-bottom: 40px;\n    font-family: 'Montserrat', sans-serif;\n    font-size: 40px;\n}\n.banner[data-v-10dd68ed]{\n    margin-top:30px;\n    color:#000;\n    font-size: 38px;\n    font-family: 'Montserrat', sans-serif;\n    font-weight: 500;\n    font-style: italic;\n}\n.SignPage[data-v-10dd68ed]{\n    margin: 40px auto;\n    max-width: 650px;\n    padding: 40px 20px;\n    background:#D1E8E2;\n    border-radius: 40px;\n    position: relative;\n    text-shadow: none;\n    box-shadow: 0 3px 5px 0 rgba(0,0,0,0.31);\n    margin-bottom: 90px;\n}\n.form-group[data-v-10dd68ed]{\n    display: flex;\n    justify-content: space-between;\n}\n.form-group label[data-v-10dd68ed]{\n    color:#2C3531;\n    top:5px;\n    position: relative;\n    right: 10px;\n    font-family: 'Montserrat', sans-serif;\n    font-size: 22px;\n}\n.form-group button[data-v-10dd68ed]{\n    position:relative;\n    margin-left:130px;\n    width: 300px;\n    font-family: 'Montserrat', sans-serif;\n    font-size: 24px;\n    border-radius:10px;\n}\ninput[data-v-10dd68ed]{\n    margin-bottom: 18px;\n    width:300px;\n    position: relative;\n    left: 20px;\n    border-radius: 10px;\n    font-family: 'Montserrat', sans-serif;\n    font-size: 20px;\n}\n.form-select[data-v-10dd68ed]{\n    position: relative;\n    left: 20px;\n    width:300px;\n    font-family: 'Montserrat', sans-serif;\n    font-size: 20px;\n    border-radius:10px;\n    margin-bottom: 10px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10620,7 +10636,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nh1[data-v-2573bf63]{\n    margin-top:20px;\n    margin-bottom: 40px;\n    color:#000;\n    font-size: 38px;\n    font-family: 'Montserrat', sans-serif;\n    font-weight: 500;\n}\n.SignPage[data-v-2573bf63]{\n    margin: 60px auto;\n    max-width: 650px;\n    padding: 40px 20px;\n    background:#D1E8E2;\n    border-radius: 40px;\n    position: relative;\n    text-shadow: none;\n    box-shadow: 0 3px 5px 0 rgba(0,0,0,0.31);\n}\n.form-group[data-v-2573bf63]{\n    display: flex;\n    justify-content: space-between;\n}\n.form-group label[data-v-2573bf63]{\n    color:#2C3531;\n    top:5px;\n    position: relative;\n    right: 10px;\n    font-family: 'Montserrat', sans-serif;\n    font-size: 24px;\n}\n.form-group button[data-v-2573bf63]{\n    margin-top: 20px;\n    position:relative;\n    margin-left:180px;\n    width: 40%;\n    font-family: 'Montserrat', sans-serif;\n    font-size: 24px;\n    border-radius:10px;\n}\n.form-group a[data-v-2573bf63]{\n    margin-top: 20px;\n    position:relative;\n    margin-left:200px;\n    color:#000;\n    font-family: 'Montserrat', sans-serif;\n}\ninput[data-v-2573bf63]{\n    margin-bottom: 18px;\n    width:300px;\n    position: relative;\n    left: 20px;\n    border-radius: 10px;\n    font-family: 'Montserrat', sans-serif;\n    font-size: 20px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nh1[data-v-2573bf63]{\n    margin-top:20px;\n    margin-bottom: 40px;\n    color:#000;\n    font-size: 38px;\n    font-family: 'Montserrat', sans-serif;\n    font-weight: 500;\n}\n.SignPage[data-v-2573bf63]{\n    margin: 60px auto;\n    max-width: 650px;\n    padding: 40px 20px;\n    background:#D1E8E2;\n    border-radius: 40px;\n    position: relative;\n    text-shadow: none;\n    box-shadow: 0 3px 5px 0 rgba(0,0,0,0.31);\n}\n.form-group[data-v-2573bf63]{\n    display: flex;\n    justify-content: space-between;\n}\n.form-group label[data-v-2573bf63]{\n    color:#2C3531;\n    top:5px;\n    position: relative;\n    right: 10px;\n    font-family: 'Montserrat', sans-serif;\n    font-size: 24px;\n}\n.form-group button[data-v-2573bf63]{\n    margin-top: 20px;\n    position:relative;\n    margin-left:130px;\n    width: 40%;\n    font-family: 'Montserrat', sans-serif;\n    font-size: 24px;\n    border-radius:10px;\n}\n.form-group a[data-v-2573bf63]{\n    margin-top: 20px;\n    position:relative;\n    margin-left:130px;\n    color:#000;\n    font-family: 'Montserrat', sans-serif;\n}\ninput[data-v-2573bf63]{\n    margin-bottom: 18px;\n    width:300px;\n    position: relative;\n    left: 20px;\n    border-radius: 10px;\n    font-family: 'Montserrat', sans-serif;\n    font-size: 20px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -44424,36 +44440,44 @@ var render = function () {
       _c("div", { staticClass: "viewing" }, [
         _c("div", { staticClass: "box" }, [
           _c("div", { staticClass: "infobox" }, [
-            _c("h2", [_vm._v("Дані про Вас")]),
+            _c("h2", [_vm._v(_vm._s(_vm.$t("adminProfile.aboutPerson")))]),
             _vm._v(" "),
             _c("div", { staticClass: "data" }, [
-              _c("p", { staticClass: "dataTitle" }, [_vm._v("Ім'я")]),
+              _c("p", { staticClass: "dataTitle" }, [
+                _vm._v(_vm._s(_vm.$t("form.name"))),
+              ]),
               _vm._v(" "),
               _c("p", [_vm._v(_vm._s(_vm.userData.Name))]),
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "data" }, [
-              _c("p", { staticClass: "dataTitle" }, [_vm._v("Прізвище")]),
+              _c("p", { staticClass: "dataTitle" }, [
+                _vm._v(_vm._s(_vm.$t("form.surname"))),
+              ]),
               _vm._v(" "),
               _c("p", [_vm._v(_vm._s(_vm.userData.Surname))]),
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "data" }, [
-              _c("p", { staticClass: "dataTitle" }, [_vm._v("Номер телефону")]),
+              _c("p", { staticClass: "dataTitle" }, [
+                _vm._v(_vm._s(_vm.$t("form.phone"))),
+              ]),
               _vm._v(" "),
               _c("p", [_vm._v(_vm._s(_vm.userData.Phone))]),
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "data" }, [
               _c("p", { staticClass: "dataTitle" }, [
-                _vm._v(" Електронна пошта"),
+                _vm._v(" " + _vm._s(_vm.$t("form.email"))),
               ]),
               _vm._v(" "),
               _c("p", [_vm._v(_vm._s(_vm.userData.Email))]),
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "data" }, [
-              _c("p", { staticClass: "dataTitle" }, [_vm._v("Пароль")]),
+              _c("p", { staticClass: "dataTitle" }, [
+                _vm._v(_vm._s(_vm.$t("form.password"))),
+              ]),
               _vm._v(" "),
               _c("p", { staticClass: "dataInfo" }, [
                 _vm._v(_vm._s(_vm.userData.Password)),
@@ -44466,36 +44490,42 @@ var render = function () {
                 staticClass: "btn btn-primary",
                 attrs: { id: "submitButton1", href: "/userChangeData" },
               },
-              [_vm._v("Змінити дані про адміністратора")]
+              [_vm._v(_vm._s(_vm.$t("adminProfile.changePerson")))]
             ),
           ]),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "box" }, [
           _c("div", { staticClass: "infobox" }, [
-            _c("h2", [_vm._v("Дані про Ваш притулок")]),
+            _c("h2", [_vm._v(_vm._s(_vm.$t("adminProfile.aboutShelter")))]),
             _vm._v(" "),
             _c("div", { staticClass: "data" }, [
-              _c("p", { staticClass: "dataTitle" }, [_vm._v("Назва")]),
+              _c("p", { staticClass: "dataTitle" }, [
+                _vm._v(_vm._s(_vm.$t("form.shelterName"))),
+              ]),
               _vm._v(" "),
               _c("p", [_vm._v(_vm._s(this.shelterData.Name))]),
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "data" }, [
-              _c("p", { staticClass: "dataTitle" }, [_vm._v("Адреса")]),
+              _c("p", { staticClass: "dataTitle" }, [
+                _vm._v(_vm._s(_vm.$t("form.address"))),
+              ]),
               _vm._v(" "),
               _c("p", [_vm._v(_vm._s(this.shelterData.Address))]),
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "data" }, [
-              _c("p", { staticClass: "dataTitle" }, [_vm._v("Номер телефону")]),
+              _c("p", { staticClass: "dataTitle" }, [
+                _vm._v(_vm._s(_vm.$t("form.phone"))),
+              ]),
               _vm._v(" "),
               _c("p", [_vm._v(_vm._s(this.shelterData.Phone))]),
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "data" }, [
               _c("p", { staticClass: "dataTitle" }, [
-                _vm._v("Електронна пошта"),
+                _vm._v(_vm._s(_vm.$t("form.email"))),
               ]),
               _vm._v(" "),
               _c("p", [_vm._v(_vm._s(this.shelterData.Email))]),
@@ -44511,7 +44541,7 @@ var render = function () {
                   type: "submit",
                 },
               },
-              [_vm._v("Змінити\n                        данні про притулок")]
+              [_vm._v(_vm._s(_vm.$t("adminProfile.changeShelter")))]
             ),
           ]),
         ]),
@@ -44546,31 +44576,41 @@ var render = function () {
     _c("div", { staticClass: "infobox" }, [
       _c("div", { staticClass: "elements" }, [
         _c("div", { staticClass: "data" }, [
-          _c("p", { staticClass: "dataTitle" }, [_vm._v("Ім'я тварини:")]),
+          _c("p", { staticClass: "dataTitle" }, [
+            _vm._v(_vm._s(_vm.$t("form.nameAnimal"))),
+          ]),
           _vm._v(" "),
           _c("p", [_vm._v(_vm._s(_vm.name))]),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "data" }, [
-          _c("p", { staticClass: "dataTitle" }, [_vm._v("Вік тварини:")]),
+          _c("p", { staticClass: "dataTitle" }, [
+            _vm._v(_vm._s(_vm.$t("form.ageAnimal"))),
+          ]),
           _vm._v(" "),
           _c("p", [_vm._v(_vm._s(_vm.age))]),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "data" }, [
-          _c("p", { staticClass: "dataTitle" }, [_vm._v("Стать тварини:")]),
+          _c("p", { staticClass: "dataTitle" }, [
+            _vm._v(_vm._s(_vm.$t("form.sexAnimal"))),
+          ]),
           _vm._v(" "),
           _c("p", [_vm._v(_vm._s(_vm.sex))]),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "data" }, [
-          _c("p", { staticClass: "dataTitle" }, [_vm._v("Вид тварини:")]),
+          _c("p", { staticClass: "dataTitle" }, [
+            _vm._v(_vm._s(_vm.$t("form.typeAnimal"))),
+          ]),
           _vm._v(" "),
           _c("p", [_vm._v(_vm._s(_vm.type))]),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "data" }, [
-          _c("p", { staticClass: "dataTitle" }, [_vm._v("Вага тварини:")]),
+          _c("p", { staticClass: "dataTitle" }, [
+            _vm._v(_vm._s(_vm.$t("form.weightAnimal"))),
+          ]),
           _vm._v(" "),
           _c("p", [_vm._v(_vm._s(_vm.weight))]),
         ]),
@@ -44590,7 +44630,7 @@ var render = function () {
           staticClass: "btn btn-primary",
           attrs: { id: "submitButton1", href: _vm.editUrl },
         },
-        [_vm._v("Змінити дані ")]
+        [_vm._v(_vm._s(_vm.$t("form.changeBtn")))]
       ),
       _vm._v(" "),
       _c(
@@ -44599,7 +44639,7 @@ var render = function () {
           staticClass: "btn btn-primary",
           attrs: { id: "submitButton2", href: _vm.deleteUrl },
         },
-        [_vm._v("Видалити")]
+        [_vm._v(_vm._s(_vm.$t("form.deleteBtn")))]
       ),
     ]),
   ])
@@ -44628,7 +44668,9 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "sign-page" }, [
-    _c("h2", { staticClass: "title text-center" }, [_vm._v("Ваші об'яви")]),
+    _c("h2", { staticClass: "title text-center" }, [
+      _vm._v(_vm._s(_vm.$t("announcement.announcementTitle"))),
+    ]),
     _vm._v(" "),
     _c(
       "a",
@@ -44636,7 +44678,7 @@ var render = function () {
         staticClass: "btn text-center btn-primary",
         attrs: { href: "/createAnnouncement" },
       },
-      [_vm._v("Додати об'яву")]
+      [_vm._v(_vm._s(_vm.$t("announcement.addAnnouncement")))]
     ),
     _vm._v(" "),
     _c(
@@ -44681,7 +44723,9 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "page" }, [
     _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "topic" } }, [_vm._v("Тема:")]),
+      _c("label", { attrs: { for: "topic" } }, [
+        _vm._v(_vm._s(_vm.$t("form.topicAnnouncement"))),
+      ]),
       _vm._v(" "),
       _c("input", {
         staticClass: "form-control",
@@ -44691,7 +44735,9 @@ var render = function () {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "description" } }, [_vm._v("Опис:")]),
+      _c("label", { attrs: { for: "description" } }, [
+        _vm._v(_vm._s(_vm.$t("form.descriptionAnnouncement"))),
+      ]),
       _vm._v(" "),
       _c("textarea", {
         staticClass: "form-control",
@@ -44703,7 +44749,7 @@ var render = function () {
     _c(
       "a",
       { staticClass: "btn btn-primary", attrs: { href: _vm.deleteUrl } },
-      [_vm._v("Видалити")]
+      [_vm._v(_vm._s(_vm.$t("form.deleteBtn")))]
     ),
   ])
 }
@@ -44730,117 +44776,114 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "Support" }, [
-      _c("div", { staticClass: "infobox" }, [
-        _c("h2", [_vm._v("Напишіть нам")]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v("Напишіть або наберіть нам за нижче вказаними контактами"),
+  return _c("div", { staticClass: "Support" }, [
+    _c("div", { staticClass: "infobox" }, [
+      _c("h2", [_vm._v(_vm._s(_vm.$t("contacts.h2")))]),
+      _vm._v(" "),
+      _c("p", [_vm._v(_vm._s(_vm.$t("contacts.p")))]),
+      _vm._v(" "),
+      _c("div", { staticClass: "box" }, [
+        _c("div", { staticClass: "infobox-info" }, [
+          _c("div", { staticClass: "profile__info" }, [
+            _c("h3", [_vm._v(_vm._s(_vm.$t("form.name")))]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "input__name",
+              attrs: {
+                type: "text",
+                maxlength: "30",
+                placeholder: "Введіть ім'я",
+              },
+            }),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "profile__info" }, [
+            _c("h3", [_vm._v(_vm._s(_vm.$t("form.surname")))]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "input__name",
+              attrs: {
+                type: "text",
+                maxlength: "30",
+                placeholder: "Введіть прізвище",
+              },
+            }),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "profile__info" }, [
+            _c("h3", [_vm._v(_vm._s(_vm.$t("form.email")))]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "input__name",
+              attrs: {
+                type: "text",
+                maxlength: "30",
+                placeholder: "Введіть пошту",
+              },
+            }),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "profile__info" }, [
+            _c("h3", [_vm._v(_vm._s(_vm.$t("contacts.message")))]),
+            _vm._v(" "),
+            _c("textarea", {
+              staticClass: "massage",
+              attrs: { placeholder: "Напишіть щось" },
+            }),
+          ]),
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "box" }, [
-          _c("div", { staticClass: "infobox-info" }, [
-            _c("div", { staticClass: "profile__info" }, [
-              _c("h3", [_vm._v("Ім'я")]),
-              _vm._v(" "),
-              _c("input", {
-                staticClass: "input__name",
-                attrs: {
-                  type: "text",
-                  maxlength: "30",
-                  placeholder: "Введіть ім'я",
-                },
-              }),
+        _c("div", { staticClass: "infobox-info line" }, [
+          _c("div", { staticClass: "phone-info" }, [
+            _c("p", { staticClass: "title-phone" }, [
+              _vm._v(_vm._s(_vm.$t("form.phone"))),
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "profile__info" }, [
-              _c("h3", [_vm._v("Прізвище")]),
-              _vm._v(" "),
-              _c("input", {
-                staticClass: "input__name",
-                attrs: {
-                  type: "text",
-                  maxlength: "30",
-                  placeholder: "Введіть прізвище",
-                },
-              }),
+            _c("p", { staticClass: "info-phone" }, [_vm._v("+380958300692")]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "phone-info" }, [
+            _c("p", { staticClass: "title-phone" }, [
+              _vm._v(_vm._s(_vm.$t("form.email"))),
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "profile__info" }, [
-              _c("h3", [_vm._v("E-mail")]),
-              _vm._v(" "),
-              _c("input", {
-                staticClass: "input__name",
-                attrs: {
-                  type: "text",
-                  maxlength: "30",
-                  placeholder: "Введіть пошту",
-                },
-              }),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "profile__info" }, [
-              _c("h3", [_vm._v("Повідомлення")]),
-              _vm._v(" "),
-              _c("textarea", {
-                staticClass: "massage",
-                attrs: { placeholder: "Напишіть щось" },
-              }),
+            _c("p", { staticClass: "info-phone" }, [
+              _vm._v("ShelterHelper@gmail.com"),
             ]),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "infobox-info line" }, [
-            _c("div", { staticClass: "phone-info" }, [
-              _c("p", { staticClass: "title-phone" }, [_vm._v("Телефон:")]),
-              _vm._v(" "),
-              _c("p", { staticClass: "info-phone" }, [_vm._v("+380958300692")]),
+          _c("div", { staticClass: "phone-info" }, [
+            _c("p", { staticClass: "title-phone" }, [
+              _vm._v(_vm._s(_vm.$t("contacts.skype"))),
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "phone-info" }, [
-              _c("p", { staticClass: "title-phone" }, [_vm._v("Почта:")]),
-              _vm._v(" "),
-              _c("p", { staticClass: "info-phone" }, [
-                _vm._v("ShelterHelper@gmail.com"),
-              ]),
+            _c("p", { staticClass: "info-phone" }, [_vm._v("shelterHelper")]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "phone-info" }, [
+            _c("p", { staticClass: "title-phone" }, [
+              _vm._v(_vm._s(_vm.$t("contacts.telegram"))),
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "phone-info" }, [
-              _c("p", { staticClass: "title-phone" }, [_vm._v("Скайп:")]),
-              _vm._v(" "),
-              _c("p", { staticClass: "info-phone" }, [_vm._v("shelterHelper")]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "phone-info" }, [
-              _c("p", { staticClass: "title-phone" }, [_vm._v("Телеграм:")]),
-              _vm._v(" "),
-              _c("p", { staticClass: "info-phone" }, [
-                _vm._v("@shelterHelper"),
-              ]),
-            ]),
+            _c("p", { staticClass: "info-phone" }, [_vm._v("@shelterHelper")]),
           ]),
         ]),
-        _vm._v(" "),
-        _c("div", {}, [
-          _c(
-            "a",
-            {
-              staticClass: "btn",
-              attrs: { id: "submitButton", href: "#", type: "submit" },
-            },
-            [_vm._v("Відправити")]
-          ),
-        ]),
       ]),
-    ])
-  },
-]
+      _vm._v(" "),
+      _c("div", {}, [
+        _c(
+          "a",
+          {
+            staticClass: "btn",
+            attrs: { id: "submitButton", href: "#", type: "submit" },
+          },
+          [_vm._v(_vm._s(_vm.$t("contacts.btn")))]
+        ),
+      ]),
+    ]),
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -44888,7 +44931,7 @@ var render = function () {
               }),
               _vm._v(" "),
               _c("h1", { staticClass: "title text-center" }, [
-                _vm._v("Внести дані про тварину"),
+                _vm._v(_vm._s(_vm.$t("animal.animalTitle"))),
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group mt-4" }, [
@@ -44897,7 +44940,9 @@ var render = function () {
                   { staticClass: "form-group-label", attrs: { for: "Name" } },
                   [
                     _vm._v(
-                      "\n                        Ім'я тварини\n                    "
+                      "\n                        " +
+                        _vm._s(_vm.$t("form.nameAnimal")) +
+                        "\n                    "
                     ),
                   ]
                 ),
@@ -44934,7 +44979,7 @@ var render = function () {
                 _c(
                   "label",
                   { staticClass: "form-group-label", attrs: { for: "age" } },
-                  [_vm._v("Вік")]
+                  [_vm._v(_vm._s(_vm.$t("form.ageAnimal")))]
                 ),
                 _vm._v(" "),
                 _c("input", {
@@ -44969,7 +45014,7 @@ var render = function () {
                 _c(
                   "label",
                   { staticClass: "form-group-label", attrs: { for: "sex" } },
-                  [_vm._v("Стать")]
+                  [_vm._v(_vm._s(_vm.$t("form.sexAnimal")))]
                 ),
                 _vm._v(" "),
                 _c("div", { staticClass: "sex-choice" }, [
@@ -45058,7 +45103,7 @@ var render = function () {
                 _c(
                   "label",
                   { staticClass: "form-group-label", attrs: { for: "type" } },
-                  [_vm._v("Вид")]
+                  [_vm._v(_vm._s(_vm.$t("form.typeAnimal")))]
                 ),
                 _vm._v(" "),
                 _c("div", { staticClass: "sex-choice" }, [
@@ -45147,7 +45192,7 @@ var render = function () {
                 _c(
                   "label",
                   { staticClass: "form-group-label", attrs: { for: "weight" } },
-                  [_vm._v("Вага")]
+                  [_vm._v(_vm._s(_vm.$t("form.weightAnimal")))]
                 ),
                 _vm._v(" "),
                 _c("input", {
@@ -45178,7 +45223,18 @@ var render = function () {
                 }),
               ]),
               _vm._v(" "),
-              _vm._m(0),
+              _c("div", { staticClass: "form-group mt-4" }, [
+                _c(
+                  "label",
+                  { staticClass: "form-group-label", attrs: { for: "img" } },
+                  [_vm._v(_vm._s(_vm.$t("animal.animalImg")))]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "ng-hide",
+                  attrs: { name: "img", id: "img", multiple: "", type: "file" },
+                }),
+              ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group text-center mt-4" }, [
                 _c(
@@ -45187,7 +45243,7 @@ var render = function () {
                     staticClass: "btn btn-primary",
                     attrs: { type: "submit", disabled: _vm.active },
                   },
-                  [_vm._v("Зареєструвати")]
+                  [_vm._v(_vm._s(_vm.$t("form.btnReg")))]
                 ),
               ]),
             ]
@@ -45197,23 +45253,7 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group mt-4" }, [
-      _c("label", { staticClass: "form-group-label", attrs: { for: "img" } }, [
-        _vm._v("Фото тварини"),
-      ]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "ng-hide",
-        attrs: { name: "img", id: "img", multiple: "", type: "file" },
-      }),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -45254,12 +45294,14 @@ var render = function () {
             }),
             _vm._v(" "),
             _c("h1", { staticClass: "h3 mb-3 fw-normal text-center" }, [
-              _vm._v("Створити об'яву"),
+              _vm._v(_vm._s(_vm.$t("announcement.createAnnouncement"))),
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-items" }, [
               _c("div", { staticClass: "form-group mt-4" }, [
-                _c("label", { attrs: { for: "topic" } }, [_vm._v("Тема:")]),
+                _c("label", { attrs: { for: "topic" } }, [
+                  _vm._v(_vm._s(_vm.$t("form.topicAnnouncement"))),
+                ]),
                 _vm._v(" "),
                 _c(
                   "select",
@@ -45311,7 +45353,7 @@ var render = function () {
               _vm._v(" "),
               _c("div", { staticClass: "form-group mt-4" }, [
                 _c("label", { attrs: { for: "description" } }, [
-                  _vm._v("Опис:"),
+                  _vm._v(_vm._s(_vm.$t("form.descriptionAnnouncement"))),
                 ]),
                 _vm._v(" "),
                 _c("textarea", {
@@ -45350,7 +45392,7 @@ var render = function () {
                   staticClass: "btn btn-primary",
                   attrs: { type: "submit", disabled: _vm.active },
                 },
-                [_vm._v("Створити")]
+                [_vm._v(_vm._s(_vm.$t("form.createBtn")))]
               ),
             ]),
           ]
@@ -45776,11 +45818,13 @@ var render = function () {
           }),
           _vm._v(" "),
           _c("h1", { staticClass: "h3 mb-3 fw-normal text-center" }, [
-            _vm._v("Редагувати притулок"),
+            _vm._v(_vm._s(_vm.$t("shelter.changeTitle"))),
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group mt-4" }, [
-            _c("label", { attrs: { for: "Name" } }, [_vm._v("Назва")]),
+            _c("label", { attrs: { for: "Name" } }, [
+              _vm._v(_vm._s(_vm.$t("form.nameAnimal"))),
+            ]),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -45811,7 +45855,9 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group mt-4" }, [
-            _c("label", { attrs: { for: "address" } }, [_vm._v("Адреса")]),
+            _c("label", { attrs: { for: "address" } }, [
+              _vm._v(_vm._s(_vm.$t("form.address"))),
+            ]),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -45842,7 +45888,9 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group mt-4" }, [
-            _c("label", { attrs: { for: "phone" } }, [_vm._v("Телефон")]),
+            _c("label", { attrs: { for: "phone" } }, [
+              _vm._v(_vm._s(_vm.$t("form.phone"))),
+            ]),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -45873,7 +45921,9 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group mt-4" }, [
-            _c("label", { attrs: { for: "email" } }, [_vm._v("Пошта")]),
+            _c("label", { attrs: { for: "email" } }, [
+              _vm._v(_vm._s(_vm.$t("form.email"))),
+            ]),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -45910,7 +45960,7 @@ var render = function () {
                 staticClass: "btn btn-primary",
                 attrs: { type: "submit", disabled: _vm.active },
               },
-              [_vm._v("Змінити")]
+              [_vm._v(_vm._s(_vm.$t("form.changeBtn")))]
             ),
           ]),
         ]),
@@ -46174,12 +46224,22 @@ var render = function () {
     ]),
     _vm._v(" "),
     _c("p", { staticClass: "text-center" }, [
-      _vm._v(
-        "Ми дуже раді, що ви користуєтесь нашою системою і намагаємося зробити зручний інтерфейс"
-      ),
+      _vm._v(_vm._s(_vm.$t("shelter.p"))),
     ]),
     _vm._v(" "),
-    _vm._m(0),
+    _c("div", { staticClass: "buttons" }, [
+      _c(
+        "a",
+        { staticClass: "btn btn-primary", attrs: { href: "/createAnimal" } },
+        [_vm._v(_vm._s(_vm.$t("shelter.addAnimal")))]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        { staticClass: "btn btn-primary", attrs: { href: "/announcement" } },
+        [_vm._v(_vm._s(_vm.$t("shelter.announcement")))]
+      ),
+    ]),
     _vm._v(" "),
     _c(
       "div",
@@ -46202,26 +46262,7 @@ var render = function () {
     ),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "buttons" }, [
-      _c(
-        "a",
-        { staticClass: "btn btn-primary", attrs: { href: "/createAnimal" } },
-        [_vm._v("Додати тварину")]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        { staticClass: "btn btn-primary", attrs: { href: "/announcement" } },
-        [_vm._v("Об'яви")]
-      ),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -46244,15 +46285,13 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "page" }, [
+  return _c("div", { staticClass: "signIn" }, [
     _c("h2", { staticClass: "banner text-center" }, [
-      _vm._v(
-        'Раді вітати Вас у нашій системі допомоги тваринам "ShelterHelper"'
-      ),
+      _vm._v(_vm._s(_vm.$t("signIn.banner"))),
     ]),
     _vm._v(" "),
     _c("h3", { staticClass: "text-center" }, [
-      _vm._v("Зареєструйтесь, будь-ласка, щоб користуватися нашою системою"),
+      _vm._v(_vm._s(_vm.$t("signIn.h3"))),
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "SignPage" }, [
@@ -46270,12 +46309,16 @@ var render = function () {
             }),
             _vm._v(" "),
             _c("h1", { staticClass: "title text-center" }, [
-              _vm._v("Зареєструватися"),
+              _vm._v(_vm._s(_vm.$t("signIn.title"))),
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group mt-4" }, [
               _c("label", { attrs: { for: "Name" } }, [
-                _vm._v("\n                        Ім'я\n                    "),
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(_vm.$t("form.name")) +
+                    "\n                    "
+                ),
               ]),
               _vm._v(" "),
               _c("input", {
@@ -46307,7 +46350,9 @@ var render = function () {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group mt-4" }, [
-              _c("label", { attrs: { for: "surname" } }, [_vm._v("Прізвище")]),
+              _c("label", { attrs: { for: "surname" } }, [
+                _vm._v(_vm._s(_vm.$t("form.surname"))),
+              ]),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -46339,7 +46384,7 @@ var render = function () {
             _vm._v(" "),
             _c("div", { staticClass: "form-group mt-4" }, [
               _c("label", { attrs: { for: "email" } }, [
-                _vm._v("Електронна пошта"),
+                _vm._v(_vm._s(_vm.$t("form.email"))),
               ]),
               _vm._v(" "),
               _c("input", {
@@ -46372,7 +46417,7 @@ var render = function () {
             _vm._v(" "),
             _c("div", { staticClass: "form-group mt-4" }, [
               _c("label", { attrs: { for: "phone" } }, [
-                _vm._v("Номер телефону"),
+                _vm._v(_vm._s(_vm.$t("form.phone"))),
               ]),
               _vm._v(" "),
               _c("input", {
@@ -46404,7 +46449,9 @@ var render = function () {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group mt-4" }, [
-              _c("label", { attrs: { for: "password" } }, [_vm._v("Пароль")]),
+              _c("label", { attrs: { for: "password" } }, [
+                _vm._v(_vm._s(_vm.$t("form.password"))),
+              ]),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -46434,7 +46481,11 @@ var render = function () {
               }),
             ]),
             _vm._v(" "),
-            _vm._m(0),
+            _c("div", { staticClass: "form-group mt-4" }, [
+              _c("label", [_vm._v(_vm._s(_vm.$t("form.asked")))]),
+              _vm._v(" "),
+              _vm._m(0),
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group text-center mt-4" }, [
               _c(
@@ -46443,7 +46494,7 @@ var render = function () {
                   staticClass: "btn btn-primary",
                   attrs: { type: "submit", disabled: _vm.active },
                 },
-                [_vm._v("Зареєструватись")]
+                [_vm._v(_vm._s(_vm.$t("form.btnReg")))]
               ),
             ]),
           ]),
@@ -46457,21 +46508,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group mt-4" }, [
-      _c("label", [_vm._v("Ви адмін чи користувач?")]),
-      _vm._v(" "),
-      _c(
-        "select",
-        { staticClass: "form-select", attrs: { name: "role", id: "role" } },
-        [
-          _c("option", { attrs: { value: "1", selected: "" } }, [
-            _vm._v("Адмін"),
-          ]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "0" } }, [_vm._v("Користувач")]),
-        ]
-      ),
-    ])
+    return _c(
+      "select",
+      { staticClass: "form-select", attrs: { name: "role", id: "role" } },
+      [
+        _c("option", { attrs: { value: "1", selected: "" } }, [
+          _vm._v("Адмін"),
+        ]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "0" } }, [_vm._v("Користувач")]),
+      ]
+    )
   },
 ]
 render._withStripped = true
@@ -46517,7 +46564,7 @@ var render = function () {
             _vm._v(" "),
             _c("div", { staticClass: "form-group mt-4" }, [
               _c("label", { attrs: { for: "email" } }, [
-                _vm._v("Електронна пошта"),
+                _vm._v(_vm._s(_vm.$t("form.email"))),
               ]),
               _vm._v(" "),
               _c("input", {
@@ -46549,7 +46596,9 @@ var render = function () {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group mt-4" }, [
-              _c("label", { attrs: { for: "password" } }, [_vm._v("Пароль")]),
+              _c("label", { attrs: { for: "password" } }, [
+                _vm._v(_vm._s(_vm.$t("form.password"))),
+              ]),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -46586,27 +46635,22 @@ var render = function () {
                   staticClass: "btn btn-primary",
                   attrs: { type: "submit", disabled: _vm.active },
                 },
-                [_vm._v("Увійти")]
+                [_vm._v(_vm._s(_vm.$t("form.btnEnter")))]
               ),
             ]),
             _vm._v(" "),
-            _vm._m(0),
+            _c("div", { staticClass: "form-group " }, [
+              _c("a", { attrs: { href: "/signIn" } }, [
+                _vm._v(_vm._s(_vm.$t("signUp.href"))),
+              ]),
+            ]),
           ]),
         ]
       ),
     ]),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group text-center" }, [
-      _c("a", { attrs: { href: "/signIn" } }, [_vm._v("Ще не зареєстровані?")]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -46644,11 +46688,13 @@ var render = function () {
           }),
           _vm._v(" "),
           _c("h1", { staticClass: "h3 mb-3 fw-normal text-center" }, [
-            _vm._v("Змінення даних користувача"),
+            _vm._v(_vm._s(_vm.$t("user.changeUser"))),
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group mt-4" }, [
-            _c("label", { attrs: { for: "Name" } }, [_vm._v("Ім'я")]),
+            _c("label", { attrs: { for: "Name" } }, [
+              _vm._v(_vm._s(_vm.$t("form.name"))),
+            ]),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -46679,7 +46725,9 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group mt-4" }, [
-            _c("label", { attrs: { for: "surname" } }, [_vm._v("Прізвище")]),
+            _c("label", { attrs: { for: "surname" } }, [
+              _vm._v(_vm._s(_vm.$t("form.surname"))),
+            ]),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -46711,7 +46759,7 @@ var render = function () {
           _vm._v(" "),
           _c("div", { staticClass: "form-group mt-4" }, [
             _c("label", { attrs: { for: "email" } }, [
-              _vm._v("Електронна пошта"),
+              _vm._v(_vm._s(_vm.$t("form.email"))),
             ]),
             _vm._v(" "),
             _c("input", {
@@ -46744,7 +46792,7 @@ var render = function () {
           _vm._v(" "),
           _c("div", { staticClass: "form-group mt-4" }, [
             _c("label", { attrs: { for: "phone" } }, [
-              _vm._v("Номер телефону"),
+              _vm._v(_vm._s(_vm.$t("form.phone"))),
             ]),
             _vm._v(" "),
             _c("input", {
@@ -46776,7 +46824,9 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group mt-4" }, [
-            _c("label", { attrs: { for: "password" } }, [_vm._v("Пароль")]),
+            _c("label", { attrs: { for: "password" } }, [
+              _vm._v(_vm._s(_vm.$t("form.password"))),
+            ]),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -46813,7 +46863,7 @@ var render = function () {
                 staticClass: "btn btn-primary",
                 attrs: { type: "submit", disabled: _vm.active },
               },
-              [_vm._v("Змінити")]
+              [_vm._v(_vm._s(_vm.$t("form.changeBtn")))]
             ),
           ]),
         ]),
@@ -46844,60 +46894,48 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "userPage " }, [
+    _c("div", { staticClass: "PageItems" }, [
+      _c("div", { staticClass: "items" }, [
+        _c("h1", { staticClass: "text-center" }, [
+          _vm._v(_vm._s(_vm.$t("user.h1"))),
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "text-center" }, [
+          _vm._v(_vm._s(_vm.$t("user.p"))),
+        ]),
+        _vm._v(" "),
+        _c("ul", { staticClass: "rounded" }, [
+          _c("li", [_vm._v(_vm._s(_vm.$t("user.li1")))]),
+          _vm._v(" "),
+          _c("li", [_vm._v(_vm._s(_vm.$t("user.li2")))]),
+          _vm._v(" "),
+          _c("li", [_vm._v(_vm._s(_vm.$t("user.li3")))]),
+          _vm._v(" "),
+          _c("li", [_vm._v(_vm._s(_vm.$t("user.li4")))]),
+        ]),
+      ]),
+      _vm._v(" "),
+      _vm._m(0),
+    ]),
+    _vm._v(" "),
+    _c("h2", { staticClass: "text-center" }, [
+      _vm._v(_vm._s(_vm.$t("user.h2"))),
+    ]),
+  ])
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "userPage " }, [
-      _c("div", { staticClass: "PageItems" }, [
-        _c("div", { staticClass: "items" }, [
-          _c("h1", { staticClass: "text-center" }, [
-            _vm._v(
-              "Дорогий друже, ми дуже раді, що ти вирішив скористуватися нашою системою"
-            ),
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "text-center" }, [
-            _vm._v(
-              "Щоб ти зміг швидко знаходити потрібну інформацію, ми розробили зручну систему:"
-            ),
-          ]),
-          _vm._v(" "),
-          _c("ul", { staticClass: "rounded" }, [
-            _c("li", [
-              _vm._v("Обрати потрібне місто та отримати усі притулки в ньому"),
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _vm._v(
-                "Переглянути які є в ньому тварини та знайти усю детальну інформацію"
-              ),
-            ]),
-            _vm._v(" "),
-            _c("li", [_vm._v("Задонатити гроші на потреби притулків")]),
-            _vm._v(" "),
-            _c("li", [_vm._v("Знайти тваринку з якою ви хочете провести час")]),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "items" }, [
-          _c("img", {
-            attrs: {
-              src: "https://scontent.fhrk2-1.fna.fbcdn.net/v/t39.30808-6/256148075_3061445684183319_1094536608817383091_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=K0-H6jBTk5UAX8pnBxp&tn=LOty3kmthzo0ldSh&_nc_ht=scontent.fhrk2-1.fna&oh=6ce6f56b277f089177fc6a6b30bc4168&oe=61A3DB7D",
-              alt: "",
-            },
-          }),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("h2", { staticClass: "text-center" }, [
-        _vm._v(
-          'Все це ти зможешь використовувати в нашому мобільному додатку "ShelterHelper", який ви можете знайти в PlayMarket'
-        ),
-      ]),
+    return _c("div", { staticClass: "items" }, [
+      _c("img", {
+        attrs: {
+          src: "https://scontent.fhrk2-1.fna.fbcdn.net/v/t39.30808-6/256148075_3061445684183319_1094536608817383091_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=K0-H6jBTk5UAX8pnBxp&tn=LOty3kmthzo0ldSh&_nc_ht=scontent.fhrk2-1.fna&oh=6ce6f56b277f089177fc6a6b30bc4168&oe=61A3DB7D",
+          alt: "",
+        },
+      }),
     ])
   },
 ]
@@ -46926,10 +46964,12 @@ var render = function () {
   return _c("div", { staticClass: "UserProfile text-center" }, [
     _c("div", { staticClass: "box" }, [
       _c("div", { staticClass: "infobox" }, [
-        _c("h2", [_vm._v("Дані про Вас")]),
+        _c("h2", [_vm._v(_vm._s(_vm.$t("user.aboutUser")))]),
         _vm._v(" "),
         _c("div", { staticClass: "data" }, [
-          _c("p", { staticClass: "dataTitle" }, [_vm._v("Ім'я")]),
+          _c("p", { staticClass: "dataTitle" }, [
+            _vm._v(_vm._s(_vm.$t("form.name"))),
+          ]),
           _vm._v(" "),
           _c("p", { staticClass: "dataInfo" }, [
             _vm._v(_vm._s(_vm.userData.Name)),
@@ -46937,7 +46977,9 @@ var render = function () {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "data" }, [
-          _c("p", { staticClass: "dataTitle" }, [_vm._v("Прізвище")]),
+          _c("p", { staticClass: "dataTitle" }, [
+            _vm._v(_vm._s(_vm.$t("form.surname"))),
+          ]),
           _vm._v(" "),
           _c("p", { staticClass: "dataInfo" }, [
             _vm._v(" " + _vm._s(_vm.userData.Surname)),
@@ -46945,7 +46987,9 @@ var render = function () {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "data" }, [
-          _c("p", { staticClass: "dataTitle" }, [_vm._v("Номер телефону")]),
+          _c("p", { staticClass: "dataTitle" }, [
+            _vm._v(_vm._s(_vm.$t("form.phone"))),
+          ]),
           _vm._v(" "),
           _c("p", { staticClass: "dataInfo" }, [
             _vm._v(_vm._s(_vm.userData.Phone)),
@@ -46953,7 +46997,9 @@ var render = function () {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "data" }, [
-          _c("p", { staticClass: "dataTitle" }, [_vm._v("Електронна пошта")]),
+          _c("p", { staticClass: "dataTitle" }, [
+            _vm._v(_vm._s(_vm.$t("form.email"))),
+          ]),
           _vm._v(" "),
           _c("p", { staticClass: "dataInfo" }, [
             _vm._v(_vm._s(_vm.userData.Email)),
@@ -46961,39 +47007,34 @@ var render = function () {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "data" }, [
-          _c("p", { staticClass: "dataTitle" }, [_vm._v("Пароль")]),
+          _c("p", { staticClass: "dataTitle" }, [
+            _vm._v(_vm._s(_vm.$t("form.password"))),
+          ]),
           _vm._v(" "),
           _c("p", { staticClass: "dataInfo" }, [
             _vm._v(_vm._s(_vm.userData.Password)),
           ]),
         ]),
         _vm._v(" "),
-        _vm._m(0),
+        _c("div", { staticClass: "text-center" }, [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-primary",
+              attrs: {
+                id: "submitButton",
+                href: "/userChangeData",
+                type: "submit",
+              },
+            },
+            [_vm._v(_vm._s(_vm.$t("form.changeBtn")))]
+          ),
+        ]),
       ]),
     ]),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center" }, [
-      _c(
-        "a",
-        {
-          staticClass: "btn btn-primary",
-          attrs: {
-            id: "submitButton",
-            href: "/userChangeData",
-            type: "submit",
-          },
-        },
-        [_vm._v("Змінити\n                    данні")]
-      ),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -59301,15 +59342,80 @@ var messages = {
     },
     signUp: {
       h1: 'Enter',
-      email: 'Email',
-      password: 'Password',
       href: 'Not registered yet?'
+    },
+    form: {
+      email: 'Email:',
+      password: 'Password:',
+      name: 'Name:',
+      surname: 'Surname:',
+      phone: 'Phone:',
+      asked: 'Are you admin or user?',
+      btnReg: 'Registration',
+      btnEnter: 'Enter',
+      nameAnimal: 'Animal name:',
+      address: 'Address:',
+      changeBtn: 'Change',
+      deleteBtn: 'Delete',
+      shelterName: 'Shelter name:',
+      ageAnimal: 'Age animal:',
+      typeAnimal: 'Type animal:',
+      createBtn: 'Create',
+      weightAnimal: 'Weight animal:',
+      sexAnimal: 'Sex animal:',
+      topicAnnouncement: 'Topic announcement:',
+      descriptionAnnouncement: 'Description announcement:'
+    },
+    signIn: {
+      banner: 'Glad to welcome you to our ShelterHelper animal care system',
+      h3: 'Please register to use our system',
+      title: 'SingIn'
+    },
+    contacts: {
+      h2: 'Write to us',
+      p: 'Write or call us at the contacts below',
+      message: 'Message',
+      btn: 'Send',
+      skype: 'Скайп',
+      telegram: 'Телеграм'
+    },
+    shelter: {
+      p: 'We are very glad that you use our system and try to make a user-friendly interface',
+      addAnimal: 'Add animal',
+      announcement: 'Announcement',
+      changeTitle: 'Change shelter'
+    },
+    adminProfile: {
+      aboutPerson: 'Data about You',
+      aboutShelter: 'Data about shelter',
+      changePerson: 'Change data about yourself',
+      changeShelter: 'Change data about shelter'
+    },
+    user: {
+      changeUser: 'Change data about User',
+      aboutUser: 'Data about User',
+      h1: 'Dear friend, we are very glad that you have decided to use our system',
+      p: 'We have developed a convenient system so that you can quickly find the information you need:',
+      li1: 'Choose the right city and get all the shelters in it',
+      li2: 'View what animals are in it and find all the detailed information',
+      li3: 'Donate money for the needs of shelters',
+      li4: 'Find an animal you want to spend time with',
+      h2: 'You can use all this in our mobile application "ShelterHelper", which you can find in PlayMarket'
+    },
+    announcement: {
+      announcementTitle: "Yours announcement",
+      addAnnouncement: "Add announcement",
+      createAnnouncement: "Create announcement"
+    },
+    animal: {
+      animalTitle: 'Enter info about animal',
+      animalImg: 'Img animal'
     }
   },
   ua: {
     navbar: {
       main: 'Головна',
-      exit: 'Увійти',
+      exit: 'Вихід',
       contacts: 'Контакти',
       profile: 'Профіль',
       enter: 'Вхід',
@@ -59317,9 +59423,74 @@ var messages = {
     },
     signUp: {
       h1: 'Вхід',
-      email: 'Пошта',
-      password: 'Пароль',
       href: 'Ще не зареєстровані?'
+    },
+    form: {
+      email: 'Електронна пошта:',
+      password: 'Пароль:',
+      name: "Iм'я:",
+      surname: 'Прізвище:',
+      phone: 'Номер телефону:',
+      asked: 'Ви адмін чи користувач:',
+      btnReg: 'Зареєструватись',
+      btnEnter: 'Увійти',
+      nameAnimal: 'Кличка тварини:',
+      address: 'Адреса:',
+      changeBtn: 'Змінити',
+      deleteBtn: 'Видалити',
+      createBtn: 'Створити',
+      shelterName: 'Назва:',
+      ageAnimal: 'Вік тварини:',
+      sexAnimal: 'Стать тварини:',
+      typeAnimal: 'Вид тварини:',
+      weightAnimal: 'Вага тварини:',
+      topicAnnouncement: "Тема об'яви:",
+      descriptionAnnouncement: "Опис об'яви:"
+    },
+    signIn: {
+      banner: 'Раді вітати Вас у нашій системі допомоги тваринам ',
+      h3: 'Зареєструйтесь, будь-ласка, щоб користуватися нашою системою',
+      title: 'Зареєструватись'
+    },
+    contacts: {
+      h2: 'Напишіть нам',
+      p: 'Напишіть або наберіть нам за нижче вказаними контактами',
+      message: 'Повідомлення',
+      btn: 'Відправити',
+      skype: 'Скайп',
+      telegram: 'Телеграм'
+    },
+    shelter: {
+      p: 'Ми дуже раді, що ви користуєтесь нашою системою і намагаємося зробити зручний інтерфейс',
+      addAnimal: 'Додати тварину',
+      announcement: "Об'яви",
+      changeTitle: 'Редагувати притулок'
+    },
+    adminProfile: {
+      aboutPerson: 'Дані про Вас',
+      aboutShelter: 'Дані про притулок',
+      changePerson: 'Змінити дані про себе',
+      changeShelter: 'Змінити дані про притулок'
+    },
+    user: {
+      changeUser: 'Змінення даних користувача',
+      aboutUser: 'Дані про Вас',
+      h1: 'Дорогий друже, ми дуже раді, що ти вирішив скористуватися нашою системою',
+      p: 'Щоб ти зміг швидко знаходити потрібну інформацію, ми розробили зручну систему:',
+      li1: 'Обрати потрібне місто та отримати усі притулки в ньому',
+      li2: 'Переглянути які є в ньому тварини та знайти усю детальну інформацію',
+      li3: 'Задонатити гроші на потреби притулків',
+      li4: 'Знайти тваринку з якою ви хочете провести час',
+      h2: 'Все це ти зможешь використовувати в нашому мобільному додатку "ShelterHelper", який ви можете знайти в PlayMarket'
+    },
+    announcement: {
+      announcementTitle: "Ваші об'яви",
+      addAnnouncement: "Дати об'яву",
+      createAnnouncement: "Створити об'яву"
+    },
+    animal: {
+      animalTitle: 'Внести дані про тварину',
+      animalImg: 'Фото тварини'
     }
   }
 };

@@ -4,51 +4,50 @@
             <div class="viewing">
                 <div class="box">
                     <div class="infobox">
-                        <h2>Дані про Вас</h2>
+                        <h2>{{$t("adminProfile.aboutPerson")}}</h2>
                         <div class="data">
-                            <p class="dataTitle">Ім'я</p>
+                            <p class="dataTitle">{{$t("form.name")}}</p>
                             <p>{{userData.Name}}</p>
                         </div>
                         <div class="data">
-                            <p class="dataTitle">Прізвище</p>
+                            <p class="dataTitle">{{$t("form.surname")}}</p>
                             <p>{{userData.Surname}}</p>
                         </div>
                         <div class="data">
-                            <p class="dataTitle">Номер телефону</p>
+                            <p class="dataTitle">{{$t("form.phone")}}</p>
                             <p>{{userData.Phone}}</p>
                         </div>
                         <div class="data">
-                            <p class="dataTitle"> Електронна пошта</p>
+                            <p class="dataTitle"> {{$t("form.email")}}</p>
                             <p>{{userData.Email}}</p>
                         </div>
                         <div class="data">
-                            <p class="dataTitle">Пароль</p>
+                            <p class="dataTitle">{{$t("form.password")}}</p>
                             <p class="dataInfo">{{userData.Password}}</p>
                         </div>
-                        <a id="submitButton1" href="/userChangeData" class="btn btn-primary">Змінити дані про адміністратора</a>
+                        <a id="submitButton1" href="/userChangeData" class="btn btn-primary">{{$t("adminProfile.changePerson")}}</a>
                     </div>
                 </div>
                 <div class="box">
                     <div class="infobox">
-                        <h2>Дані про Ваш притулок</h2>
+                        <h2>{{$t("adminProfile.aboutShelter")}}</h2>
                         <div class="data">
-                            <p class="dataTitle">Назва</p>
+                            <p class="dataTitle">{{$t("form.shelterName")}}</p>
                             <p>{{ this.shelterData.Name }}</p>
                         </div>
                         <div class="data">
-                            <p class="dataTitle">Адреса</p>
+                            <p class="dataTitle">{{$t("form.address")}}</p>
                             <p>{{ this.shelterData.Address }}</p>
                         </div>
                         <div class="data">
-                            <p class="dataTitle">Номер телефону</p>
+                            <p class="dataTitle">{{$t("form.phone")}}</p>
                             <p>{{ this.shelterData.Phone }}</p>
                         </div>
                         <div class="data">
-                            <p class="dataTitle">Електронна пошта</p>
+                            <p class="dataTitle">{{$t("form.email")}}</p>
                             <p>{{ this.shelterData.Email }}</p>
                         </div>
-                        <a id="submitButton" href="/editShelter" type="submit" class="btn btn-primary" >Змінити
-                            данні про притулок</a>
+                        <a id="submitButton" href="/editShelter" type="submit" class="btn btn-primary" >{{$t("adminProfile.changeShelter")}}</a>
                     </div>
                 </div>
             </div>

@@ -3,23 +3,23 @@
         <div class="infobox">
                 <div class="elements">
                     <div class="data">
-                        <p class="dataTitle">Ім'я тварини:</p>
+                        <p class="dataTitle">{{$t("form.nameAnimal")}}</p>
                         <p>{{ name }}</p>
                     </div>
                     <div class="data">
-                        <p class="dataTitle">Вік тварини:</p>
+                        <p class="dataTitle">{{$t("form.ageAnimal")}}</p>
                         <p>{{ age }}</p>
                     </div>
                     <div class="data">
-                        <p class="dataTitle">Стать тварини:</p>
+                        <p class="dataTitle">{{$t("form.sexAnimal")}}</p>
                         <p>{{ sex }}</p>
                     </div>
                     <div class="data">
-                        <p class="dataTitle">Вид тварини:</p>
+                        <p class="dataTitle">{{$t("form.typeAnimal")}}</p>
                         <p>{{ type }}</p>
                     </div>
                     <div class="data">
-                        <p class="dataTitle">Вага тварини:</p>
+                        <p class="dataTitle">{{$t("form.weightAnimal")}}</p>
                         <p>{{ weight }}</p>
                     </div>
                 </div>
@@ -31,8 +31,8 @@
                 </div>
         </div>
         <div class="button">
-            <a id="submitButton1" :href=editUrl class="btn btn-primary">Змінити дані </a>
-            <a id="submitButton2" :href=deleteUrl  class="btn btn-primary">Видалити</a>
+            <a id="submitButton1" :href=editUrl class="btn btn-primary">{{$t("form.changeBtn")}}</a>
+            <a id="submitButton2" :href=deleteUrl  class="btn btn-primary">{{$t("form.deleteBtn")}}</a>
         </div>
     </div>
 </template>

@@ -1,10 +1,10 @@
 <template>
     <div class="shelter-page">
         <h1 class="text-center">{{ shelterData.Name }}</h1>
-        <p class="text-center">Ми дуже раді, що ви користуєтесь нашою системою і намагаємося зробити зручний інтерфейс</p>
+        <p class="text-center">{{$t("shelter.p")}}</p>
         <div class="buttons">
-            <a class="btn btn-primary" href="/createAnimal">Додати тварину</a>
-            <a class="btn btn-primary" href="/announcement">Об'яви</a>
+            <a class="btn btn-primary" href="/createAnimal">{{$t("shelter.addAnimal")}}</a>
+            <a class="btn btn-primary" href="/announcement">{{$t("shelter.announcement")}}</a>
         </div>
       <div class="card-ann">
           <animal-card
@@ -44,6 +44,12 @@ export default {
                 phone: "is-invalid",
             },
             active: true
+        }
+    },
+    methods: {
+        setLocale: function (locale) {
+            localStorage.setItem('locale', locale);
+            window.location.reload();
         }
     },
     updated() {

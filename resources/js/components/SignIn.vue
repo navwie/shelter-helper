@@ -1,43 +1,43 @@
 <template>
-    <div class="page">
-        <h2 class="banner text-center">Раді вітати Вас у нашій системі допомоги тваринам "ShelterHelper"</h2>
-        <h3 class="text-center">Зареєструйтесь, будь-ласка, щоб користуватися нашою системою</h3>
+    <div class="signIn">
+        <h2 class="banner text-center">{{$t("signIn.banner")}}</h2>
+        <h3 class="text-center">{{$t("signIn.h3")}}</h3>
         <div class="SignPage">
             <div class="d-flex col-12 form-signin container justify-content-center">
                 <form action="/signInService" method="post">
                     <input type="hidden" name="_token" :value="this.csrfToken">
-                    <h1 class="title text-center">Зареєструватися</h1>
+                    <h1 class="title text-center">{{$t("signIn.title")}}</h1>
                     <div class="form-group mt-4">
                         <label for="Name">
-                            Ім'я
+                            {{$t("form.name")}}
                         </label>
                         <input v-model="name" type="text" :class="'form-control ' + formErrors.name" id="name" name="name" placeholder="Введіть ім'я">
                     </div>
                     <div class="form-group mt-4">
-                        <label for="surname">Прізвище</label>
+                        <label for="surname">{{$t("form.surname")}}</label>
                         <input v-model="surname" type="text" :class="'form-control ' + formErrors.surname" id="surname" name="surname" placeholder="Введіть прізвище">
                     </div>
                     <div class="form-group mt-4">
-                        <label for="email">Електронна пошта</label>
+                        <label for="email">{{$t("form.email")}}</label>
                         <input v-model="email" type="email" :class="'form-control ' + formErrors.email" id="email" name="email" placeholder="name@example.com">
                     </div>
                     <div class="form-group mt-4">
-                        <label for="phone">Номер телефону</label>
+                        <label for="phone">{{$t("form.phone")}}</label>
                         <input v-model="phone" type="phone" :class="'form-control ' + formErrors.phone" id="phone" name="phone" placeholder="Введіть номер телефону">
                     </div>
                     <div class="form-group mt-4">
-                        <label for="password">Пароль</label>
+                        <label for="password">{{$t("form.password")}}</label>
                         <input v-model="password" type="password" :class="'form-control ' + formErrors.password" id="password" name="password" placeholder="Введіть пароль">
                     </div>
                     <div class="form-group mt-4">
-                        <label>Ви адмін чи користувач?</label>
+                        <label>{{$t("form.asked")}}</label>
                         <select name="role" id="role" class="form-select">
                             <option value="1" selected>Адмін</option>
                             <option value="0">Користувач</option>
                         </select>
                     </div>
                     <div class="form-group text-center mt-4">
-                        <button class="btn btn-primary" type="submit" :disabled="active">Зареєструватись</button>
+                        <button class="btn btn-primary" type="submit" :disabled="active">{{$t("form.btnReg")}}</button>
                     </div>
                 </form>
             </div>
@@ -64,6 +64,12 @@ export default {
         },
         active: true
     }),
+    methods: {
+        setLocale: function (locale) {
+            localStorage.setItem('locale', locale);
+            window.location.reload();
+        }
+    },
     updated() {
         let errors = Object.values(this.formErrors);
         this.active = errors.includes("is-invalid")
@@ -165,8 +171,8 @@ h3{
 }
 .form-group button{
     position:relative;
-    margin-left:180px;
-    width: 40%;
+    margin-left:130px;
+    width: 300px;
     font-family: 'Montserrat', sans-serif;
     font-size: 24px;
     border-radius:10px;

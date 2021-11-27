@@ -1,48 +1,48 @@
 <template>
     <div class="Support">
         <div class="infobox">
-            <h2>Напишіть нам</h2>
-            <p>Напишіть або наберіть нам за нижче вказаними контактами</p>
+            <h2>{{$t("contacts.h2")}}</h2>
+            <p>{{$t("contacts.p")}}</p>
             <div class="box">
                 <div class="infobox-info">
                     <div class="profile__info">
-                        <h3>Ім'я</h3>
+                        <h3>{{$t("form.name")}}</h3>
                         <input class="input__name" type="text" maxlength="30" placeholder="Введіть ім'я">
                     </div>
                     <div class="profile__info">
-                        <h3>Прізвище</h3>
+                        <h3>{{$t("form.surname")}}</h3>
                         <input class="input__name" type="text" maxlength="30" placeholder="Введіть прізвище">
                     </div>
                     <div class="profile__info">
-                        <h3>E-mail</h3>
+                        <h3>{{$t("form.email")}}</h3>
                         <input class="input__name" type="text" maxlength="30" placeholder="Введіть пошту">
                     </div>
                     <div class="profile__info">
-                        <h3>Повідомлення</h3>
+                        <h3>{{$t("contacts.message")}}</h3>
                         <textarea class="massage" placeholder="Напишіть щось"></textarea>
                     </div>
                 </div>
                 <div class="infobox-info line">
                     <div class="phone-info">
-                        <p class="title-phone">Телефон:</p>
+                        <p class="title-phone">{{$t("form.phone")}}</p>
                         <p class="info-phone">+380958300692</p>
                     </div>
                     <div class="phone-info">
-                        <p class="title-phone">Почта:</p>
+                        <p class="title-phone">{{$t("form.email")}}</p>
                         <p class="info-phone">ShelterHelper@gmail.com</p>
                     </div>
                     <div class="phone-info">
-                        <p class="title-phone">Скайп:</p>
+                        <p class="title-phone">{{$t("contacts.skype")}}</p>
                         <p class="info-phone">shelterHelper</p>
                     </div>
                     <div class="phone-info">
-                        <p class="title-phone">Телеграм:</p>
+                        <p class="title-phone">{{$t("contacts.telegram")}}</p>
                         <p class="info-phone">@shelterHelper</p>
                     </div>
                 </div>
             </div>
             <div class="">
-                <a id="submitButton" href="#" type="submit" class="btn">Відправити</a>
+                <a id="submitButton" href="#" type="submit" class="btn">{{$t("contacts.btn")}}</a>
             </div>
         </div>
     </div>

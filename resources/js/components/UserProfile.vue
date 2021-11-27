@@ -2,30 +2,29 @@
         <div class="UserProfile text-center">
             <div class="box">
                 <div class="infobox">
-                    <h2>Дані про Вас</h2>
+                    <h2>{{$t("user.aboutUser")}}</h2>
                     <div class="data">
-                        <p class="dataTitle">Ім'я</p>
+                        <p class="dataTitle">{{$t("form.name")}}</p>
                         <p class="dataInfo">{{userData.Name}}</p>
                     </div>
                     <div class="data">
-                        <p class="dataTitle">Прізвище</p>
+                        <p class="dataTitle">{{$t("form.surname")}}</p>
                         <p class="dataInfo"> {{userData.Surname}}</p>
                     </div>
                     <div class="data">
-                        <p class="dataTitle">Номер телефону</p>
+                        <p class="dataTitle">{{$t("form.phone")}}</p>
                         <p class="dataInfo">{{userData.Phone}}</p>
                     </div>
                     <div class="data">
-                        <p class="dataTitle">Електронна пошта</p>
+                        <p class="dataTitle">{{$t("form.email")}}</p>
                         <p class="dataInfo">{{userData.Email}}</p>
                     </div>
                     <div class="data">
-                        <p class="dataTitle">Пароль</p>
+                        <p class="dataTitle">{{$t("form.password")}}</p>
                         <p class="dataInfo">{{userData.Password}}</p>
                     </div>
                     <div class="text-center">
-                        <a id="submitButton" href="/userChangeData" type="submit" class="btn btn-primary">Змінити
-                            данні</a>
+                        <a id="submitButton" href="/userChangeData" type="submit" class="btn btn-primary">{{$t("form.changeBtn")}}</a>
                     </div>
                 </div >
             </div>

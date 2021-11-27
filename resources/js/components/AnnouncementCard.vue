@@ -1,14 +1,14 @@
 <template>
     <div class="page">
         <div class="form-group">
-            <label for="topic">Тема:</label>
+            <label for="topic">{{$t("form.topicAnnouncement")}}</label>
             <input type="text" class="form-control" id="topic" name="topic" :value=topic>
         </div>
        <div class="form-group">
-           <label for="description">Опис:</label>
+           <label for="description">{{$t("form.descriptionAnnouncement")}}</label>
            <textarea type="text" class="form-control" id="description" name="description" :value="description"  />
        </div>
-        <a :href=deleteUrl class="btn btn-primary">Видалити</a>
+        <a :href=deleteUrl class="btn btn-primary">{{$t("form.deleteBtn")}}</a>
     </div>
 </template>
 

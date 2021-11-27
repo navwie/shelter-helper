@@ -3,25 +3,25 @@
         <div class="d-flex col-12 form-signin container justify-content-center align-content-center mt-5">
             <form :action=editLink method="post">
                 <input type="hidden" name="_token" :value="this.csrfToken">
-                <h1 class="h3 mb-3 fw-normal text-center">Редагувати притулок</h1>
+                <h1 class="h3 mb-3 fw-normal text-center">{{$t("shelter.changeTitle")}}</h1>
                 <div class="form-group mt-4">
-                    <label for="Name">Назва</label>
+                    <label for="Name">{{$t("form.nameAnimal")}}</label>
                     <input v-model="name" type="text" :class="'form-control ' + formErrors.name" id="name" name="name" placeholder="name">
                 </div>
                 <div class="form-group mt-4">
-                    <label for="address">Адреса</label>
+                    <label for="address">{{$t("form.address")}}</label>
                     <input v-model="address" type="text" :class="'form-control ' + formErrors.address" id="address" name="address" placeholder="Адреса">
                 </div>
                 <div class="form-group mt-4">
-                    <label for="phone">Телефон</label>
+                    <label for="phone">{{$t("form.phone")}}</label>
                     <input v-model="phone" type="phone" :class="'form-control ' + formErrors.phone" id="phone" name="phone" placeholder="Телефон">
                 </div>
                 <div class="form-group mt-4">
-                    <label for="email">Пошта</label>
+                    <label for="email">{{$t("form.email")}}</label>
                     <input v-model="email" type="email" :class="'form-control ' + formErrors.email" id="email" name="email" placeholder="Пошта">
                 </div>
                 <div class="form-group text-center mt-4">
-                    <button class="btn btn-primary" type="submit" :disabled="active">Змінити</button>
+                    <button class="btn btn-primary" type="submit" :disabled="active">{{$t("form.changeBtn")}}</button>
                 </div>
             </form>
         </div>

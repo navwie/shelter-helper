@@ -3,29 +3,29 @@
         <div class="d-flex col-12 form-signin container justify-content-center align-content-center mt-5">
             <form :action=editLink method="post">
                 <input type="hidden" name="_token" :value="this.csrfToken">
-                <h1 class="h3 mb-3 fw-normal text-center">Змінення даних користувача</h1>
+                <h1 class="h3 mb-3 fw-normal text-center">{{$t("user.changeUser")}}</h1>
                 <div class="form-group mt-4">
-                    <label for="Name">Ім'я</label>
+                    <label for="Name">{{$t("form.name")}}</label>
                     <input v-model="name" type="text" :class="'form-control ' + formErrors.name" id="name" name="name" placeholder="Ім'я">
                 </div>
                 <div class="form-group mt-4">
-                    <label for="surname">Прізвище</label>
+                    <label for="surname">{{$t("form.surname")}}</label>
                     <input v-model="surname" type="text" :class="'form-control ' + formErrors.surname" id="surname" name="surname" placeholder="Прізвище">
                 </div>
                 <div class="form-group mt-4">
-                    <label for="email">Електронна пошта</label>
+                    <label for="email">{{$t("form.email")}}</label>
                     <input v-model="email" type="email" :class="'form-control ' + formErrors.email" id="email" name="email" placeholder="name@example.com">
                 </div>
                 <div class="form-group mt-4">
-                    <label for="phone">Номер телефону</label>
+                    <label for="phone">{{$t("form.phone")}}</label>
                     <input v-model="phone" type="phone" :class="'form-control ' + formErrors.phone" id="phone" name="phone" placeholder="phone">
                 </div>
                 <div class="form-group mt-4">
-                    <label for="password">Пароль</label>
+                    <label for="password">{{$t("form.password")}}</label>
                     <input v-model="password" type="password" :class="'form-control ' + formErrors.password" id="password" name="password" placeholder="password">
                 </div>
                 <div class="form-group text-center mt-4">
-                    <button class="btn btn-primary" type="submit" :disabled="active">Змінити</button>
+                    <button class="btn btn-primary" type="submit" :disabled="active">{{$t("form.changeBtn")}}</button>
                 </div>
             </form>
         </div>
