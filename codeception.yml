@@ -1,0 +1,17 @@
+paths:
+    tests: tests
+    output: tests/_output
+    data: tests/_data
+    support: tests/_support
+    envs: tests/_envs
+actor_suffix: Tester
+extensions:
+    enabled:
+
+    modules:
+      config:
+        Db:
+          dsn: 'mysql:host=192.168.112.3;dbname=ScrumDashboard'
+          user: 'root'
+          password: 'root'
+          dump: 'tests/_data/dump.sql'

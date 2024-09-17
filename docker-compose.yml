@@ -2,17 +2,18 @@ version: '3'
 services:
 
   #PHP Service
-  app:
+  shelter-helper-app:
     build:
       context: .
       dockerfile: Dockerfile
     image: php:8.0.10-fpm
-    container_name: app
+    container_name: shelter-helper-app
     restart: unless-stopped
     tty: true
     environment:
-      XDEBUG_CONFIG: "remote_host=192.168.227.1 remote_enable=1"
-      SERVICE_NAME: app
+      PHP_IDE_CONFIG: "serverName=shelter-helper"
+      XDEBUG_SESSION: docker-server
+      SERVICE_NAME: shelter-helper-app
       SERVICE_TAGS: dev
     working_dir: /var/www
     volumes:
@@ -22,9 +23,9 @@ services:
       - app-network
 
   #Nginx Service
-  webserver:
+  shelter-helper-webserver:
     image: nginx:alpine
-    container_name: webserver
+    container_name: shelter-helper-webserver
     restart: unless-stopped
     tty: true
     ports:
@@ -33,19 +34,20 @@ services:
     volumes:
       - ./:/var/www
       - ./nginx/conf.d/:/etc/nginx/conf.d/
+      - ./nginx/ssl:/etc/nginx/ssl
     networks:
       - app-network
 
   #MySQL Service
-  db:
+  shelter-helper-db:
     image: mysql:5.7.22
-    container_name: db
+    container_name: shelter-helper-db
     restart: unless-stopped
     tty: true
     ports:
       - "3310:3310"
     environment:
-      MYSQL_DATABASE: ScrumDashboard
+      MYSQL_DATABASE: ShelterHelper
       MYSQL_ROOT_PASSWORD: root
       SERVICE_TAGS: dev
       SERVICE_NAME: localhost
